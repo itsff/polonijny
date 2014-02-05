@@ -1,9 +1,35 @@
 import os
+import json
 from flask import Flask
 from flask import render_template
 from flask import abort, redirect, url_for
 
+from pymongo import MongoClient
+from pymongo import ASCENDING, DESCENDING
+
 app = Flask(__name__)
+
+
+
+
+
+
+@app.route('/populate')
+def populate():
+	stream = file('static/slownik.json', 'r')
+	
+	entries = json.load(stream)
+
+
+	mongoClient = MongoClient(os.environ["MONGOLAB_URI"])
+	db = mongoClient.slownik
+
+	col = db.entries
+
+	col.insert(entries)
+	
+	return str(entries)
+
 
 @app.route('/')
 def home():
