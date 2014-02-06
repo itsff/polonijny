@@ -9,26 +9,13 @@ from pymongo import ASCENDING, DESCENDING
 
 app = Flask(__name__)
 
+MONGO_URL   = os.environ["MONGOLAB_URI"]
+
+mongoClient = MongoClient(MONGO_URL)
+db          = mongoClient.get_default_database()
+entries     = db.entries
 
 
-
-
-
-@app.route('/populate')
-def populate():
-	stream = file('static/slownik.json', 'r')
-	
-	entries = json.load(stream)
-
-
-	mongoClient = MongoClient(os.environ["MONGOLAB_URI"])
-	db = mongoClient.slownik
-
-	col = db.entries
-
-	col.insert(entries)
-	
-	return str(entries)
 
 
 @app.route('/')
@@ -41,14 +28,23 @@ def about():
 
 
 
-
 @app.route('/litera/<letter>')
 def show_letter(letter):
-	return 'you selected letter: ' + letter
+	e = []
+	cursor = entries.find( { 'letter' : letter.lower() }).sort('entry', 1)
+	for d in cursor:
+		e.append(d)
+
+	return str(e)
 
 @app.route('/haslo/<entry>')
 def show_entry(entry):
-	return 'looking for %s?' % entry
+
+	found = []
+	for f in entries.find( { 'entry' : entry }):
+		found.append(f)
+
+	return str(found)
 
 
 ##############################################################
