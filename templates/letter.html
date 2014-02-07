@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="entries">
+<ul>
+{% for e in entries %}
+<li>
+<a href="{{ url_for('show_entry', entry=e.entry) }}">{{ e.entry }}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+
+
+{% endblock %}

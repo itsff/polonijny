@@ -17,14 +17,17 @@ entries     = db.entries
 
 
 
+def get_letters():
+	return entries.distinct('letter')
+
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("home.html", letters=get_letters())
 
 @app.route('/about')
 def about():
-	return 'ha ha ha ha ha'
+	return render_template("about.html")
 
 
 
@@ -35,7 +38,11 @@ def show_letter(letter):
 	for d in cursor:
 		e.append(d)
 
-	return str(e)
+	return render_template(
+		"letter.html",
+		entries=e,
+		current_letter=letter,
+		letters=get_letters())
 
 @app.route('/haslo/<entry>')
 def show_entry(entry):
@@ -44,7 +51,10 @@ def show_entry(entry):
 	for f in entries.find( { 'entry' : entry }):
 		found.append(f)
 
-	return str(found)
+	return render_template(
+		"entry.html",
+		entries=found,
+		letters=get_letters())
 
 
 ##############################################################
