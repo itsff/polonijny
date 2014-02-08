@@ -1,5 +1,6 @@
 import os
 import json
+from random import randint
 from flask import Flask
 from flask import render_template
 from flask import abort, redirect, url_for
@@ -20,10 +21,18 @@ entries     = db.entries
 def get_letters():
 	return entries.distinct('letter')
 
+def get_random_entry():
+	total = entries.count()
+	for c in entries.find().limit(1).skip(randint(0,total)):
+		return c
+
 
 @app.route('/')
 def home():
-    return render_template("home.html", letters=get_letters())
+    return render_template(
+    	"home.html",
+    	letters=get_letters(),
+    	entry=get_random_entry())
 
 @app.route('/about')
 def about():
