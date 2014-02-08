@@ -1,33 +1,59 @@
 {% extends "layout.html" %}
 {% block body %}
   <div class="jumbotron">
-    <h1>Jumbotron heading</h1>
-    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+    <h1>{{ entry.entry }}</h1>
+    <div>
+		    {% if entry.meanings %}
+		    <div>
+		    	<strong>znaczenie</strong>
+		    	<ul>
+		    		{% for m in entry.meanings %}
+		    		<li>{{ m }}</li>
+		    		{% endfor %}
+		    	</ul>
+		    </div>
+		    {% endif %}
+
+		  	{% if entry.english_meanings %}
+		    <div>
+		    	<strong>ang.</strong>
+		    	<ul>
+		    		{% for m in entry.english_meanings %}
+		    		<li>{{ m }}</li>
+		    		{% endfor %}
+		    	</ul>
+		    </div>
+		    {% endif %}
+
+		    {% if entry.examples %}
+		    <div>
+		    	<strong>np.</strong>
+		    	<ul>
+		    		{% for m in entry.examples %}
+		    		<li>{{ m }}</li>
+		    		{% endfor %}
+		    	</ul>
+		    </div>
+		    {% endif %}
+
+		    {% if entry.see_also %}
+		    <div>
+		    	<strong>zob.</strong>
+		    	<ul>
+		    		{% for m in entry.see_also %}
+		    		<li><a href="{{ url_for('show_entry', entry=m)}}">{{ m }}</a></li>
+		    		{% endfor %}
+		    	</ul>
+		    </div>
+		    {% endif %}
+    </div>
+    <p />
+    <p>
+    <div class="centered-block">
+    	<a class="btn btn-xs btn-success" href="/" role="button">Losuj &raquo;</a></p>
+    </div>
   </div>
 
-  <div class="row marketing">
-    <div class="col-lg-6">
-      <h4>Subheading</h4>
-      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-      <h4>Subheading</h4>
-      <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-      <h4>Subheading</h4>
-      <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-    </div>
-
-    <div class="col-lg-6">
-      <h4>Subheading</h4>
-      <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-      <h4>Subheading</h4>
-      <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-      <h4>Subheading</h4>
-      <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-    </div>
-  </div>
+  
 
 {% endblock %}

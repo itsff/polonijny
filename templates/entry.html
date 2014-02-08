@@ -1,56 +1,53 @@
 {% extends "layout.html" %}
 {% block body %}
 
-{% for e in entries %}
+{% for entry in entries %}
 
-<div class="panel">
-  <div class="panel-heading">
-    <h2 class="panel-title">{{ e.entry }}</h2>
-  </div>
-  <div class="panel-body">
-  	<ul>
-	    {% for m in e.meanings %}
-	    	<li>{{ m }}</li>
-	    {% endfor %}
-    </ul>
-  </div>
-  
-	  <ul class="list-group">
-	    <li class="list-group-item" />
+<div class="entry">
+  <h2>{{ entry.entry }}</h2>
+  		{% if entry.meanings %}
+	    <div>
+	    	<strong>znaczenie</strong>
+	    	<ul>
+	    		{% for m in entry.meanings %}
+	    		<li>{{ m }}</li>
+	    		{% endfor %}
+	    	</ul>
+	    </div>
+	    {% endif %}
 
-	  	{% if e.english_meanings %}
-	    <li class="list-group-item">
+	  	{% if entry.english_meanings %}
+	    <div>
 	    	<strong>ang.</strong>
 	    	<ul>
-	    		{% for m in e.english_meanings %}
+	    		{% for m in entry.english_meanings %}
 	    		<li>{{ m }}</li>
 	    		{% endfor %}
 	    	</ul>
-	    </li>
+	    </div>
 	    {% endif %}
 
-	    {% if e.examples %}
-	    <li class="list-group-item">
+	    {% if entry.examples %}
+	    <div>
 	    	<strong>np.</strong>
 	    	<ul>
-	    		{% for m in e.examples %}
+	    		{% for m in entry.examples %}
 	    		<li>{{ m }}</li>
 	    		{% endfor %}
 	    	</ul>
-	    </li>
+	    </div>
 	    {% endif %}
 
-	    {% if e.see_also %}
-	    <li class="list-group-item">
+	    {% if entry.see_also %}
+	    <div>
 	    	<strong>zob.</strong>
 	    	<ul>
-	    		{% for m in e.see_also %}
+	    		{% for m in entry.see_also %}
 	    		<li><a href="{{ url_for('show_entry', entry=m)}}">{{ m }}</a></li>
 	    		{% endfor %}
 	    	</ul>
-	    </li>
+	    </div>
 	    {% endif %}
-	  </ul>
 </div>
 
 {% endfor %}
