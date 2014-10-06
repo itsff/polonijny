@@ -1,59 +1,71 @@
 {% extends "layout.html" %}
 {% block body %}
-  <div class="jumbotron">
-    <h1>{{ entry.entry }}</h1>
+<br/>
+<div class="jumbotron">
+    <h1><a href="{{ url_for('show_entry', entry=entry.entry) }}">{{ entry.entry }}</a></h1>
+
     <div>
-		    {% if entry.meanings %}
-		    <div>
-		    	<strong>znaczenie</strong>
-		    	<ul>
-		    		{% for m in entry.meanings %}
-		    		<li>{{ m }}</li>
-		    		{% endfor %}
-		    	</ul>
-		    </div>
-		    {% endif %}
+        {% if entry.meanings %}
+        <div>
+            <strong>znaczenie</strong>
+            <ul>
+                {% for m in entry.meanings %}
+                <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
 
-		  	{% if entry.english_meanings %}
-		    <div>
-		    	<strong>ang.</strong>
-		    	<ul>
-		    		{% for m in entry.english_meanings %}
-		    		<li>{{ m }}</li>
-		    		{% endfor %}
-		    	</ul>
-		    </div>
-		    {% endif %}
+        {% if entry.english_meanings %}
+        <div>
+            <strong>ang.</strong>
+            <ul>
+                {% for m in entry.english_meanings %}
+                <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
 
-		    {% if entry.examples %}
-		    <div>
-		    	<strong>np.</strong>
-		    	<ul>
-		    		{% for m in entry.examples %}
-		    		<li>{{ m }}</li>
-		    		{% endfor %}
-		    	</ul>
-		    </div>
-		    {% endif %}
+        {% if entry.examples %}
+        <div>
+            <strong>np.</strong>
+            <ul>
+                {% for m in entry.examples %}
+                <li>{{ m }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
 
-		    {% if entry.see_also %}
-		    <div>
-		    	<strong>zob.</strong>
-		    	<ul>
-		    		{% for m in entry.see_also %}
-		    		<li><a href="{{ url_for('show_entry', entry=m)}}">{{ m }}</a></li>
-		    		{% endfor %}
-		    	</ul>
-		    </div>
-		    {% endif %}
+        {% if entry.see_also %}
+        <div>
+            <strong>zob.</strong>
+            <ul>
+                {% for m in entry.see_also %}
+                <li><a href="{{ url_for('show_entry', entry=m)}}">{{ m }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
-    <p />
-    <p>
-    <div class="centered-block">
-    	<a class="btn btn-xs btn-success" href="/" role="button">Losuj &raquo;</a></p>
-    </div>
-  </div>
+    <p/>
 
-  
+    <br/>
+
+    <a href="{{ url_for('show_entry', entry=entry.entry) }}">Skomentuj</a>
+
+    <div class="fb-like" data-href="{{ url_for('show_entry', entry=entry.entry) }}" data-layout="standard"
+         data-action="like" data-show-faces="false" data-share="true"></div>
+
+</div>
+
+<div class="centered-block">
+    <a class="btn btn-success" href="/" role="button">Losuj &raquo;</a>
+</div>
+
+
+<br />
+
 
 {% endblock %}

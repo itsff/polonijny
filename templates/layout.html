@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,52 +11,69 @@
     <title>Słownik polonijny</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '663455953752217',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
 
-    <div class="container">
-      <div class="header">
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="container">
+    <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="/">Losuj!</a></li>
-          <li><a href="/about">O nas</a></li>
-          <li><a href="/contact">Kontakt</a></li>
+            <li><a href="/">Losuj!</a></li>
+
+            <li>
+                <form class="form-horizontal" role="form">
+                    <select name="URL"
+                            class="form-control input-lg"
+                            onchange="window.location.href=this.form.URL.options[this.form.URL.selectedIndex].value">
+                        <option value>Litera</option>
+                        {% for l in letters %}
+                        <option value="{{ url_for('show_letter', letter=l) }}">{{ l }}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </li>
         </ul>
-        <h3 class="text-muted">Słownik polonijny</h3>
-      </div>
+        <h3 class="text-muted"><a href="/">Słownik polonijny</a></h3>
+    </div>
 
-      <div class="centered-block">
-        <ul class="pagination">
-          {% for l in letters %}
-          <li>
-          <a 
-              {% if l == current_letter %}class="active"{% endif %}
-              href="{{ url_for('show_letter', letter=l) }}"  >{{ l }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
+    {% block body %}{% endblock %}
 
-      {% block body %}{% endblock %}
-
-      <div class="footer">
+    <div class="footer">
         <p>&copy; Frącz 2014</p>
-      </div>
+    </div>
 
-    </div> <!-- /container -->
+</div>
+<!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
 </html>

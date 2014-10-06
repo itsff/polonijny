@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<br/>
+
 {% for entry in entries %}
 
 <div class="jumbotron">
@@ -48,9 +50,18 @@
 	    	</ul>
 	    </div>
 	    {% endif %}
+
+    <br/>
+
+
 </div>
 
 {% endfor %}
+
+        <div class="centered-block">
+        <a class="btn btn-xs btn-success" href="/" role="button">Losuj &raquo;</a>
+    </div>
+<div class="fb-comments" data-href="{{ url_for('show_entry', entry=entries[0].entry) }}" data-numposts="5" data-colorscheme="light"></div>
 
 
 {% endblock %}
