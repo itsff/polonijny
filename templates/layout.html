@@ -10,8 +10,14 @@
 
     <title>Słownik polonijny</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet">
@@ -44,7 +50,7 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li><a href="/">Losuj!</a></li>
+            <li><a href="{{ url_for('losuj') }}">Losuj!</a></li>
 
             <li>
                 <form class="form-horizontal" role="form">
@@ -53,11 +59,25 @@
                             onchange="window.location.href=this.form.URL.options[this.form.URL.selectedIndex].value">
                         <option value>Litera</option>
                         {% for l in letters %}
-                        <option value="{{ url_for('show_letter', letter=l) }}">{{ l }}</option>
+                        <option value="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</option>
                         {% endfor %}
                     </select>
                 </form>
             </li>
+
+            <!-- <li class="dropdown">
+                  <a class="btn btn-default dropdown-toggle"
+                     type="button"
+                     data-toggle="dropdown">
+                    Litera
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                      {% for l in letters %}
+                        <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
+                      {% endfor %}
+                  </ul>
+            </li> -->
         </ul>
         <h3 class="text-muted"><a href="/">Słownik polonijny</a></h3>
     </div>

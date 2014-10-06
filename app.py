@@ -10,63 +10,68 @@ from pymongo import ASCENDING, DESCENDING
 
 app = Flask(__name__)
 
-MONGO_URL   = os.environ["MONGOLAB_URI"]
+MONGO_URL = os.environ["MONGOLAB_URI"]
 
 mongoClient = MongoClient(MONGO_URL)
-db          = mongoClient.get_default_database()
-entries     = db.entries
-
+db = mongoClient.get_default_database()
+entries = db.entries
 
 
 def get_letters():
-	return entries.distinct('letter')
+    return entries.distinct('letter')
+
 
 def get_random_entry():
-	total = entries.count()
-	for c in entries.find().limit(1).skip(randint(0,total)):
-		return c
+    total = entries.count()
+    for c in entries.find().limit(1).skip(randint(0, total)):
+        return c
 
 
 @app.route('/')
 def home():
     return render_template(
-    	"home.html",
-    	letters=get_letters(),
-    	entry=get_random_entry())
+        "home.html",
+        letters=get_letters(),
+        entry=get_random_entry())
+
 
 @app.route('/about')
 def about():
-	return render_template("about.html")
+    return render_template("about.html",
+                           letters=get_letters())
 
-
+@app.route('/losuj')
+def losuj():
+    entry = get_random_entry()
+    return redirect(url_for('show_entry', entry=entry["entry"]))
 
 @app.route('/litera/<letter>')
 def show_letter(letter):
-	e = []
-	cursor = entries.find( { 'letter' : letter.lower() }).sort('entry', 1)
-	for d in cursor:
-		e.append(d)
+    e = []
+    cursor = entries.find({'letter': letter.lower()}).sort('entry', 1)
+    for d in cursor:
+        e.append(d)
 
-	return render_template(
-		"letter.html",
-		entries=e,
-		current_letter=letter,
-		letters=get_letters())
+    return render_template(
+        "letter.html",
+        entries=e,
+        current_letter=letter,
+        letters=get_letters())
+
 
 @app.route('/haslo/<entry>')
 def show_entry(entry):
+    found = []
+    for f in entries.find({'entry': entry}):
+        found.append(f)
 
-	found = []
-	for f in entries.find( { 'entry' : entry }):
-		found.append(f)
-
-	return render_template(
-		"entry.html",
-		entries=found,
-		letters=get_letters())
+    return render_template(
+        "entry.html",
+        entries=found,
+        letters=get_letters())
 
 
-##############################################################
+# #############################################################
 # Short routes. We will handle these as redirects
 # so that search engines will only have 1 URL scheme
 # to deal with
@@ -74,9 +79,11 @@ def show_entry(entry):
 def show_letter_short(letter):
     return redirect(url_for('show_letter', letter=letter))
 
+
 @app.route('/h/<entry>')
 def show_entry_short(entry):
     return redirect(url_for('show_entry', entry=entry))
+
 ##############################################################
 
 if __name__ == '__main__':
