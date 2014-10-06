@@ -1,19 +1,29 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<h2>Witaj na naszej stronie :)</h3>
+<p>
+    Słownik Polonijny jest zbiorem zwrotów zmienionych przez Polaków w USA, używanych jako polskie lub w zastępstwie.
+    Zebrał: Zbigniew Roman Frącz
+</p>
+
+<br/>
+
 <div class="centered-block">
     <a class="btn btn-success" href="{{ url_for('losuj') }}" role="button">Losuj hasło &raquo;</a>
 </div>
 
+<br/>
 
-<div class="centered-block">
-    <p>Wybierz literę:</p>
-{% for l in letters %}
-    <h2 class="pull-left"><a href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></h2>
-{% endfor %}
+<p>
+    <div class="centered-block">
+        <p>Wybierz literę:</p>
+    {% for l in letters %}
+        <span class="letter"><a href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></span>
+    {% endfor %}
 
-</div>
-
+    </div>
+</p>
 
 <br />
 
