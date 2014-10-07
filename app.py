@@ -36,12 +36,9 @@ def massage_entry_examples(entry):
 
     if "examples" in entry:
         for ex in entry["examples"]:
-            print ex
             m = link_regex.search(ex)
-            print m
             if m is not None:
                 g = m.groupdict()
-                print g
                 link = url_for('show_entry', entry=g["text"])
                 if g["link"] is not None:
                     link = g["link"]
