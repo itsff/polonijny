@@ -41,12 +41,12 @@
 	    </div>
 	    {% endif %}
 
-	    {% if entry.examples %}
+	    {% if entry.examples_html %}
 	    <div>
 	    	<strong>np.</strong>
 	    	<ul>
-	    		{% for m in entry.examples %}
-	    		<li>{{ m }}</li>
+	    		{% for m in entry.examples_html %}
+	    		<li>{{ m|safe }}</li>
 	    		{% endfor %}
 	    	</ul>
 	    </div>

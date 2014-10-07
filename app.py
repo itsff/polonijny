@@ -1,7 +1,9 @@
 import os
 import json
+import re
 from random import randint
 from flask import Flask
+from flask import Markup
 from flask import render_template
 from flask import abort, redirect, url_for
 
@@ -16,6 +18,8 @@ mongoClient = MongoClient(MONGO_URL)
 db = mongoClient.get_default_database()
 entries = db.entries
 
+link_regex = re.compile("\[(?P<text>(\w?\s?)+)(\|(?P<link>(\w?\s?)+))?\]", re.UNICODE)
+
 
 def get_letters():
     return entries.distinct('letter')
@@ -25,6 +29,32 @@ def get_random_entry():
     total = entries.count()
     for c in entries.find().limit(1).skip(randint(0, total)):
         return c
+
+
+def massage_entry_examples(entry):
+    examples_html = []
+
+    if "examples" in entry:
+        for ex in entry["examples"]:
+            print ex
+            m = link_regex.search(ex)
+            print m
+            if m is not None:
+                g = m.groupdict()
+                print g
+                link = url_for('show_entry', entry=g["text"])
+                if g["link"] is not None:
+                    link = g["link"]
+
+                atag = u'<a href="%s">%s</a>' % (link, g["text"])
+
+                ex_html = link_regex.sub(atag, ex, re.UNICODE)
+                examples_html.append(ex_html)
+
+            else:
+                examples_html.append(ex)
+
+        entry["examples_html"] = examples_html
 
 
 @app.route('/')
@@ -63,6 +93,7 @@ def show_letter(letter):
 def show_entry(entry):
     found = []
     for f in entries.find({'entry': entry}):
+        massage_entry_examples(f)
         found.append(f)
 
     return render_template(
