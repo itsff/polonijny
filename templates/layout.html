@@ -14,8 +14,6 @@
 
     <meta name="author" content="Zbigniew Roman Frącz" />
 
-    <meta name="msvalidate.01" content="42268986DB07A24AD7F472C69B89699A" />
-
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://www.slownikpolonijny.com" />
     <meta property="og:locale" content="pl_PL" />
@@ -63,23 +61,23 @@
 </script>
 <div class="container">
     <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li><a href="{{ url_for('losuj') }}">Losuj!</a></li>
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-default btn-sm">
+              <a href="{{ url_for('losuj') }}">Losuj <span class="glyphicon glyphicon-random"></span></a>
+          </button>
 
-            <li class="dropdown">
-                  <a class="btn dropdown-toggle"
-                     type="button"
-                     data-toggle="dropdown">
-                    Litera
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu" role="menu">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
+              Litera
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
                       {% for l in letters %}
                         <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
                       {% endfor %}
                   </ul>
-            </li>
-        </ul>
+          </div>
+        </div>
         <h3 class="text-muted"><a href="/">Słownik polonijny</a></h3>
     </div>
 
