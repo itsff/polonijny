@@ -67,6 +67,11 @@ def about():
     return render_template("about.html",
                            letters=get_letters())
 
+@app.route('/dodaj')
+def dodaj():
+    return render_template("add.html",
+                           letters=get_letters())
+
 @app.route('/losuj')
 def losuj():
     entry = get_random_entry()
@@ -93,10 +98,16 @@ def show_entry(entry):
         massage_entry_examples(f)
         found.append(f)
 
-    return render_template(
-        "entry.html",
-        entries=found,
-        letters=get_letters())
+    if len(found) > 0:
+        return render_template(
+            "entry.html",
+            entries=found,
+            letters=get_letters())
+    else:
+        return render_template(
+            "not_found.html",
+            entry=entry,
+            letters=get_letters())
 
 
 # #############################################################

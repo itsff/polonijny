@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1>Dodaj hasło</h1>
+<p>
+    Niestety, automatyczne dodawanie haseł do słownika jeszcze nie działa :-(
+</p>
+<p>
+    Za to możesz zostawić komentarz na dole ekranu i hasło zostanie
+    dodane ręcznie. Pamiętaj że dodając hasło zrzekasz się wszelkich
+    praw autorskich na rzecz autorów tej strony.
+</p>
+
+<div class="fb-comments"
+     data-href="http://www.slownikpolonijny.com{{ url_for('dodaj') }}"
+     data-width="100%"
+     data-numposts="5"
+     data-colorscheme="light"></div>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7772971751638753"
+     data-ad-slot="7663547283"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+{% endblock %}
