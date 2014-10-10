@@ -10,7 +10,7 @@ from flask import abort, redirect, url_for
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
 
@@ -123,7 +123,13 @@ def show_letter_short(letter):
 def show_entry_short(entry):
     return redirect(url_for('show_entry', entry=entry))
 
+@app.route('/robots.txt')
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
+
 ##############################################################
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    is_debug = os.environ["FLASK_DEBUG"] is not None
+    app.run(debug=is_debug)
