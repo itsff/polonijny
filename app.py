@@ -4,8 +4,8 @@ import re
 from random import randint
 from flask import Flask
 from flask import Markup
-from flask import render_template
-from flask import abort, redirect, url_for
+from flask import render_template, request
+from flask import abort, redirect, url_for, send_from_directory
 
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
@@ -122,6 +122,7 @@ def show_letter_short(letter):
 @app.route('/h/<entry>')
 def show_entry_short(entry):
     return redirect(url_for('show_entry', entry=entry))
+
 
 @app.route('/robots.txt')
 @app.route('/sitemap.xml')
