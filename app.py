@@ -110,6 +110,11 @@ def show_entry(entry):
             letters=get_letters())
 
 
+@app.route('/hasla')
+def get_all_entries():
+    ents = entries.distinct('entry')
+    return json.dumps(ents)
+
 # #############################################################
 # Short routes. We will handle these as redirects
 # so that search engines will only have 1 URL scheme
