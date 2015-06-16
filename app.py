@@ -84,7 +84,7 @@ def dodaj():
             obj['utc_stamp'] = datetime.datetime.utcnow()
             # All good. Let's insert into DB
             #entries.insert_one(obj)
-            return redirect(url_for('show_entry', entry=entry))
+            return redirect(url_for('show_entry', entry=obj['entry']))
     
     return render_template("add.html",
                            letters=get_letters())
