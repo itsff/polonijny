@@ -124,16 +124,8 @@
              contentType: "application/json; charset=utf-8",
              dataType: "json"});
          posting.done(function(data, textStatus, jqXHR) {
-             console.log(data);
-
-             if (jqXHR.redirect)
-             {
-                 window.location.href = jqXHR.redirect;
-             }
-             else
-             {
-                 self.set('error', jqXHR.responseText);
-             }
+             window.location.href = "/h/" + model['entry'];
+             
          }).fail(function(jqXHR, textStatus, errorCode) {
              console.log(jqXHR.responseText)
              self.set('error', jqXHR.responseText);
