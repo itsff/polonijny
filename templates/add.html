@@ -1,39 +1,23 @@
 {% extends "layout.html" %}
+
+{% block extra_head %}
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="add-entry.html">
+{% endblock %}
+
 {% block body %}
 
 <h1>Dodaj hasło</h1>
 <p>
     Wyłapałeś jakieś fajne hasło i chcesz je dodać do słownika?
-    Nie ma sprawy! Po prostu zostaw komentarz poniżej i my się
-    wszystkim zajmiemy :)
-</p>
-<p>
-    <strong>Nie zapomnij dodać przykładów i opisać co dane hasło oznacza<strong>.
+    Nie ma sprawy! Ale <strong>nie zapomnij dodać przykładów i opisać co dane hasło oznacza<strong>.
     Czasami trudno się połapać ;)
 </p>
 <p>
     <small>Pamiętaj że dodając hasło zrzekasz się wszelkich
     praw autorskich na rzecz autorów tej strony.</small>
 </p>
-
-<br />
-
-<div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'slownikpolonijny';
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-<br />
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- Responsive -->
@@ -45,5 +29,11 @@
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+<div>
+    <add-entry></add-entry>
+</div>
+
 
 {% endblock %}

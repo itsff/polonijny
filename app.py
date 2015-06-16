@@ -1,6 +1,8 @@
 import os
 import json
 import re
+import validate
+
 from random import randint
 from flask import Flask
 from flask import Markup
@@ -67,8 +69,23 @@ def about():
     return render_template("about.html",
                            letters=get_letters())
 
-@app.route('/dodaj')
+    
+@app.route('/dodaj', methods=['POST', 'GET'])
 def dodaj():
+    if request.method == 'POST':
+        print request.headers
+        print request.values
+        print request.data
+        print request.url
+        (problems, obj) = validate.validateAddedEntry(request.data)
+        if problems != None:
+            return problems, 400
+
+        else:
+            # All good. Let's insert into DB
+            #entries.insert_one(obj)
+            return redirect(url_for('show_entry', entry=entry))
+    
     return render_template("add.html",
                            letters=get_letters())
 

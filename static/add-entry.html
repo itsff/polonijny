@@ -1,0 +1,146 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="fancy-input.html">
+
+<dom-module id="add-entry">
+    <template>
+        <section>
+            <form role="form" on-submit="formSubmit">
+
+                
+                <div class="form-group form-group-lg">
+                    <label for="entry">Hasło</label>
+                    <input type="text"
+                           value="{{entry}}"
+                           class="form-control input-lg"
+                           id="entry"
+                           placeholder="hasło" />
+                </div>
+
+                <fancy-input panel-title="Znaczenia"
+                             add-text="Dodaj kolejne znaczenie"
+                             placeholder="znaczenie"
+                             items="{{meanings}}"></fancy-input>
+
+
+                <fancy-input panel-title="Znaczenia angielskie"
+                             add-text="Dodaj znaczenie angielskie "
+                             placeholder="ang"
+                             items="{{english}}"></fancy-input>
+
+
+                <fancy-input panel-title="Przykłady"
+                             add-text="Dodaj przykład"
+                             placeholder="np"
+                             items="{{examples}}">
+                    <div class="alert alert-info" role="alert">
+                        <strong>Psst</strong> - Chcesz dodać link to innego hasła? Napisz je w [nawiasach].
+                        <p>
+                            Np. <mark>[Kap]</mark> mi powiedział żebym nie stawiał <mark>[kary|kara]</mark> na <mark>[kornerze|korner]</mark>.
+                        </p>
+                    </div>
+                </fancy-input>
+
+                <fancy-input panel-title="Hasła pokrewne"
+                             add-text="Dodaj hasło pokrewne"
+                             placeholder="zob. też"
+                             items="{{see_also}}"></fancy-input>
+
+                <div class="g-recaptcha" data-sitekey="6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk"></div>
+
+                <template is="dom-if" if="{{error}}">
+                    <div id="error" class="alert alert-danger" role="alert">
+                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                          <span class="sr-only">Problem:</span>
+                          <strong>Problem!</strong><span>{{error}}</span>
+                    </div>
+                </template>
+
+
+                <button type="submit"
+                        class="btn btn-success btn-lg"
+                        id="submitButton">Dodaj hasło do słownika</button>
+            </form>
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+        </section>
+    </template>
+</dom-module>
+
+<script>
+ Polymer({
+     is: "add-entry",
+
+     ready: function() {
+
+         this.entry = "";
+
+         this.meanings = [];
+         this.english  = [];
+         this.examples = [];
+         this.see_also = [];
+
+         this.error    = "";
+     },
+
+     normalize_col: function(col) {
+         var result = [];
+         for (var i=0,  tot=col.length; i < tot; ++i) {
+
+             var s = col[i].value.trim();
+             if (s.length > 0)
+             {
+                 result.push(s);
+             }
+         }
+         return result;
+     },
+
+     exportModel: function() {
+         var payload = {
+             'entry'    : this.entry.trim(),
+             'meanings' : this.normalize_col(this.meanings),
+             'english'  : this.normalize_col(this.english),
+             'examples' : this.normalize_col(this.examples),
+             'see_also' : this.normalize_col(this.see_also)
+         };
+
+         return payload;
+     },
+
+     formSubmit: function(e) {
+         e.preventDefault();
+
+         this.$$('#submitButton').disabled = true;
+
+         console.log("submit!");
+         var model = this.exportModel();
+         console.log(model);
+
+         var self = this;
+
+         var posting = $.ajax({
+             type: "POST",
+             url: "/dodaj",
+             data: JSON.stringify(model),
+             contentType: "application/json; charset=utf-8",
+             dataType: "json"});
+         posting.done(function(data, textStatus, jqXHR) {
+             console.log(data);
+
+             if (jqXHR.redirect)
+             {
+                 window.location.href = jqXHR.redirect;
+             }
+             else
+             {
+                 self.set('error', jqXHR.responseText);
+             }
+         }).fail(function(jqXHR, textStatus, errorCode) {
+             console.log(jqXHR.responseText)
+             self.set('error', jqXHR.responseText);
+
+         }).always(function() {
+             self.$$('#submitButton').disabled = false;
+         });
+     }
+ });
+</script>
