@@ -2,34 +2,36 @@
 
 <dom-module id="fancy-input">
     <template>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="panel-title">[[panelTitle]]</div>
-            </div>
-            <div class="panel-body">
-                <template is="dom-repeat" items="{{items}}" id="itemList">
-                    <div class="input-group">
-                        <input type="text"
-                               value="{{item.value::input}}"
-                               class="form-control"
-                               placeholder="[[placeholder]]" />
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">[[panelTitle]]</div>
+                </div>
+                <div class="panel-body">
+                    <template is="dom-repeat" items="{{items}}" id="itemList">
+                        <div class="input-group">
+                            <input type="text"
+                                   value="{{item.value::input}}"
+                                   class="form-control"
+                                   placeholder="[[placeholder]]" />
 
-                        <span class="input-group-btn">
-                            <button type="button"
-                                    class="btn btn-danger"
-                                    aria-label="Usuń"
-                                    on-click="remove_item">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </button>
-                        </span>
-                    </div><!-- /input-group -->
-                </template>
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-danger"
+                                        aria-label="Usuń"
+                                        on-click="remove_item">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </template>
 
-                <template is="dom-if" if="{{items.length}}">
-                    <content></content>
-                </template>
+                    <template is="dom-if" if="{{items.length}}">
+                        <content></content>
+                    </template>
 
-                <button type="button" class="btn btn-default" on-click="add_item">[[addText]]</button>
+                    <button type="button" class="btn btn-default" on-click="add_item">[[addText]]</button>
+                </div>
             </div>
         </div>
     </template>
