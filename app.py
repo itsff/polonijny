@@ -2,6 +2,7 @@ import os
 import json
 import re
 import validate
+import datetime
 
 from random import randint
 from flask import Flask
@@ -73,15 +74,14 @@ def about():
 @app.route('/dodaj', methods=['POST', 'GET'])
 def dodaj():
     if request.method == 'POST':
-        print request.headers
-        print request.values
-        print request.data
-        print request.url
         (problems, obj) = validate.validateAddedEntry(request.data)
         if problems != None:
             return problems, 400
 
         else:
+            obj['from_internet'] = True
+            obj['ip'] = request.remote_addr
+            obj['utc_stamp'] = datetime.datetime.utcnow()
             # All good. Let's insert into DB
             #entries.insert_one(obj)
             return redirect(url_for('show_entry', entry=entry))
