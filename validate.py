@@ -1,3 +1,4 @@
+# coding: utf-8
 import json
 
 
@@ -23,16 +24,16 @@ def validateAddedEntry(content):
     try:
         obj = json.loads(content)
     except:
-        return ('Coś nie tak. Spróbuj jeszcze raz.', {})
+        return (u'Coś nie tak. Spróbuj jeszcze raz.', {})
 
     ### Entry
     if 'entry' in obj:
         entry = str(obj['entry']).strip()
 
         if len(entry) < 2:
-            return ('Hasło jest wymagane.', {})    
+            return (u'Hasło jest wymagane.', {})    
     else:
-        return ('Hasło jest wymagane.', {})
+        return (u'Hasło jest wymagane.', {})
 
     finalObj['entry']  = entry
     finalObj['letter'] = entry[0]
@@ -43,7 +44,7 @@ def validateAddedEntry(content):
     finalObj['see_also']          = validateCollection(obj, 'see_also')
 
     if len(finalObj['meanings']) == 0 and len(finalObj['see_also']) == 0:
-        return ("Musisz podać przynajmniej jedno znaczenie albo hasło pokrewne.", {})
+        return (u"Musisz podać przynajmniej jedno znaczenie albo hasło pokrewne.", {})
 
     return (None, finalObj)
 
