@@ -105,6 +105,19 @@ def losuj():
     entry = get_random_entry()
     return redirect(url_for('show_entry', entry=entry["entry"]))
 
+@app.route('/nowe')
+def nowe():
+    e = []
+    cursor = entries.find(sort=[('$natural', -1)], limit=25)
+    for d in cursor:
+        e.append(d)
+
+    return render_template(
+        "letter.html",
+        entries=e,
+        header_text="Najnowsze",
+        letters=get_letters()) 
+
 @app.route('/litera/<letter>')
 def show_letter(letter):
     e = []
@@ -115,7 +128,7 @@ def show_letter(letter):
     return render_template(
         "letter.html",
         entries=e,
-        current_letter=letter,
+        header_text=letter.upper(),
         letters=get_letters())
 
 
