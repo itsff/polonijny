@@ -95,7 +95,7 @@ def dodaj():
 
         # All good. Let's insert into DB
         entries.insert_one(obj)
-        return "ok", 200
+        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
     
     return render_template("add.html",
                            letters=get_letters())
