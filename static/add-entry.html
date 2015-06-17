@@ -46,7 +46,7 @@
                              items="{{see_also}}"></fancy-input>
 
                 <div class="form-group form-group-lg">
-                    <div class="g-recaptcha" data-sitekey="6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk" hl="pl"></div>
+                    <div id="g-recaptcha"></div>
                 </div>
 
                 <template is="dom-if" if="{{error}}">
@@ -66,7 +66,15 @@
                             id="submitButton">Dodaj hasło do słownika</button>
                 </div>
             </form>
-            <script src='https://www.google.com/recaptcha/api.js'></script>
+            <script type="text/javascript">
+             var onloadCallback = function() {
+                 grecaptcha.render('g-recaptcha', {
+                     'sitekey' : '6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk',
+                     'hl'      : 'pl'
+                 });
+             };
+            </script>
+            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
         </section>
     </template>
 </dom-module>
@@ -119,6 +127,8 @@
 
          console.log("submit!");
          var model = this.exportModel();
+         model['g-recaptcha-response'] = $("#g-recaptcha-response").val();
+         
          console.log(model);
 
          var self = this;
@@ -131,7 +141,7 @@
              dataType: "json"});
          posting.done(function(data, textStatus, jqXHR) {
              window.location.href = "/h/" + model['entry'];
-             
+
          }).fail(function(jqXHR, textStatus, errorCode) {
              console.log(jqXHR.responseText)
              self.set('error', jqXHR.responseText);

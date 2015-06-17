@@ -1,9 +1,12 @@
+# coding: utf-8
+
 import os
 import json
 import re
 import validate
 import datetime
 
+from recaptcha import ReCaptcha
 from random import randint
 from flask import Flask
 from flask import Markup
@@ -17,6 +20,7 @@ app = Flask(__name__, static_folder='static', static_url_path='')
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
 
+recaptcha = ReCaptcha(app, "6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk", "6LcpgQcTAAAAADh_6O8r9G_8KwnyNnYh7X4F0YXP")
 mongoClient = MongoClient(MONGO_URL)
 db = mongoClient.get_default_database()
 entries = db.entries
@@ -78,13 +82,17 @@ def dodaj():
         if problems != None:
             return problems, 400
 
-        else:
-            obj['from_internet'] = True
-            obj['ip'] = request.remote_addr
-            obj['utc_stamp'] = str(datetime.datetime.utcnow())
-            # All good. Let's insert into DB
-            #entries.insert_one(obj)
-            return json.dumps(obj), 200
+        if not recaptcha.verify(response=obj['g-recaptcha-response']):
+            return "Jesteś robotem?", 401    
+
+        del obj['g-recaptcha-response']
+        obj['from_internet'] = True
+        obj['ip'] = request.remote_addr
+        obj['utc_stamp'] = str(datetime.datetime.utcnow())
+            
+        # All good. Let's insert into DB
+        entries.insert_one(obj)
+        return json.dumps(obj), 200
     
     return render_template("add.html",
                            letters=get_letters())

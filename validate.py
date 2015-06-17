@@ -26,6 +26,9 @@ def validateAddedEntry(content):
     except:
         return (u'Coś nie tak. Spróbuj jeszcze raz.', {})
 
+    if not 'g-recaptcha-response' in obj:
+        return "Czy jesteś robotem?" 
+        
     ### Entry
     if 'entry' in obj:
         entry = str(obj['entry']).strip()
@@ -37,6 +40,7 @@ def validateAddedEntry(content):
 
     finalObj['entry']  = entry
     finalObj['letter'] = entry[0]
+    finalObj['g-recaptcha-response'] = obj['g-recaptcha-response']
 
     finalObj['meanings']          = validateCollection(obj, 'meanings')
     finalObj['english_meanings']  = validateCollection(obj, 'english')
