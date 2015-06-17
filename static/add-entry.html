@@ -45,20 +45,26 @@
                              placeholder="zob. też"
                              items="{{see_also}}"></fancy-input>
 
-                <div class="g-recaptcha" data-sitekey="6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk"></div>
+                <div class="form-group form-group-lg">
+                    <div class="g-recaptcha" data-sitekey="6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk" hl="pl"></div>
+                </div>
 
                 <template is="dom-if" if="{{error}}">
-                    <div id="error" class="alert alert-danger" role="alert">
-                          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                          <span class="sr-only">Problem:</span>
-                          <strong>Problem!</strong>&nbsp;<span>{{error}}</span>
+                    <div class="form-group form-group-lg">
+                        <div id="error" class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            <span class="sr-only">Problem:</span>
+                            <strong>Problem!</strong>&nbsp;<span>{{error}}</span>
+                        </div>
                     </div>
                 </template>
 
 
-                <button type="submit"
-                        class="btn btn-success btn-lg"
-                        id="submitButton">Dodaj hasło do słownika</button>
+                <div class="form-group form-group-lg">
+                    <button type="submit"
+                            class="btn btn-success btn-lg"
+                            id="submitButton">Dodaj hasło do słownika</button>
+                </div>
             </form>
             <script src='https://www.google.com/recaptcha/api.js'></script>
         </section>

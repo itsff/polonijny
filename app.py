@@ -81,7 +81,7 @@ def dodaj():
         else:
             obj['from_internet'] = True
             obj['ip'] = request.remote_addr
-            obj['utc_stamp'] = datetime.datetime.utcnow()
+            obj['utc_stamp'] = str(datetime.datetime.utcnow())
             # All good. Let's insert into DB
             #entries.insert_one(obj)
             return json.dumps(obj), 200
