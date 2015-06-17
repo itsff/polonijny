@@ -148,6 +148,7 @@
 
          }).always(function() {
              self.$$('#submitButton').disabled = false;
+             grecaptcha.reset();
          });
      }
  });

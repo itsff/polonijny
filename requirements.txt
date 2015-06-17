@@ -6,3 +6,5 @@ gunicorn==18.0
 itsdangerous==0.23
 pymongo==2.6.3
 wsgiref==0.1.2
+urllib3==1.10.4
+requests==2.5.3

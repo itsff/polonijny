@@ -16,6 +16,9 @@ from flask import abort, redirect, url_for, send_from_directory
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
 
+import urllib3
+urllib3.disable_warnings()
+
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
@@ -87,12 +90,12 @@ def dodaj():
 
         del obj['g-recaptcha-response']
         obj['from_internet'] = True
-        obj['ip'] = request.remote_addr
+        obj['ip'] = str(request.remote_addr)
         obj['utc_stamp'] = str(datetime.datetime.utcnow())
-            
+
         # All good. Let's insert into DB
         entries.insert_one(obj)
-        return json.dumps(obj), 200
+        return "ok", 200
     
     return render_template("add.html",
                            letters=get_letters())
