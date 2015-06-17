@@ -38,8 +38,8 @@ def validateAddedEntry(content):
     else:
         return (u'Hasło jest wymagane.', {})
 
-    finalObj['entry']  = entry
-    finalObj['letter'] = entry[0]
+    finalObj['entry']  = str(entry)
+    finalObj['letter'] = str(entry[0])
     finalObj['g-recaptcha-response'] = obj['g-recaptcha-response']
 
     finalObj['meanings']          = validateCollection(obj, 'meanings')
