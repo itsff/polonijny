@@ -135,7 +135,7 @@ def show_letter(letter):
 @app.route('/haslo/<entry>')
 def show_entry(entry):
     found = []
-    for f in entries.find({'entry': entry}):
+    for f in entries.find({'entry_lower_case': entry.lower()}):
         massage_entry_examples(f)
         found.append(f)
 
