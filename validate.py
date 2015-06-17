@@ -39,6 +39,7 @@ def validateAddedEntry(content):
         return (u'Hasło jest wymagane.', {})
 
     finalObj['entry']  = unicode(entry)
+    finalObj['entry_lower_case']  = unicode(entry).lower()
     finalObj['letter'] = unicode(entry[0])
     finalObj['g-recaptcha-response'] = obj['g-recaptcha-response']
 
