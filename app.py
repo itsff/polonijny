@@ -121,7 +121,7 @@ def nowe():
 @app.route('/litera/<letter>')
 def show_letter(letter):
     e = []
-    cursor = entries.find({'letter': letter.lower()}).sort('entry', 1)
+    cursor = entries.find({'letter': letter.lower()}).sort('entry_lower_case', 1)
     for d in cursor:
         e.append(d)
 
