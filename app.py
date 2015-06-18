@@ -5,6 +5,7 @@ import json
 import re
 import validate
 import datetime
+import locale
 
 from recaptcha import ReCaptcha
 from random import randint
@@ -19,6 +20,8 @@ from pymongo import ASCENDING, DESCENDING
 import urllib3
 urllib3.disable_warnings()
 
+locale.setlocale(locale.LC_ALL, 'pl_PL.UTF-8')
+
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
@@ -32,7 +35,9 @@ link_regex = re.compile("\[(?P<text>(\w?\s?)+)(\|(?P<link>(\w?\s?)+))?\]", re.UN
 
 
 def get_letters():
-    return entries.distinct('letter')
+    l = list(entries.distinct('letter'))
+    l.sort(locale.strcoll)
+    return l
 
 
 def get_random_entry():
@@ -41,25 +46,27 @@ def get_random_entry():
         return c
 
 
+def subst_links(string):
+    result = string
+    matches = link_regex.finditer(string)
+    for m in matches:
+        g = m.groupdict()
+        link = url_for('show_entry', entry=g["text"])
+        if g["link"] is not None:
+            link = url_for('show_entry', entry=g["link"])
+            
+        atag = u'<a href="%s">%s</a>' % (link, g["text"])
+        result = link_regex.sub(atag, result, count=1)
+
+    return result
+
+    
 def massage_entry_examples(entry):
     examples_html = []
 
     if "examples" in entry:
         for ex in entry["examples"]:
-            m = link_regex.search(ex)
-            if m is not None:
-                g = m.groupdict()
-                link = url_for('show_entry', entry=g["text"])
-                if g["link"] is not None:
-                    link = g["link"]
-
-                atag = u'<a href="%s">%s</a>' % (link, g["text"])
-
-                ex_html = link_regex.sub(atag, ex, re.UNICODE)
-                examples_html.append(ex_html)
-
-            else:
-                examples_html.append(ex)
+            examples_html.append(subst_links(ex))
 
         entry["examples_html"] = examples_html
 
