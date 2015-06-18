@@ -17,6 +17,8 @@ from flask import abort, redirect, url_for, send_from_directory
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
 
+from operator import itemgetter
+
 import urllib3
 urllib3.disable_warnings()
 
@@ -127,10 +129,8 @@ def nowe():
 
 @app.route('/litera/<letter>')
 def show_letter(letter):
-    e = []
-    cursor = entries.find({'letter': letter.lower()}).sort('entry_lower_case', 1)
-    for d in cursor:
-        e.append(d)
+    e = list(entries.find({'letter': letter.lower()}))
+    e = sorted(e, cmp=locale.strcoll, key=itemgetter('entry_lower_case'))
 
     return render_template(
         "letter.html",
