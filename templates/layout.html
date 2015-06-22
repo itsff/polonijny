@@ -62,43 +62,71 @@
 </script>
 <div class="container">
     <div class="header">
-        <div class="btn-group pull-right">
-          <a href="{{ url_for('losuj') }}" class="btn btn-success btn-sm" role="button">
-              Losuj <span class="glyphicon glyphicon-random"></span>
-          </a>
-
-          <a href="{{ url_for('nowe') }}" class="btn btn-default btn-sm" role="button">
-              Nowe <span class="glyphicon glyphicon-asterisk"></span>
-          </a>
-
-          <a href="{{ url_for('dodaj') }}" class="btn btn-default btn-sm" role="button">
-              Dodaj <span class="glyphicon glyphicon-plus"></span>
-          </a>
-
-          <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
-              Litera
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                {% for l in letters %}
-                <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
-                {% endfor %}
-            </ul>
-          </div>
-
-          <div class="input-group input-group-sm">
-              <input type="search" class="form-control" name="query" id="query" placeholder="szukaj"></input>
-          </div>
-         
+        <div class="page-header">
+            <h1>Słownik polonijny <small>hał ar ju?</small></h1>
         </div>
-        <h3 class="text-muted"><a href="/">Słownik polonijny</a></h3>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img alt="Brand" src="/favicon.ico"> Start</a>                   
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="{{ url_for('about') }}">
+                                O słowniku
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('losuj') }}">
+                                <span class="text-success">Losuj <span class="glyphicon glyphicon-random"></span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('nowe') }}">
+                                Nowe <span class="glyphicon glyphicon-asterisk"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('dodaj') }}">
+                                Dodaj <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Litera <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% for l in letters %}
+                                <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li>
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" class="form-control" name="query" id="query" placeholder="szukaj"></input>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
         <div class="alert alert-danger" role="alert">
-            <h2>
+            <h3>
                 <a href="http://www.gofundme.com/RomanFracz">Pilne! Potrzebujemy TWOJEJ pomocy!</a>
-            </h2>
+            </h3>
         </div>
-        
+
     </div>
 
     {% block body %}{% endblock %}
