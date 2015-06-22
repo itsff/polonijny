@@ -5,10 +5,8 @@
     <template>
         <section>
             <form role="form" on-submit="formSubmit">
-
-
                 <div class="form-group form-group-lg">
-                    <label for="entry">Hasło</label>
+                    <label for="entry">Hasło (z małej, chyba że nazwa własna):</label>
                     <input type="text"
                            value="{{entry::input}}"
                            class="form-control input-lg"
@@ -19,13 +17,23 @@
                 <fancy-input panel-title="Znaczenia"
                              add-text="Dodaj kolejne znaczenie"
                              placeholder="znaczenie"
-                             items="{{meanings}}"></fancy-input>
+                             items="{{meanings}}">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Psst</strong> - Hasło ma kilka znaczeń? Kliknij przycisk aby dodać więcej linijek.
+                        Proszę podać każde znaczenie na osobnej linijce.
+                    </div>
+                </fancy-input>
 
 
                 <fancy-input panel-title="Znaczenia angielskie"
                              add-text="Dodaj znaczenie angielskie "
                              placeholder="ang"
-                             items="{{english}}"></fancy-input>
+                             items="{{english}}">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Psst</strong> - Hasło ma kilka znaczeń? Kliknij przycisk aby dodać więcej linijek.
+                        Proszę podać każde znaczenie na osobnej linijce.
+                    </div>
+                </fancy-input>
 
 
                 <fancy-input panel-title="Przykłady"
@@ -38,12 +46,25 @@
                             Np. <mark>[Kap]</mark> mi powiedział żebym nie stawiał <mark>[kary|kara]</mark> na <mark>[kornerze|korner]</mark>.
                         </p>
                     </div>
+                    <div class="alert alert-warning" role="alert"> 
+                        <p>
+                            Jak chcesz dodać więcej niż jeden przykład, to naciśnij poniższy przycisk aby dodać więcej linijek.
+                            <strong>Każda linijka powinna zawierać tylo jeden przykład</strong>.
+                        </p>
+                    </div>
                 </fancy-input>
 
                 <fancy-input panel-title="Hasła pokrewne"
                              add-text="Dodaj hasło pokrewne"
                              placeholder="zob. też"
-                             items="{{see_also}}"></fancy-input>
+                             items="{{see_also}}">
+                    <div class="alert alert-warning" role="alert">
+                        <p>
+                            <strong>Psst</strong> - Kilka haseł pokrewnych? Kliknij przycisk aby dodać więcej linijek.
+                            Proszę podać każde hasło na osobnej linijce.
+                        </p>
+                    </div>
+                </fancy-input>
 
                 <div class="form-group form-group-lg">
                     <div id="g-recaptcha"></div>
@@ -128,7 +149,7 @@
          console.log("submit!");
          var model = this.exportModel();
          model['g-recaptcha-response'] = $("#g-recaptcha-response").val();
-         
+
          console.log(model);
 
          var self = this;

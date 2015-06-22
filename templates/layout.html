@@ -29,10 +29,9 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
 
-
-
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='jumbotron-narrow.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='typeahead.css') }}" rel="stylesheet" />
 
     {% block extra_head %}{% endblock %}
 
@@ -76,21 +75,22 @@
               Dodaj <span class="glyphicon glyphicon-plus"></span>
           </a>
 
-          <a href="http://egglanterns.com" class="btn btn-default btn-sm" role="button">
-              EggLanterns <span class="glyphicon glyphicon glyphicon-globe"></span>
-          </a>
-
           <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown">
               Litera
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                      {% for l in letters %}
-                        <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
-                      {% endfor %}
-                  </ul>
+                {% for l in letters %}
+                <li><a role="menuitem" href="{{ url_for('show_letter', letter=l) }}">{{ l.upper() }}</a></li>
+                {% endfor %}
+            </ul>
           </div>
+
+          <div class="input-group input-group-sm">
+              <input type="search" class="form-control" name="query" id="query" placeholder="szukaj"></input>
+          </div>
+         
         </div>
         <h3 class="text-muted"><a href="/">Słownik polonijny</a></h3>
         <div class="alert alert-danger" role="alert">
@@ -98,6 +98,7 @@
                 <a href="http://www.gofundme.com/RomanFracz">Pilne! Potrzebujemy TWOJEJ pomocy!</a>
             </h2>
         </div>
+        
     </div>
 
     {% block body %}{% endblock %}
@@ -120,6 +121,8 @@
 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/typeahead.bundle.min.js') }}"></script>
+
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -130,6 +133,44 @@
   ga('create', 'UA-55485802-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+
+<script>
+ // Instantiate the Bloodhound suggestion engine
+ var hasla = new Bloodhound({
+     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+     queryTokenizer: Bloodhound.tokenizers.whitespace,
+     prefetch: {
+         url: "/hasla",
+         filter: function (hasla) {
+             return $.map(hasla, function (haslo) {
+                 return {
+                     name: haslo
+                 };
+             });
+         }
+     }
+ });
+
+ // Initialize the Bloodhound suggestion engine
+ hasla.initialize();
+
+ // Instantiate the Typeahead UI
+ var qq = $('#query');
+ var tt = qq.typeahead({
+     hint: true,
+     highlight: true,
+     minLength: 1,
+     classNames: {
+         input: 'form-control input-sm',
+         menu: 'dropdown-menu'
+     }
+ }, {
+     displayKey: 'name',
+     source: hasla.ttAdapter()
+ }).bind('typeahead:select', function(ev, suggestion) {
+     window.location.href = "/h/" + suggestion.name;
+ });
 </script>
 </body>
 </html>
