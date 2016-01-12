@@ -13,6 +13,7 @@ from flask import Flask
 from flask import Markup
 from flask import render_template, request
 from flask import abort, redirect, url_for, send_from_directory
+from werkzeug.contrib.fixers import ProxyFix
 
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
@@ -25,6 +26,7 @@ urllib3.disable_warnings()
 locale.setlocale(locale.LC_ALL, 'pl_PL.UTF-8')
 
 app = Flask(__name__, static_folder='static', static_url_path='')
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
 
@@ -185,5 +187,7 @@ def static_from_root():
 ##############################################################
 
 if __name__ == '__main__':
-    is_debug = os.environ["FLASK_DEBUG"] is not None
-    app.run(debug=is_debug)
+    is_debug = os.environ.get("FLASK_DEBUG", False)
+    host = os.environ.get("FLASK_HOST", "0.0.0.0")
+    port = os.environ.get("FLASK_PORT", 80)
+    app.run(host=host, port=port, debug=is_debug)
