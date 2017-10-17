@@ -1,0 +1,2 @@
+# polonijny
+Słownik polonijny
