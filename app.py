@@ -37,6 +37,8 @@ entries = db.entries
 
 link_regex = re.compile("\[(?P<text>(\w?\s?)+)(\|(?P<link>(\w?\s?)+))?\]", re.UNICODE)
 
+def do_title(title):
+    return title + " - "
 
 def get_letters():
     l = list(entries.distinct('letter'))
@@ -109,7 +111,8 @@ def dodaj():
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
     
     return render_template("add.html",
-                           letters=get_letters())
+                           letters=get_letters(), 
+                           title=do_title("Dodaj"))
 
 @app.route('/losuj')
 def losuj():
@@ -127,7 +130,8 @@ def nowe():
         "letter.html",
         entries=e,
         header_text="Najnowsze",
-        letters=get_letters()) 
+        letters=get_letters(),
+        title=do_title("Najnowsze"))
 
 @app.route('/litera/<letter>')
 def show_letter(letter):
@@ -138,7 +142,8 @@ def show_letter(letter):
         "letter.html",
         entries=e,
         header_text=letter.upper(),
-        letters=get_letters())
+        letters=get_letters(),
+        title=do_title(letter.upper()))
 
 
 @app.route('/haslo/<entry>')
@@ -152,12 +157,14 @@ def show_entry(entry):
         return render_template(
             "entry.html",
             entries=found,
-            letters=get_letters())
+            letters=get_letters(),
+            title=do_title(entry))
     else:
         return render_template(
             "not_found.html",
             entry=entry,
-            letters=get_letters())
+            letters=get_letters(),
+            title=do_title("Nie ma hasła"))
 
 
 @app.route('/hasla')
