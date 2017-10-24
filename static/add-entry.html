@@ -5,14 +5,22 @@
     <template>
         <section>
             <form role="form" on-submit="formSubmit">
-                <div class="form-group form-group-lg">
-                    <label for="entry">Hasło (z małej, chyba że nazwa własna):</label>
-                    <input type="text"
-                           value="{{entry::input}}"
-                           class="form-control input-lg"
-                           id="entry"
-                           placeholder="wpisz tutaj nowe hasło" />
-                </div>
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">Hasło</div>
+                        </div>
+                        <div class="panel-body">
+                            
+                            <div class="form-group form-group-lg">
+                                <label for="entry">Hasło (z małej, chyba że nazwa własna):</label>
+                                <input type="text"
+                                    value="{{entry::input}}"
+                                    class="form-control input-lg"
+                                    id="entry"
+                                    placeholder="wpisz tutaj nowe hasło" />
+                            </div>
+                        </div>
+                    </div>
 
                 <fancy-input panel-title="Znaczenia"
                              add-text="Dodaj kolejne znaczenie"
