@@ -35,9 +35,12 @@ MONGO_URL = os.environ["MONGOLAB_URI"]
 recaptcha = ReCaptcha(app, "6LcpgQcTAAAAAFqGZbDtRKcBp7WIDi_UFARU1ihk", "6LcpgQcTAAAAADh_6O8r9G_8KwnyNnYh7X4F0YXP")
 mongoClient = MongoClient(MONGO_URL)
 db = mongoClient.get_default_database()
-entries = db.entries
 
 link_regex = re.compile("\[(?P<text>(\w?\s?)+)(\|(?P<link>(\w?\s?)+))?\]", re.UNICODE)
+
+
+def entries():
+    return db.entries
 
 
 def do_title(title):
@@ -45,14 +48,14 @@ def do_title(title):
 
 
 def get_letters():
-    l = list(entries.distinct('letter'))
-    l.sort(key=functools.cmp_to_key(locale.strcoll))
-    return l
+    letters = list(entries().distinct('letter'))
+    letters.sort(key=locale.strxfrm)
+    return letters
 
 
 def get_random_entry():
-    total = entries.count()
-    for c in entries.find().limit(1).skip(randint(0, total)):
+    total = entries().count()
+    for c in entries().find().limit(1).skip(randint(0, total)):
         return c
 
 
@@ -111,7 +114,7 @@ def dodaj():
         obj['utc_stamp'] = str(datetime.datetime.utcnow())
 
         # All good. Let's insert into DB
-        entries.insert_one(obj)
+        entries().insert_one(obj)
         return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
     return render_template("add.html",
@@ -128,7 +131,7 @@ def losuj():
 @app.route('/nowe')
 def nowe():
     e = []
-    cursor = entries.find(sort=[('$natural', -1)], limit=25)
+    cursor = entries().find(sort=[('$natural', -1)], limit=25)
     for d in cursor:
         e.append(d)
 
@@ -142,8 +145,8 @@ def nowe():
 
 @app.route('/litera/<letter>')
 def show_letter(letter):
-    e = list(entries.find({'letter': letter.lower()}))
-    e = sorted(e, key=itemgetter('entry_lower_case'))
+    e = list(entries().find({'letter': letter.lower()}))
+    e = sorted(e, key=lambda x: locale.strxfrm(x['entry_lower_case']))
 
     return render_template(
         "letter.html",
@@ -156,7 +159,7 @@ def show_letter(letter):
 @app.route('/haslo/<entry>')
 def show_entry(entry):
     found = []
-    for f in entries.find({'entry_lower_case': entry.lower()}):
+    for f in entries().find({'entry_lower_case': entry.lower()}):
         massage_entry_examples(f)
         found.append(f)
 
@@ -176,7 +179,7 @@ def show_entry(entry):
 
 @app.route('/hasla')
 def get_all_entries():
-    ents = entries.distinct('entry')
+    ents = entries().distinct('entry')
     return json.dumps(ents)
 
 
