@@ -10,7 +10,7 @@ def validateCollection(obj, colName):
 
         if isinstance(col, list):
             for e in col:
-                e = unicode(e.strip())
+                e = e.strip()
                 if len(e) > 2:
                     finalCol.append(e)
         
@@ -31,16 +31,16 @@ def validateAddedEntry(content):
         
     ### Entry
     if 'entry' in obj:
-        entry = unicode(obj['entry'].strip())
+        entry = obj['entry'].strip()
 
         if len(entry) < 2:
             return (u'Hasło jest wymagane.', {})    
     else:
         return (u'Hasło jest wymagane.', {})
 
-    finalObj['entry']                = unicode(entry)
-    finalObj['entry_lower_case']     = unicode(entry).lower()
-    finalObj['letter']               = unicode(entry[0]).lower()
+    finalObj['entry']                = entry
+    finalObj['entry_lower_case']     = entry.lower()
+    finalObj['letter']               = entry[0].lower()
     finalObj['g-recaptcha-response'] = obj['g-recaptcha-response']
 
     finalObj['meanings']          = validateCollection(obj, 'meanings')
@@ -49,12 +49,12 @@ def validateAddedEntry(content):
     finalObj['see_also']          = validateCollection(obj, 'see_also')
 
     if len(finalObj['meanings']) == 0 and len(finalObj['see_also']) == 0:
-        return (u"Musisz podać przynajmniej jedno znaczenie albo hasło pokrewne.", {})
+        return u"Musisz podać przynajmniej jedno znaczenie albo hasło pokrewne.", {}
 
-    return (None, finalObj)
+    return None, finalObj
+
 
 if __name__ == "__main__":
-
     data = '''{
 "entry": " rymot    ",
 "meanings": ["", "Ha ha"],
@@ -63,4 +63,4 @@ if __name__ == "__main__":
     '''
 
     x = validateAddedEntry(data)
-    print x
+    print(x)
