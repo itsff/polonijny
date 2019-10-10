@@ -20,9 +20,6 @@ from pymongo import ASCENDING, DESCENDING
 
 from operator import itemgetter
 
-import urllib3
-urllib3.disable_warnings()
-
 locale.setlocale(locale.LC_ALL, 'pl_PL.UTF-8')
 
 app = Flask(__name__, static_folder='static', static_url_path='')
@@ -37,12 +34,14 @@ entries = db.entries
 
 link_regex = re.compile("\[(?P<text>(\w?\s?)+)(\|(?P<link>(\w?\s?)+))?\]", re.UNICODE)
 
+
 def do_title(title):
     return title + " - "
 
+
 def get_letters():
     l = list(entries.distinct('letter'))
-    l.sort(locale.strcoll)
+    l.sort(key=locale.strxfrm)
     return l
 
 
@@ -60,13 +59,13 @@ def subst_links(string):
         link = url_for('show_entry', entry=g["text"])
         if g["link"] is not None:
             link = url_for('show_entry', entry=g["link"])
-            
+
         atag = u'<a href="%s">%s</a>' % (link, g["text"])
         result = link_regex.sub(atag, result, count=1)
 
     return result
 
-    
+
 def massage_entry_examples(entry):
     examples_html = []
 
@@ -90,16 +89,16 @@ def about():
     return render_template("about.html",
                            letters=get_letters())
 
-    
+
 @app.route('/dodaj', methods=['POST', 'GET'])
 def dodaj():
     if request.method == 'POST':
         (problems, obj) = validate.validateAddedEntry(request.data)
-        if problems != None:
+        if problems:
             return problems, 400
 
         if not recaptcha.verify(response=obj['g-recaptcha-response']):
-            return "Jesteś robotem?", 401    
+            return "Jesteś robotem?", 401
 
         del obj['g-recaptcha-response']
         obj['from_internet'] = True
@@ -108,16 +107,18 @@ def dodaj():
 
         # All good. Let's insert into DB
         entries.insert_one(obj)
-        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
-    
+        return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
+
     return render_template("add.html",
-                           letters=get_letters(), 
+                           letters=get_letters(),
                            title=do_title("Dodaj"))
+
 
 @app.route('/losuj')
 def losuj():
     entry = get_random_entry()
     return redirect(url_for('show_entry', entry=entry["entry"]))
+
 
 @app.route('/nowe')
 def nowe():
@@ -133,10 +134,11 @@ def nowe():
         letters=get_letters(),
         title=do_title("Najnowsze"))
 
+
 @app.route('/litera/<letter>')
 def show_letter(letter):
-    e = list(entries.find({'letter': letter.lower()}))
-    e = sorted(e, cmp=locale.strcoll, key=itemgetter('entry_lower_case'))
+    e = sorted(entries.find({'letter': letter.lower()}),
+               key=lambda item: locale.strxfrm(item['entry_lower_case']))
 
     return render_template(
         "letter.html",
@@ -172,6 +174,7 @@ def get_all_entries():
     ents = entries.distinct('entry')
     return json.dumps(ents)
 
+
 # #############################################################
 # Short routes. We will handle these as redirects
 # so that search engines will only have 1 URL scheme
@@ -190,6 +193,7 @@ def show_entry_short(entry):
 @app.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
+
 
 ##############################################################
 
