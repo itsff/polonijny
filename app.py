@@ -14,7 +14,7 @@ from flask import Flask
 from flask import Markup
 from flask import render_template, request
 from flask import abort, redirect, url_for, send_from_directory
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from pymongo import MongoClient
 from pymongo import ASCENDING, DESCENDING
@@ -28,7 +28,7 @@ urllib3.disable_warnings()
 locale.setlocale(locale.LC_ALL, 'pl_PL.UTF-8')
 
 app = Flask(__name__, static_folder='static', static_url_path='')
-app.wsgi_app = ProxyFix(app.wsgi_app)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 
 MONGO_URL = os.environ["MONGOLAB_URI"]
 
