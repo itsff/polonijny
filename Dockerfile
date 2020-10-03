@@ -1,7 +1,9 @@
 #
 # Usage:
-# docker build . -f Dockerfile -t polonijny:latest
-# docker run -it -e MONGO_URI=xxxx -p 5005:80 polonijny:latest
+# * docker build . -f Dockerfile -t polonijny:latest
+# * docker run -it -e MONGO_URI=xxxx -p 5005:80 polonijny:latest
+# * docker save polonijny:latest > polonijny.tar
+# * docker load -i polonijny.tar -t polonijny:latest
 #
 
 
