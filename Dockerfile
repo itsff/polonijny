@@ -25,7 +25,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip3 install --upgrade pip
 
 COPY ./requirements.txt .
-RUN pip3 install -r requirements.txt --use-feature=2020-resolver
+RUN pip3 install -r requirements.txt
 
 
 ### Final image --------------------------------------------------------------------------------------
