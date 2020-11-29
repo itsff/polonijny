@@ -1,0 +1,117 @@
+@model EntryViewModel
+@using System.Text
+
+@{
+    string FormatExample(string text)
+    {
+        var re = EntryViewModel.LinkRegex;
+        var matches = re.Matches(text);
+
+        foreach (System.Text.RegularExpressions.Match m in matches)
+        {
+            var textGroup = m.Groups["text"];
+            if (textGroup.Success)
+            {
+                string link = string.Empty;
+                var linkGroup = m.Groups["link"];
+                if (linkGroup.Success)
+                {
+                    link = $"<a href=\"{linkGroup.Value}\">{textGroup.Value}</a>";
+                }
+                else
+                {
+                    link = $"<a href=\"{textGroup.Value}\">{textGroup.Value}</a>";
+                }
+
+                text = re.Replace(text, link, 1);
+            }
+        }
+
+        return text;
+    }
+}
+
+@foreach(var entry in Model.Entries) {
+    <div class="card">
+        <div class="card-header">
+            <h3>@entry.Name</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+
+                    @if (entry.Meanings.Count > 0) {
+                    <div>
+                        <strong>znaczenie</strong>
+                        <ul>
+                            @foreach(var m in entry.Meanings) {
+                            <li>@m</li>
+                            }
+                        </ul>
+                    </div>
+                    }
+
+                    @if (entry.EnglishMeanings.Count > 0) {
+                    <div>
+                        <strong>znaczenie angielskie</strong>
+                        <ul>
+                            @foreach(var m in entry.EnglishMeanings) {
+                            <li>@m</li>
+                            }
+                        </ul>
+                    </div>
+                    }
+
+                    @if (entry.Examples.Count > 0) {
+                    <div>
+                        <strong>przykład</strong>
+                        <ul>
+                            @foreach(var m in entry.Examples) {
+                            <li>@Html.Raw(FormatExample(m))</li>
+                            }
+                        </ul>
+                    </div>
+                    }
+
+                    @if (entry.SeeAlso.Count > 0) {
+                    <div>
+                        <strong>zobacz też</strong>
+                        <ul>
+                            @foreach(var m in entry.SeeAlso) {
+                            <li><a asp-action="entry" asp-route-name="@m">@m</a></li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                </div>
+                @* <div class="col-md-auto">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Vertical banner 120x240 -->
+                    <ins class="adsbygoogle"
+                        style="display:inline-block;width:120px;height:240px"
+                        data-ad-client="ca-pub-7772971751638753"
+                        data-ad-slot="4827832080"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div> *@
+            </div>            
+        </div>
+
+        <div class="card-footer">
+            <div class="fb-like" data-href="https://slownikpolonijny.com/@ViewData["Link"]" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+        </div>
+    </div>
+    <br />
+}
+
+<div class="centered-block">
+    <a class="btn btn-success" asp-action="random" role="button">
+        Losuj hasło
+        @* <svg class="bi" width="24" height="24" fill="currentColor">
+            <use xlink:href="/icons/bootstrap-icons.svg#shuffle"/>
+        </svg> *@
+    </a>
+</div>
+
+<partial name="_HorizontalAd" />

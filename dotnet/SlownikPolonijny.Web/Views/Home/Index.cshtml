@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Witaj na naszej stronie 📕🇵🇱</h3>
+<p>
+    Słownik Polonijny jest zbiorem zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie.
+    Zebrał w USA: <a href="http://zrfracz.com">Zbigniew Roman Frącz</a>
+</p>
+
+<br/>
+
+<div class="centered-block">
+    <a class="btn btn-success" asp-action="random" role="button">
+        Losuj hasło
+        @* <svg class="bi" width="24" height="24" fill="currentColor">
+            <use xlink:href="/icons/bootstrap-icons.svg#shuffle"/>
+        </svg> *@
+    </a>
+</div>
+
+
+<br/>
+
+<p>
+    <div class="centered-block">
+        <p>Wybierz literę:</p>
+    @for (int i = 0; i < AlphabetViewModel.UpperCase.Length; ++i) {
+        <span class="letter"><a asp-action="Letter" asp-route-letter="@AlphabetViewModel.LowerCase[i]">@AlphabetViewModel.UpperCase[i]</a></span>
+    }
+</p>

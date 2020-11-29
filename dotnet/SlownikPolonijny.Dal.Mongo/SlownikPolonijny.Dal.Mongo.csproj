@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\SlownikPolonijny.Dal\SlownikPolonijny.Dal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDb.Driver" Version="2.11.4" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LanguageVersion>9.0</LanguageVersion>
+  </PropertyGroup>
+
+</Project>
