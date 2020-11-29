@@ -1,3 +1,12 @@
+
+#
+# Usage:
+# docker build . -f Dockerfile -t polonijny:latest
+# docker run -it -e Mongo__ConnectionString="mongodb+srv://..." -e Mongo__DatabaseName="slownik_polonijny" -e Mongo__CollectionName=entries -p 5000:80 polonijny:latest
+# docker save polonijny:latest > polonijny.tar
+# docker load -i polonijny.tar -t polonijny:latest
+#
+
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim-amd64 AS base
