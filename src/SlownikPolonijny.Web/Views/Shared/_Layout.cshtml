@@ -4,8 +4,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @if (ViewData["Title"] == null) {
+    <title>Słownik polonijny</title>
+    <meta property="og:title" content="Słownik polonijny" />
+    } else {
     <title>@ViewData["Title"] - Słownik polonijny</title>
     <meta property="og:title" content="@ViewData["Title"] - Słownik polonijny" />
+    }
 
     <meta name="description" content="Słownik Polonijny jest zbiorem zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie." />
     <meta property="og:description" content="Zbiór zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie." />
@@ -13,11 +18,11 @@
     <meta name="author" content="Zbigniew Roman Frącz" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.slownikpolonijny.com/@ViewData["Link"]" />
+    <meta property="og:url" content="https://www.slownikpolonijny.com/@ViewData["Link"]" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="fb:app_id" content="663455953752217" />
     <meta property="og:site_name" content="Słownik polonijny" />
-    <meta property="og:image" content="http://www.slownikpolonijny.com/flaga_pl.png" />
+    <meta property="og:image" content="https://www.slownikpolonijny.com/flaga_pl.png" />
 
     <link rel="shortcut icon" href="~/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -26,20 +31,19 @@
 </head>
 <body>
     <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v9.0&appId=2261961886&autoLogAppEvents=1" nonce="OMiE3Gsl"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v9.0&appId=2261961886&autoLogAppEvents=1" nonce="OMiE3Gsl"></script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img alt="Strona główna" src="~/favicon.ico"></a>
+                <a class="navbar-brand text-truncate" asp-area="" asp-controller="Home" asp-action="Index"><img alt="Strona główna" src="~/favicon.ico" /> Słownik polonijny</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <a style="display:inline-block;"  class="navbar-brand text-truncate" asp-controller="Home" asp-action="Index">Słownik polonijny</a>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="about">O słowniku</a>
+                            <a class="nav-link text-dark" asp-action="random">Losuj <span class="glyphicon glyphicon-random"></span></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Litera</a>
@@ -50,17 +54,17 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="random">Losuj <span class="glyphicon glyphicon-random"></span></a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-action="latest">Najnowsze <span class="glyphicon glyphicon-asterisk"></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-action="add">Dodaj <span class="glyphicon glyphicon-plus"></span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-action="about">O słowniku</a>
+                        </li>
                     </ul>
-                    <form class="form-inline" style="min-width: 200px;">
-                        <input class="form-control" type="search" placeholder="szukaj" aria-label="Szukaj" id="search" name="search">
+                    <form class="form-inline">
+                        <input class="form-control" style="min-width: 200px;" type="search" placeholder="szukaj" aria-label="Szukaj" id="search" name="search">
                     </form>
                 </div>
             </div>
