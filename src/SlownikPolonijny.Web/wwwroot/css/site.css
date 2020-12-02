@@ -89,6 +89,11 @@ body {
   margin-top: 10px;
 }
 
+.not-approved-entry {
+  font-weight: bold;
+  color: orange;
+}
+
 form .card {
   margin-bottom: 20px;
 }
