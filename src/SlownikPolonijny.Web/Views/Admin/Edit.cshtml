@@ -1,19 +1,14 @@
-@model AddEntryViewModel
+@model EditEntryViewModel
 @{
-    ViewData["Title"] = "Dodaj hasło";
+    ViewData["Title"] = "Edycja hasła";
 }
 
-<h1>Dodaj hasło</h1>
-<p>
-    Wyłapałeś jakieś fajne hasło i chcesz je dodać do słownika?
-    Nie ma sprawy! Ale <strong>nie zapomnij dodać przykładów i opisać co dane hasło oznacza</strong>.
-    Czasami trudno się połapać ;)
-</p>
+<h1>Edycja hasła</h1>
 <div>
     <section>
-        <form role="form" id="entryForm" action='/dodaj'>
+        <form role="form" id="entryForm" action='/admin/edytuj'>
             @Html.AntiForgeryToken()
-            <input type="hidden" name="CaptchaExpectation" value="@Model.CaptchaExpectation" />
+            <input type="hidden" name="Id" value="@Model.Entry.Id" />
             <div class="card">
                 <div class="card-header">
                     Hasło
@@ -22,7 +17,7 @@
                     <div class="form-group form-group-lg">
                         <label for="Name">Hasło (z małej, chyba że nazwa własna):</label>
                         <input type="text"
-                            value=""
+                            value="@Model.Entry.Name"
                             class="form-control input-lg"
                             autocorrect="off" autocapitalize="none"
                             id="Name" name="Name"
@@ -37,14 +32,28 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <div class="input-group" id="Meanings-group"></div>
-                    </div>
+                        <div class="input-group" id="Meanings-group">
+                            @foreach (var m in Model.Entry.Meanings) {
+                                <div class="input-group top-space">
+                                    <input type="text"
+                                        value="@m"
+                                        class="form-control"
+                                        autocorrect="off" autocapitalize="none"
+                                        name="Meanings"
+                                        id="Meanings"
+                                        placeholder="znaczenie" />
 
-                    <div class="alert alert-warning" role="alert" id="Meanings-hint" style="display:none">
-                        <strong>Psst</strong> - Hasło ma kilka znaczeń? Kliknij przycisk aby dodać więcej linijek.
-                        Proszę podać każde znaczenie na osobnej linijce.
+                                    <div class="input-group-append">
+                                        <button type="button"
+                                                class="btn btn-danger"
+                                                aria-label="Usuń">
+                                            Usuń
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
-
                     <button type="button" class="btn btn-primary" id="Meanings-add">Kolejne znaczenie</button>
                 </div>
             </div>
@@ -55,14 +64,28 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <div class="input-group" id="EnglishMeanings-group"></div>
-                    </div>
+                        <div class="input-group" id="EnglishMeanings-group">
+                            @foreach (var m in Model.Entry.EnglishMeanings) {
+                                <div class="input-group top-space">
+                                    <input type="text"
+                                        value="@m"
+                                        class="form-control"
+                                        autocorrect="off" autocapitalize="none"
+                                        name="EnglishMeanings"
+                                        id="EnglishMeanings"
+                                        placeholder="ang." />
 
-                    <div class="alert alert-warning" role="alert" id="EnglishMeanings-hint" style="display:none">
-                        <strong>Psst</strong> - Hasło ma kilka angielskich znaczeń? Kliknij przycisk aby dodać więcej linijek.
-                        Proszę podać każde znaczenie na osobnej linijce.
+                                    <div class="input-group-append">
+                                        <button type="button"
+                                                class="btn btn-danger"
+                                                aria-label="Usuń">
+                                            Usuń
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
-
                     <button type="button" class="btn btn-primary" id="EnglishMeanings-add">Kolejne znaczenie angielskie</button>
                 </div>
             </div>
@@ -73,21 +96,32 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <div class="input-group" id="Examples-group"></div>
+                        <div class="input-group" id="Examples-group">
+                            @foreach (var m in Model.Entry.Examples) {
+                                <div class="input-group top-space">
+                                    <input type="text"
+                                        value="@m"
+                                        class="form-control"
+                                        autocorrect="off" autocapitalize="none"
+                                        name="Examples"
+                                        id="Examples"
+                                        placeholder="np" />
+
+                                    <div class="input-group-append">
+                                        <button type="button"
+                                                class="btn btn-danger"
+                                                aria-label="Usuń">
+                                            Usuń
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
                     </div>
 
-                    <div id="Examples-hint" style="display:none">
+                    <div id="Examples-hint">
                         <div class="alert alert-info" role="alert">
-                            <strong>Psst</strong> - Chcesz dodać link to innego hasła? Napisz je w [nawiasach].
-                            <p>
-                                Np. <mark>[Kap]</mark> mi powiedział żebym nie stawiał <mark>[kary|kara]</mark> na <mark>[kornerze|korner]</mark>.
-                            </p>
-                        </div>
-                        <div class="alert alert-warning" role="alert"> 
-                            <p>
-                                Jak chcesz dodać więcej niż jeden przykład, to naciśnij poniższy przycisk aby dodać więcej linijek.
-                                <strong>Każda linijka powinna zawierać tylo jeden przykład</strong>.
-                            </p>
+                            Np. <mark>[Kap]</mark> mi powiedział żebym nie stawiał <mark>[kary|kara]</mark> na <mark>[kornerze|korner]</mark>.
                         </div>
                     </div>
 
@@ -101,30 +135,29 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <div class="input-group" id="SeeAlso-group"></div>
-                    </div>
+                        <div class="input-group" id="SeeAlso-group">
+                            @foreach (var m in Model.Entry.SeeAlso) {
+                                <div class="input-group top-space">
+                                    <input type="text"
+                                        value="@m"
+                                        class="form-control"
+                                        autocorrect="off" autocapitalize="none"
+                                        name="SeeAlso"
+                                        id="SeeAlso"
+                                        placeholder="zobacz też" />
 
-                    <div class="alert alert-warning" role="alert" id="SeeAlso-hint" style="display:none">
-                        <strong>Psst</strong> - Kilka haseł pokrewnych? Kliknij przycisk aby dodać więcej linijek.
-                            Proszę podać każde hasło na osobnej linijce.
-                    </div>
-
-                    <button type="button" class="btn btn-primary" id="SeeAlso-add">Kolejne hasło pokrewne</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <strong>Udowodnij że nie jesteś robotem</strong>
-                    <div class="form-group row">
-                        <div class="input-group">
-                            <label for="Captcha" class="col-sm-2 col-form-label">@Model.Num1 + @Model.Num2 =</label>
-                            <input type="tel"
-                                   pattern="\d+"
-                                   id="Captcha" name="Captcha"
-                                   class="form-control" />
+                                    <div class="input-group-append">
+                                        <button type="button"
+                                                class="btn btn-danger"
+                                                aria-label="Usuń">
+                                            Usuń
+                                        </button>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
+                    <button type="button" class="btn btn-primary" id="SeeAlso-add">Kolejne hasło pokrewne</button>
                 </div>
             </div>
 
@@ -138,12 +171,8 @@
             <div class="form-group form-group-lg">
                 <button type="submit"
                         class="btn btn-success btn-lg"
-                        id="submitButton">Dodaj hasło do słownika</button>
+                        id="submitButton">Zapisz zmiany</button>
             </div>
-            <p>
-                <small>Pamiętaj że dodając hasło zrzekasz się wszelkich
-                praw autorskich na rzecz autorów tej strony.</small>
-            </p>
         </form>
     </section>
 </div>
@@ -177,8 +206,6 @@ function hookUpMulti(uiName, dataName, hint) {
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
         });
-
-        $("#" + uiName + "-hint").show();
     });
 }
 
@@ -198,7 +225,7 @@ function hookUpFormSubmit() {
             console.log(resp);
             if (resp.success) {
                 $("#problems").hide();
-                window.location.href = "/haslo/" + resp.name;
+                window.history.back();
             } else {
                 $("#problems").show();
                 var pl = $("#problem-list");

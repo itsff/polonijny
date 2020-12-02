@@ -1,0 +1,20 @@
+@model EntryListViewModel
+<div class="entries">
+    <ul>
+        @foreach(var e in Model.Entries) {
+            <li>
+                @if (Model.ShowEdit) {
+                    string classType = string.IsNullOrEmpty(e.ApprovedBy) ? "not-approved-entry" : null;
+                    <a asp-controller="home" 
+                       asp-action="entry"
+                       asp-route-name="@e.Name"
+                       class="@classType">@e.Name</a>
+                       <text>&nbsp;</text>
+                    <text>[<a asp-controller="admin" asp-action="edit" asp-route-id="@e.Id">edytuj</a>]</text>
+                } else {
+                    <a asp-controller="home" asp-action="entry" asp-route-name="@e.Name">@e.Name</a>
+                }
+            </li>
+        }
+    </ul>
+</div>

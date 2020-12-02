@@ -4,8 +4,7 @@ using System.Collections.Generic;
 
 namespace SlownikPolonijny.Web.Models
 {
-    public class LatestViewModel
+    public class LatestViewModel : EntryListViewModel
     {
-        public IReadOnlyList<Entry> Entries { get; set; }
     }
 }

@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 namespace SlownikPolonijny.Web.Models
 {
-    public class LetterViewModel : EntryListViewModel
+    public class EntryListViewModel
     {
-        public string Letter { get; set; }
+        public IReadOnlyList<Entry> Entries { get; set; }
+        public bool ShowEdit { get; set; }
     }
 }

@@ -35,11 +35,12 @@
     <div class="card">
         <div class="card-header">
             <h3>@entry.Name</h3>
+            @if (Model.ShowEdit) {
+                <a asp-controller="admin" asp-action="edit" asp-route-id="@entry.Id">Edycja hasla</a>
+            }
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col">
-
+            <div>
                     @if (entry.Meanings.Count > 0) {
                     <div>
                         <strong>znaczenie</strong>
@@ -83,7 +84,6 @@
                         </ul>
                     </div>
                     }
-                </div>
                 @* <div class="col-md-auto">
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- Vertical banner 120x240 -->
@@ -95,7 +95,33 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div> *@
-            </div>            
+                @if (Model.ShowEdit) {
+                <strong>administracja</strong>
+                <ul>
+                    <li>
+                        <strong>Dodano:</strong>
+                        <span>@entry.TimeAdded</span>
+                    </li>
+                    <li>
+                        <strong>Z internetu:</strong>
+                        <span>@(entry.FromInternet ? "tak" : "nie")</span>
+                    </li>
+                    <li>
+                        <strong>Adres IP:</strong>
+                        <span>@entry.IPAddress</span>
+                    </li>
+                    <li>
+                        <strong>Zatwierdził:</strong>
+                        @if (string.IsNullOrEmpty(entry.ApprovedBy)) {
+                            <span class="alert-danger">NIKT JESZCZE NIE ZATWIERDZIŁ</span>
+                        } else {
+                            <span>@entry.ApprovedBy</span>
+                        }
+                    </li>
+                </ul>
+                }       
+            </div>
+            
         </div>
 
         <div class="card-footer">

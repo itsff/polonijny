@@ -1,14 +1,5 @@
 @model LatestViewModel
 
 <h1>Ostatnio dodane hasła</h1>
-<div class="entries">
-    <ul>
-        @foreach(var e in Model.Entries) {
-            <li>
-                <a asp-action="Entry" asp-route-name="@e.Name">@e.Name</a>
-            </li>
-        }
-    </ul>
-</div>
-
+<partial name="_EntryList" />
 <partial name="_HorizontalAd" />

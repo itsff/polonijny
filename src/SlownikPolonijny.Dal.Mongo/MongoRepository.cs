@@ -44,7 +44,7 @@ namespace SlownikPolonijny.Dal
         static void createClassMappings()
         {
             BsonClassMap.RegisterClassMap<Entry>(cm => {
-                cm.MapIdProperty(c => c.Id).SetIdGenerator(CombGuidGenerator.Instance);
+                cm.MapIdProperty(c => c.Id).SetIdGenerator(ObjectIdGenerator.Instance);
                 cm.MapProperty(c => c.Name).SetElementName("entry");
                 cm.MapProperty(c => c.Meanings).SetElementName("meanings");
                 cm.MapProperty(c => c.EnglishMeanings).SetElementName("english_meanings");
@@ -63,6 +63,13 @@ namespace SlownikPolonijny.Dal
                   .SetSerializer(new CustomDateTimeOffsetSerializer())
                   .SetDefaultValue(DateTimeOffset.MinValue);
             });
+        }
+
+        public Entry GetEntryById(string name)
+        {
+            var objId = MongoDB.Bson.ObjectId.Parse(name);
+            var filter = Builders<Entry>.Filter.Eq("_id", objId);
+            return _col.Find(filter).FirstOrDefault();
         }
 
         public IReadOnlyList<Entry> GetEntriesByName(string name)
@@ -110,12 +117,28 @@ namespace SlownikPolonijny.Dal
 
         public void UpdateEntry(Entry entry)
         {
-            //_col.UpdateOne(e => e.Id == entry.Id, entry);
+            var objId = (MongoDB.Bson.ObjectId)entry.Id;
+            var filter = Builders<Entry>.Filter.Eq("_id", objId);
+            var update = Builders<Entry>.Update
+                .Set(e => e.Name, entry.Name)
+                .Set(e => e.Meanings, entry.Meanings)
+                .Set(e => e.EnglishMeanings, entry.EnglishMeanings)
+                .Set(e => e.Examples, entry.Examples)
+                .Set(e => e.SeeAlso, entry.SeeAlso)
+                .Set(e => e.NameLowerCase, entry.NameLowerCase)
+                .Set(e => e.Letter, entry.Letter)
+                .Set(e => e.ApprovedBy, entry.ApprovedBy)
+                .Set(e => e.IPAddress, entry.IPAddress)
+                .Set(e => e.FromInternet, entry.FromInternet)
+                ;
+            _col.UpdateOne(filter, update);
         }
 
-        public void RemoveEntry(Entry entry)
+        public void RemoveEntry(object entryId)
         {
-            _col.DeleteOne(e => e.Id == entry.Id);
+            var objId = (MongoDB.Bson.ObjectId)entryId;
+            var filter = Builders<Entry>.Filter.Eq("_id", objId);
+            _col.DeleteOne(filter);
         }
     }
 

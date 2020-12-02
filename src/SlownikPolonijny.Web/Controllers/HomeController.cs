@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SlownikPolonijny.Web.Models;
 using SlownikPolonijny.Dal;
@@ -13,13 +15,19 @@ namespace SlownikPolonijny.Web.Controllers
     public class HomeController : Controller
     {
         readonly ILogger<HomeController> _logger;
+        readonly UserManager<WebUser> _userManager;
         readonly IRepository _repo;
 
-        public HomeController(ILogger<HomeController> logger, IRepository repository)
+        public HomeController(ILogger<HomeController> logger, UserManager<WebUser> userManager, IRepository repository)
         {
             _logger = logger;
+            _userManager = userManager;
             _repo = repository;
         }
+
+        bool IsAdminUser => this.User.IsInRole("@admin");
+
+        private Task<WebUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         [Route("")]
         public IActionResult Index()
@@ -37,6 +45,7 @@ namespace SlownikPolonijny.Web.Controllers
                 var vm = new EntryViewModel()
                 {
                     Name = entries[0].Name,
+                    ShowEdit = IsAdminUser,
                     Entries = entries
                 };
                 ViewData["Title"] = vm.Name;
@@ -77,7 +86,8 @@ namespace SlownikPolonijny.Web.Controllers
                 var vm = new LetterViewModel()
                 {
                     Letter = bigLetter,
-                    Entries = entries
+                    Entries = entries,
+                    ShowEdit = IsAdminUser
                 };
                 return View(vm);
             }
@@ -98,7 +108,8 @@ namespace SlownikPolonijny.Web.Controllers
             {              
                 var vm = new LatestViewModel()
                 {
-                    Entries = entries
+                    Entries = entries,
+                    ShowEdit = IsAdminUser
                 };
                 return View(vm);
             }
@@ -118,7 +129,7 @@ namespace SlownikPolonijny.Web.Controllers
         [Route("dodaj")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add([FromForm]AddEntryModel model)
+        public async Task<IActionResult> Add([FromForm]AddEntryModel model)
         {
             var r = new AddEntryResultModel();
             r.Problems = model.Validate();
@@ -129,6 +140,8 @@ namespace SlownikPolonijny.Web.Controllers
             {
                 try
                 {
+                    var user = await this.GetCurrentUserAsync();
+
                     var e = new Entry();
                     e.Name = model.Name;
                     e.Meanings = model.Meanings;
@@ -138,6 +151,8 @@ namespace SlownikPolonijny.Web.Controllers
                     e.TimeAdded = DateTimeOffset.UtcNow;
                     e.FromInternet = true;
                     e.IPAddress = null;
+
+                    e.ApprovedBy = user?.UserName;
 
                     _repo.AddEntry(e);
                     r.Success = true;
