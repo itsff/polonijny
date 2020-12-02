@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 namespace SlownikPolonijny.Dal
 {
     public class Entry
     {
+        public static readonly Regex LinkRegex = new Regex(@"\[(?<text>([\w\s-]?)+)(\|(?<link>(\w?\s?)+))?\]");
+
         public static System.Globalization.CultureInfo Culture 
             => System.Globalization.CultureInfo.GetCultureInfo("pl-PL");
 
@@ -43,6 +46,21 @@ namespace SlownikPolonijny.Dal
 
         public string ApprovedBy { get; set; }
         public DateTimeOffset TimeAdded { get; set; }
+        
+        DateTimeOffset _lastModified = DateTimeOffset.MinValue;
+        public DateTimeOffset LastModified
+        { 
+            get 
+            {
+                if (_lastModified == DateTimeOffset.MinValue)
+                {
+                    return this.TimeAdded;
+                }
+                return _lastModified;
+            }
+            set { _lastModified = value; }
+        }
+
         public string IPAddress { get; set; }
         public bool FromInternet { get; set; } = false;
 

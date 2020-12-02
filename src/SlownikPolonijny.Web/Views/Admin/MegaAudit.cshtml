@@ -1,0 +1,35 @@
+@model MegaAuditViewModel
+@{
+    ViewData["Title"] = "Mega audyt";
+}
+
+<h1>Mega audyt</h1>
+<div>
+    <div class="alert alert-primary" role="alert">
+        Ta lista zostaje w pamięci przez kilka minut, nawet po odświeżeniu strony.
+    </div>
+    <p>
+        <strong>Liczba haseł z problemami: </strong>@Model.AuditResults.Count
+    </p>
+    <ul>
+        @foreach (var auditResult in Model.AuditResults)
+        {
+            <li>
+                @{ string classType = auditResult.IsApproved ? null : "not-approved-entry"; }
+                <a asp-controller="home" 
+                    asp-action="entry"
+                    asp-route-name="@auditResult.Name"
+                    class="@classType">@auditResult.Name</a>
+                    <text>&nbsp;</text>
+                <text>[<a asp-controller="admin" asp-action="edit" asp-route-id="@auditResult.Id">edytuj</a>]</text>
+
+                <ul>
+                @foreach (var problem in auditResult.Problems)
+                {
+                    <li>@problem</li>                    
+                }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

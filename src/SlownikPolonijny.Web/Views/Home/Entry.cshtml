@@ -36,7 +36,7 @@
         <div class="card-header">
             <h3>@entry.Name</h3>
             @if (Model.ShowEdit) {
-                <a asp-controller="admin" asp-action="edit" asp-route-id="@entry.Id">Edycja hasla</a>
+                <a asp-controller="admin" asp-action="edit" asp-route-id="@entry.Id">Edycja hasła</a>
             }
         </div>
         <div class="card-body">
@@ -46,7 +46,7 @@
                         <strong>znaczenie</strong>
                         <ul>
                             @foreach(var m in entry.Meanings) {
-                            <li>@m</li>
+                            <li>@Html.Raw(FormatExample(m))</li>
                             }
                         </ul>
                     </div>
@@ -57,7 +57,7 @@
                         <strong>znaczenie angielskie</strong>
                         <ul>
                             @foreach(var m in entry.EnglishMeanings) {
-                            <li>@m</li>
+                            <li>@Html.Raw(FormatExample(m))</li>
                             }
                         </ul>
                     </div>
@@ -96,29 +96,41 @@
                     </script>
                 </div> *@
                 @if (Model.ShowEdit) {
-                <strong>administracja</strong>
-                <ul>
-                    <li>
-                        <strong>Dodano:</strong>
-                        <span>@entry.TimeAdded</span>
-                    </li>
-                    <li>
-                        <strong>Z internetu:</strong>
-                        <span>@(entry.FromInternet ? "tak" : "nie")</span>
-                    </li>
-                    <li>
-                        <strong>Adres IP:</strong>
-                        <span>@entry.IPAddress</span>
-                    </li>
-                    <li>
-                        <strong>Zatwierdził:</strong>
-                        @if (string.IsNullOrEmpty(entry.ApprovedBy)) {
-                            <span class="alert-danger">NIKT JESZCZE NIE ZATWIERDZIŁ</span>
-                        } else {
-                            <span>@entry.ApprovedBy</span>
-                        }
-                    </li>
-                </ul>
+                <div>
+                    <strong>administracja</strong>
+                    <ul>
+                        <li>
+                            <strong>Modifikacja:</strong>
+                            <span>@entry.LastModified.ToString("yyyy-MM-dd HH:mm:ss.ffffZ")</span>
+                        </li>
+                        <li>
+                            <strong>Dodano:</strong>
+                            <span>@entry.TimeAdded.ToString("yyyy-MM-dd HH:mm:ss.ffffZ")</span>
+                        </li>
+                        <li>
+                            <strong>Z internetu:</strong>
+                            <span>@(entry.FromInternet ? "tak" : "nie")</span>
+                        </li>
+                        <li>
+                            <strong>Adres IP:</strong>
+                            <span>@entry.IPAddress</span>
+                        </li>
+                        <li>
+                            <strong>Zatwierdził:</strong>
+                            @if (string.IsNullOrEmpty(entry.ApprovedBy)) {
+                                <span class="alert-danger">NIKT JESZCZE NIE ZATWIERDZIŁ</span>
+                            } else {
+                                <span>@entry.ApprovedBy</span>
+                            }
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="audit-@entry.Id" role="alert" class="alert">
+                    <strong>audyt</strong>
+                    <ul id="problems-@entry.Id"></ul>
+                    <a asp-controller="admin" asp-action="edit" asp-route-id="@entry.Id" class="btn btn-primary">Edycja hasła</a>
+                </div>
                 }       
             </div>
             
@@ -140,4 +152,54 @@
     </a>
 </div>
 
-<partial name="_HorizontalAd" />
+@if (Model.ShowEdit)
+{
+
+<script type="text/javascript">
+
+function requestAudit(entryId) {
+    $.ajax({
+        type: "GET",
+        url:  "/admin/audyt/" + entryId
+    })
+    .done(function(resp) {
+        console.log(resp);
+        if (resp.success) {
+            $("#audit-" + entryId).removeClass("alert-danger");
+            $("#audit-" + entryId).addClass("alert-success");
+            $("#problems-" + entryId).append("<li>ok</li>");
+        } else {
+            $("#audit-" + entryId).removeClass("alert-success");
+            $("#audit-" + entryId).addClass("alert-danger");
+            var pl = $("#problems-" + entryId);
+            pl.children().remove();
+            for (var i = 0; i < resp.problems.length; ++i) {
+                pl.append("<li>" + resp.problems[i] + "</li>");
+            }
+        }
+    })
+    .fail(function(resp, textStatus, errorThrown) {
+        console.log(resp);
+        $("#audit-" + entryId).removeClass("alert-success");
+        $("#audit-" + entryId).addClass("alert-danger");
+        var pl = $("#problems-" + entryId);
+        pl.children().remove();
+        pl.append("<li>" + textStatus + "</li>");
+    });
+}
+
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        @foreach (var entry in Model.Entries)
+        {
+            <text>requestAudit("@entry.Id");</text>
+        }
+    }
+};
+</script>
+}
+else
+{
+    <partial name="_HorizontalAd" />
+}

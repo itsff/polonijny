@@ -41,6 +41,8 @@ namespace SlownikPolonijny.Dal
             _col = database.GetCollection<Entry>(settings.CollectionName);
         }
 
+        public IMongoCollection<Entry> Collection => _col;
+
         static void createClassMappings()
         {
             BsonClassMap.RegisterClassMap<Entry>(cm => {
@@ -62,12 +64,22 @@ namespace SlownikPolonijny.Dal
                   .SetElementName("utc_stamp")
                   .SetSerializer(new CustomDateTimeOffsetSerializer())
                   .SetDefaultValue(DateTimeOffset.MinValue);
+
+                cm.MapProperty(c => c.LastModified)
+                  .SetElementName("last_modified_utc_stamp")
+                  .SetSerializer(new CustomDateTimeOffsetSerializer())
+                  .SetDefaultValue(DateTimeOffset.MinValue);
             });
         }
 
-        public Entry GetEntryById(string name)
+        public IEnumerable<Entry> GetAllEntries()
         {
-            var objId = MongoDB.Bson.ObjectId.Parse(name);
+            return _col.Find(e => true).ToEnumerable();
+        }
+
+        public Entry GetEntryById(string entryId)
+        {
+            var objId = MongoDB.Bson.ObjectId.Parse(entryId);
             var filter = Builders<Entry>.Filter.Eq("_id", objId);
             return _col.Find(filter).FirstOrDefault();
         }
@@ -87,7 +99,7 @@ namespace SlownikPolonijny.Dal
 
         public IReadOnlyList<Entry> GetLatestEntries()
         {
-            return _col.Find(e => true).Sort(_sortDateDesc).Limit(21).ToList();
+            return _col.Find(e => true).Sort(_sortDateDesc).Limit(2*21).ToList();
         }
 
         public IReadOnlyList<Entry> GetEntriesForLetter(char letter)
@@ -112,11 +124,14 @@ namespace SlownikPolonijny.Dal
 
         public void AddEntry(Entry entry)
         {
+            entry.LastModified = DateTimeOffset.UtcNow;
             _col.InsertOne(entry);
         }
 
         public void UpdateEntry(Entry entry)
         {
+            entry.LastModified = DateTimeOffset.UtcNow;
+
             var objId = (MongoDB.Bson.ObjectId)entry.Id;
             var filter = Builders<Entry>.Filter.Eq("_id", objId);
             var update = Builders<Entry>.Update
@@ -130,13 +145,14 @@ namespace SlownikPolonijny.Dal
                 .Set(e => e.ApprovedBy, entry.ApprovedBy)
                 .Set(e => e.IPAddress, entry.IPAddress)
                 .Set(e => e.FromInternet, entry.FromInternet)
+                .Set(e => e.LastModified, entry.LastModified)
                 ;
             _col.UpdateOne(filter, update);
         }
 
-        public void RemoveEntry(object entryId)
+        public void RemoveEntry(string entryId)
         {
-            var objId = (MongoDB.Bson.ObjectId)entryId;
+            var objId = MongoDB.Bson.ObjectId.Parse(entryId);
             var filter = Builders<Entry>.Filter.Eq("_id", objId);
             _col.DeleteOne(filter);
         }

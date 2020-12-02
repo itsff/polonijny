@@ -61,12 +61,35 @@ namespace SlownikPolonijny.Web.Models
         public string Captcha { get; set; }
         public string CaptchaExpectation { get; set; }
 
+        static bool ContainsBadCharacters(string s)
+        {
+            if (s.Contains('<') || s.Contains('>') || s.Contains(';') || s.Contains('{') || s.Contains('\\'))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        static bool ContainsBadCharacters(IEnumerable<string> incoming)
+        {
+            foreach(string s in incoming)
+            {
+                if (ContainsBadCharacters(s))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         List<string> ValidateCollection(IEnumerable<string> incoming)
         {
-            List<string> result = new();
+            var result = new List<string>();
 
             foreach(string s in incoming)
             {
+                if (s == null) { continue; }
+
                 string ss = s.Trim();
                 if (ss.Length >= 1)
                 {
@@ -79,7 +102,7 @@ namespace SlownikPolonijny.Web.Models
 
         public List<string> Validate()
         {
-            List<string> problems = new();
+            var problems = new List<string>();
 
             if (string.IsNullOrWhiteSpace(Captcha)
                 || string.IsNullOrWhiteSpace(CaptchaExpectation))
@@ -107,12 +130,35 @@ namespace SlownikPolonijny.Web.Models
             else
             {
                 Name = Name.Trim();
+                if (ContainsBadCharacters(Name))
+                {
+                    problems.Add("Hasło zawiera niedozwolone znaki.");
+                }
             }
 
             Meanings = ValidateCollection(this.Meanings);
+            if (ContainsBadCharacters(this.Meanings))
+            {
+                problems.Add("Znaczenie zawiera niedozwolone znaki.");
+            }
+
             EnglishMeanings = ValidateCollection(this.EnglishMeanings);
+            if (ContainsBadCharacters(this.EnglishMeanings))
+            {
+                problems.Add("Znaczenie angielskie zawiera niedozwolone znaki.");
+            }
+
             Examples = ValidateCollection(this.Examples);
+            if (ContainsBadCharacters(this.Examples))
+            {
+                problems.Add("Przykład zawiera niedozwolone znaki.");
+            }
+
             SeeAlso = ValidateCollection(this.SeeAlso);
+            if (ContainsBadCharacters(this.SeeAlso))
+            {
+                problems.Add("Hasło pokrewne zawiera niedozwolone znaki.");
+            }
 
             if (Meanings.Count == 0
                 && SeeAlso.Count == 0)
@@ -128,6 +174,6 @@ namespace SlownikPolonijny.Web.Models
     {
         public bool Success { get; set; }
         public string Name { get; set; }
-        public IList<string> Problems { get; set; }
+        public IList<string> Problems { get; set; } = new List<string>();
     }
 }

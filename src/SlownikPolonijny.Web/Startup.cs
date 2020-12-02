@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Caching.Memory;
 using AspNetCore.Identity.Mongo;
 using SlownikPolonijny.Dal;
 
@@ -35,6 +36,11 @@ namespace SlownikPolonijny.Web
                 resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
 
             services.AddSingleton<IRepository, MongoRepository>();
+            services.AddSingleton<IEntryAuditor>(resolver => 
+                new MongoEntryAuditor(
+                    resolver.GetService<IRepository>() as MongoRepository));
+
+            services.AddMemoryCache();
 
             services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>
             {
