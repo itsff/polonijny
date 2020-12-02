@@ -34,7 +34,7 @@ namespace SlownikPolonijny.Playground
 
         static string FindLinks(string text)
         {
-            var re = new System.Text.RegularExpressions.Regex(@"\[(?<text>(\w?\s?)+)(\|(?<link>(\w?\s?)+))?\]");
+            var re = Entry.LinkRegex;
 
             var matches = re.Matches(text);
             foreach (System.Text.RegularExpressions.Match m in matches)

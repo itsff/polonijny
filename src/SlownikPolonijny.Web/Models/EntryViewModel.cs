@@ -7,7 +7,7 @@ namespace SlownikPolonijny.Web.Models
 {
     public class EntryViewModel : EntryListViewModel
     {
-        public static readonly Regex LinkRegex = new Regex(@"\[(?<text>([\w\s-]?)+)(\|(?<link>(\w?\s?)+))?\]");
+        public static readonly Regex LinkRegex = Entry.LinkRegex;
 
         public string Name { get; set; }
     }

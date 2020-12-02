@@ -21,10 +21,12 @@ namespace SlownikPolonijny.Web.Models
 
         List<string> ValidateCollection(IEnumerable<string> incoming)
         {
-            List<string> result = new();
+            var result = new List<string>();
 
             foreach(string s in incoming)
             {
+                if (s == null) { continue; }
+
                 string ss = s.Trim();
                 if (ss.Length >= 1)
                 {
@@ -37,7 +39,7 @@ namespace SlownikPolonijny.Web.Models
 
         public List<string> Validate()
         {
-            List<string> problems = new();
+            var problems = new List<string>();
 
             if (string.IsNullOrWhiteSpace(Id))
             {

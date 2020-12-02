@@ -4,7 +4,9 @@ namespace SlownikPolonijny.Dal
 {
     public interface IRepository
     {
-        Entry GetEntryById(string name);
+        Entry GetEntryById(string entryId);
+
+        IEnumerable<Entry> GetAllEntries();
 
         IReadOnlyList<Entry> GetEntriesByName(string name);
 
@@ -23,6 +25,6 @@ namespace SlownikPolonijny.Dal
 
         void UpdateEntry(Entry entry);
 
-        void RemoveEntry(object id);
+        void RemoveEntry(string entryId);
     }
 }

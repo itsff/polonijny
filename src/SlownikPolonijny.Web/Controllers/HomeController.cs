@@ -17,12 +17,17 @@ namespace SlownikPolonijny.Web.Controllers
         readonly ILogger<HomeController> _logger;
         readonly UserManager<WebUser> _userManager;
         readonly IRepository _repo;
+        readonly IEntryAuditor _auditor;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<WebUser> userManager, IRepository repository)
+        public HomeController(ILogger<HomeController> logger,
+                              UserManager<WebUser> userManager,
+                              IRepository repository,
+                              IEntryAuditor auditor)
         {
             _logger = logger;
             _userManager = userManager;
             _repo = repository;
+            _auditor = auditor;
         }
 
         bool IsAdminUser => this.User.IsInRole("@admin");
@@ -140,8 +145,6 @@ namespace SlownikPolonijny.Web.Controllers
             {
                 try
                 {
-                    var user = await this.GetCurrentUserAsync();
-
                     var e = new Entry();
                     e.Name = model.Name;
                     e.Meanings = model.Meanings;
@@ -152,10 +155,20 @@ namespace SlownikPolonijny.Web.Controllers
                     e.FromInternet = true;
                     e.IPAddress = null;
 
-                    e.ApprovedBy = user?.UserName;
+                    // TODO: Clean up this hack
+                    r.Problems = _auditor
+                            .PerformEntryAudit(e)
+                            .Where(txt => !txt.Contains("link"))
+                            .ToList();
 
-                    _repo.AddEntry(e);
-                    r.Success = true;
+                    if (r.Problems.Count == 0)
+                    {
+                        var user = await this.GetCurrentUserAsync();
+                        e.ApprovedBy = user?.UserName;
+
+                        _repo.AddEntry(e);
+                        r.Success = true;
+                    }
                 }
                 catch (System.Exception)
                 {
