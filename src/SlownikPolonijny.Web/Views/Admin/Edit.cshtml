@@ -179,6 +179,14 @@
 
 <script type="text/javascript">
 
+function hookUpRemoveButtons(uiName) {
+    var group = $("#" + uiName + "-group");
+    $(group).on('click', '.btn-danger', function(e) {
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove();
+    });
+}
+
 function hookUpMulti(uiName, dataName, hint) {
     $("#" + uiName + "-add").click(function() {
         var template = `
@@ -202,11 +210,9 @@ function hookUpMulti(uiName, dataName, hint) {
 
         var group = $("#" + uiName + "-group");
         group.append(template);
-        $(group).on('click', '.btn-danger', function(e) {
-            e.preventDefault();
-            $(this).parent('div').parent('div').remove();
-        });
+        hookUpRemoveButtons(uiName);
     });
+    hookUpRemoveButtons(uiName);
 }
 
 function hookUpFormSubmit() {
