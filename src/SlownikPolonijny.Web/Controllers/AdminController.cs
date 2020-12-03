@@ -98,6 +98,37 @@ namespace SlownikPolonijny.Web.Controllers
             return Json(r);
         }
 
+        [Route("/admin/zatwierdz/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Approve(string id)
+        {
+            var r = new AddEntryResultModel();
+            
+            try
+            {
+                Entry entry = _repo.GetEntryById(id);
+                if (entry != null)
+                {
+                    var user = await this.GetCurrentUserAsync();
+
+                    entry.ApprovedBy = user.UserName;
+                    _repo.UpdateEntry(entry);
+                }
+                else
+                {
+                    r.Problems.Add("Nie ma takiego hasła");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                r.Problems.Add("Błąd bazy danych");
+            }
+            
+            r.Success = r.Problems.Count == 0;
+            return Json(r);
+        }
+
         [Route("/admin/audyt/{id}")]
         [HttpGet]
         public IActionResult Audit(string id)

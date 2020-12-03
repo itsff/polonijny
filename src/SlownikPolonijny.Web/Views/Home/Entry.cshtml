@@ -130,6 +130,10 @@
                     <strong>audyt</strong>
                     <ul id="problems-@entry.Id"></ul>
                     <a asp-controller="admin" asp-action="edit" asp-route-id="@entry.Id" class="btn btn-primary">Edycja hasła</a>
+
+                    @if (string.IsNullOrEmpty(entry.ApprovedBy)) {
+                        <button class="btn btn-warning" id="approve-@entry.Id">Zatwierdź</button>
+                    }
                 </div>
                 }       
             </div>
@@ -188,12 +192,44 @@ function requestAudit(entryId) {
     });
 }
 
+function hookupApproveBtn(entryId) {
+    $("#approve-" + entryId).click(function(ev) {
+        console.log("Approving entry: " + entryId);
+        $.ajax({
+            type: "POST",
+            url:  "/admin/zatwierdz/" + entryId
+        })
+        .done(function(resp) {
+            console.log(resp);
+            if (resp.success) {
+                window.location.reload(true);
+            } else {
+                $("#audit-" + entryId).removeClass("alert-success");
+                $("#audit-" + entryId).addClass("alert-danger");
+                var pl = $("#problems-" + entryId);
+                pl.children().remove();
+                for (var i = 0; i < resp.problems.length; ++i) {
+                    pl.append("<li>" + resp.problems[i] + "</li>");
+                }
+            }
+        })
+        .fail(function(resp, textStatus, errorThrown) {
+            console.log(resp);
+            $("#audit-" + entryId).removeClass("alert-success");
+            $("#audit-" + entryId).addClass("alert-danger");
+            var pl = $("#problems-" + entryId);
+            pl.children().remove();
+            pl.append("<li>" + textStatus + "</li>");
+        });
+    });
+}
 
 document.onreadystatechange = () => {
     if (document.readyState === 'complete') {
         @foreach (var entry in Model.Entries)
         {
             <text>requestAudit("@entry.Id");</text>
+            <text>hookupApproveBtn("@entry.Id");</text>
         }
     }
 };
