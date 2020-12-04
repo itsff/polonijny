@@ -101,3 +101,12 @@ form .card {
 .horizontal-ad {
   margin-top: 10px;
 }
+
+#share-buttons img {
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  border: 0;
+  box-shadow: 0;
+  display: inline;
+}
