@@ -48,6 +48,6 @@ jobs:
           script: |
             docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
             docker pull docker.pkg.github.com/itsff/polonijny/polonijny:latest
-            docker-compose --file ~/apps/docker-compose up -d
+            docker-compose --file ~/apps/docker-compose.yaml up -d
             docker image prune -a -f --filter "until=240h"
             
