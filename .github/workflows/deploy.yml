@@ -44,9 +44,9 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          envs: GITHUB_USERNAME, GITHUB_TOKEN
+          envs: GITHUB_USERNAME,GITHUB_TOKEN
           script: |
-            docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN docker.pkg.github.com
             docker pull docker.pkg.github.com/itsff/polonijny/polonijny:latest
             docker-compose --file ~/apps/docker-compose.yaml up -d
             docker image prune -a -f --filter "until=240h"
