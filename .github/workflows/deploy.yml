@@ -1,0 +1,53 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repo files
+        uses: actions/checkout@v2
+      
+      # Build and publish Docker image
+      # This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL 
+      # which you can reference in subsequent steps
+      - name: Publish Docker Image to GPR
+        uses: machine-learning-apps/gpr-docker-publish@master
+        id: docker
+        with:
+          IMAGE_NAME: 'polonijny'
+          TAG: 'latest'
+          DOCKERFILE_PATH: 'src/Dockerfile'
+          BUILD_CONTEXT: 'src/'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # Pull this newly created package on DigitalOcean host,
+      # restart service and prune old docker images.    
+      - name: Deploy package to DigitalOcean
+        uses: appleboy/ssh-action@master
+        env:
+            GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          envs: GITHUB_USERNAME, GITHUB_TOKEN
+          script: |
+            docker login docker.pkg.github.com -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            docker pull docker.pkg.github.com/itsff/polonijny/polonijny:latest
+            docker-compose --file ~/apps/docker-compose up -d
+            docker image prune -a -f --filter "until=240h"
+            
