@@ -40,6 +40,11 @@ namespace SlownikPolonijny.Web
                 new MongoEntryAuditor(
                     resolver.GetService<IRepository>() as MongoRepository));
 
+            services.AddRouting(options =>
+            {
+                options.ConstraintMap["dashed"] = typeof(DashedParameterTransformer);
+            });
+
             services.AddMemoryCache();
 
             services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>

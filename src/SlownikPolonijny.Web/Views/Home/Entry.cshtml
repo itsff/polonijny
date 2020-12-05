@@ -16,11 +16,13 @@
                 var linkGroup = m.Groups["link"];
                 if (linkGroup.Success)
                 {
-                    link = $"<a href=\"{linkGroup.Value}\">{textGroup.Value}</a>";
+                    string href = Url.Action("Entry", "Home", new { name = linkGroup.Value });
+                    link =  $"<a href=\"{href}\">{textGroup.Value}</a>";
                 }
                 else
                 {
-                    link = $"<a href=\"{textGroup.Value}\">{textGroup.Value}</a>";
+                    string href = Url.Action("Entry", "Home", new { name = textGroup.Value });
+                    link = $"<a href=\"{href}\">{textGroup.Value}</a>";
                 }
 
                 text = re.Replace(text, link, 1);

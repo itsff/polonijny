@@ -18,7 +18,8 @@
     <meta name="author" content="Zbigniew Roman Frącz" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.slownikpolonijny.com/@ViewData["Link"]" />
+    @{ var currentPageLink = $"https://www.slownikpolonijny.com{ViewData["Link"]}"; }
+    <meta property="og:url" content="@currentPageLink" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="fb:app_id" content="663455953752217" />
     <meta property="og:site_name" content="Słownik polonijny" />

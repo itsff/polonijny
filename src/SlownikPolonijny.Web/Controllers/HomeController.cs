@@ -40,10 +40,12 @@ namespace SlownikPolonijny.Web.Controllers
             return View();
         }
 
-        [Route("haslo/{name}")]
+        [Route("haslo/{name:dashed}")]
         public IActionResult Entry(string name)
         {
-            ViewData["Link"] = $"haslo/{name}";
+            name = DashedParameterTransformer.FromDashed(name);
+
+            ViewData["Link"] = Url.Action("Entry", "Home", new { name = name });
             var entries = _repo.GetEntriesByName(name);
             if (entries != null && entries.Count > 0)
             {
@@ -139,7 +141,7 @@ namespace SlownikPolonijny.Web.Controllers
             var r = new AddEntryResultModel();
             r.Problems = model.Validate();
             r.Name = model.Name;
-            r.Success = false;
+            r.Url = Url.Action("Entry", "Home", new { name = model.Name });
 
             if (r.Problems.Count == 0)
             {
@@ -167,7 +169,6 @@ namespace SlownikPolonijny.Web.Controllers
                         e.ApprovedBy = user?.UserName;
 
                         _repo.AddEntry(e);
-                        r.Success = true;
                     }
                 }
                 catch (System.Exception)

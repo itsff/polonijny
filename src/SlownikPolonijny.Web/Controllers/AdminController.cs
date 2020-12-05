@@ -68,7 +68,7 @@ namespace SlownikPolonijny.Web.Controllers
             var r = new AddEntryResultModel();
             r.Problems = model.Validate();
             r.Name = model.Name;
-            r.Success = false;
+            r.Url = Url.Action("Entry", "Home", new { name = model.Name });
 
             if (r.Problems.Count == 0)
             {
@@ -86,7 +86,6 @@ namespace SlownikPolonijny.Web.Controllers
                     e.ApprovedBy = user.UserName;
 
                     _repo.UpdateEntry(e);
-                    r.Success = true;
                 }
                 catch (System.Exception ex)
                 {
@@ -125,7 +124,6 @@ namespace SlownikPolonijny.Web.Controllers
                 r.Problems.Add("Błąd bazy danych");
             }
             
-            r.Success = r.Problems.Count == 0;
             return Json(r);
         }
 
@@ -139,7 +137,6 @@ namespace SlownikPolonijny.Web.Controllers
             try
             {
                 r.Problems = _auditor.PerformEntryAudit(id);
-                
             }
             catch (System.Exception ex)
             {
@@ -147,7 +144,6 @@ namespace SlownikPolonijny.Web.Controllers
                 r.Problems.Add("Baza danych się popsuła");
             }
 
-            r.Success = r.Problems.Count == 0;
             return Json(r);
         }
 

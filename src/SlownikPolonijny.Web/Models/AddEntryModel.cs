@@ -172,8 +172,9 @@ namespace SlownikPolonijny.Web.Models
 
     public class AddEntryResultModel
     {
-        public bool Success { get; set; }
-        public string Name { get; set; }
+        public bool Success => Problems.Count == 0;
+        public string Name { get; set; } = string.Empty;
+        public string Url { get; set; } = string.Empty;
         public IList<string> Problems { get; set; } = new List<string>();
     }
 }
