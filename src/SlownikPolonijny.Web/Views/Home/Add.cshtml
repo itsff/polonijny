@@ -198,7 +198,7 @@ function hookUpFormSubmit() {
             console.log(resp);
             if (resp.success) {
                 $("#problems").hide();
-                window.location.href = "/haslo/" + resp.name;
+                window.location.href = resp.url;
             } else {
                 $("#problems").show();
                 var pl = $("#problem-list");
