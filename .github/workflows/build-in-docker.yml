@@ -1,0 +1,26 @@
+name: Docker
+
+on:
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  IMAGE_NAME: polonijny-test-pr
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: |
+          if [ -f ./src/docker-compose.test.yml ]; then
+            docker-compose --file ./src/docker-compose.test.yml build
+            docker-compose --file ./src/docker-compose.test.yml run sut
+          else
+            docker build ./src --file ./src/Dockerfile
+          fi
