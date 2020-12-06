@@ -1,4 +1,5 @@
 @model EntryViewModel
+@inject System.Text.Encodings.Web.UrlEncoder UrlEncoder
 @using System.Text
 
 @{
@@ -132,7 +133,15 @@
         </div>
 
         <div class="card-footer">
-            <div class="fb-like" data-href="https://slownikpolonijny.com/@ViewData["Link"]" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+            <div class="share-buttons">
+                @{ var shareLink = "https://slownikpolonijny.com" + Url.Action("Entry", "Home", new { name = entry.Name }); }
+                <!-- Facebook -->
+                <a href="http://www.facebook.com/sharer.php?u=@shareLink" target="_blank"><img src="/icons/facebook.svg" alt="Facebook" /></a>
+                <!-- Twitter -->
+                <a href="https://twitter.com/share?url=@shareLink&amp;hashtags=SlownikPolonijny" target="_blank"><img src="/icons/twitter.svg" alt="Twitter" /></a>
+                <!-- Reddit -->
+                <a href="http://reddit.com/submit?url=@shareLink&amp;title=@entry.Name" target="_blank"><img src="/icons/reddit.svg" alt="Reddit" /></a>
+            </div>
         </div>
     </div>
     <br />
