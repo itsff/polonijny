@@ -132,20 +132,16 @@
             
         </div>
 
-        <div class="card-footer share-buttons">
-            @{ var shareLink = "https://slownikpolonijny.com" + Url.Action("Entry", "Home", new { name = entry.Name }); }
-            <!-- Facebook -->
-            <a href="http://www.facebook.com/sharer.php?u=@shareLink" target="_blank">
-                <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
-            </a>
-            <!-- Twitter -->
-            <a href="https://twitter.com/share?url=@shareLink&amp;hashtags=SlownikPolonijny" target="_blank">
-                <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
-            </a>
-            <!-- Reddit -->
-            <a href="http://reddit.com/submit?url=@shareLink&amp;title=@entry.Name" target="_blank">
-                <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
-            </a>
+        <div class="card-footer">
+            <div class="share-buttons">
+                @{ var shareLink = "https://slownikpolonijny.com" + Url.Action("Entry", "Home", new { name = entry.Name }); }
+                <!-- Facebook -->
+                <a href="http://www.facebook.com/sharer.php?u=@shareLink" target="_blank"><img src="/icons/facebook.svg" alt="Facebook" /></a>
+                <!-- Twitter -->
+                <a href="https://twitter.com/share?url=@shareLink&amp;hashtags=SlownikPolonijny" target="_blank"><img src="/icons/twitter.svg" alt="Twitter" /></a>
+                <!-- Reddit -->
+                <a href="http://reddit.com/submit?url=@shareLink&amp;title=@entry.Name" target="_blank"><img src="/icons/reddit.svg" alt="Reddit" /></a>
+            </div>
         </div>
     </div>
     <br />

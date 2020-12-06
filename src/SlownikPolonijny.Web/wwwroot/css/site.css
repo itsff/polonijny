@@ -102,10 +102,10 @@ form .card {
   margin-top: 10px;
 }
 
-#share-buttons img {
-  width: 24px;
-  height: 24px;
-  padding: 5px;
+.share-buttons img {
+  width: 48px;
+  height: 48px;
+  margin: 5px;
   border: 0;
   box-shadow: 0;
   display: inline;
