@@ -152,7 +152,7 @@
 
 function hookUpMulti(uiName, dataName, hint) {
     $("#" + uiName + "-add").click(function() {
-        var template = `
+        let template = `
             <div class="input-group top-space">
                 <input type="text"
                     value=""
@@ -171,7 +171,7 @@ function hookUpMulti(uiName, dataName, hint) {
                 </div>
             </div>`;
 
-        var group = $("#" + uiName + "-group");
+        let group = $("#" + uiName + "-group");
         group.append(template);
         $(group).on('click', '.btn-danger', function(e) {
             e.preventDefault();
@@ -185,9 +185,9 @@ function hookUpMulti(uiName, dataName, hint) {
 function hookUpFormSubmit() {
     $("#entryForm").submit(function(e) {
         e.preventDefault();
-        var form = $(this);
-        var url  = form.attr('action');
-        var data = form.serialize();
+        let form = $(this);
+        let url  = form.attr('action');
+        let data = form.serialize();
 
         $.ajax({
             type: "POST",
@@ -201,9 +201,9 @@ function hookUpFormSubmit() {
                 window.location.href = resp.url;
             } else {
                 $("#problems").show();
-                var pl = $("#problem-list");
+                let pl = $("#problem-list");
                 pl.children().remove();
-                for (var i = 0; i < resp.problems.length; ++i) {
+                for (let i = 0; i < resp.problems.length; ++i) {
                     pl.append("<li>" + resp.problems[i] + "</li>");
                 }
             }
@@ -211,7 +211,7 @@ function hookUpFormSubmit() {
         .fail(function(resp, textStatus, errorThrown) {
             console.log(resp);
             $("#problems").show();
-            var pl = $("#problem-list");
+            let pl = $("#problem-list");
             pl.children().remove();
             pl.append("<li>" + textStatus + "</li>");
             pl.append("<li>Spróbuj jeszcze raz</li>");

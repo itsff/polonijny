@@ -35,9 +35,9 @@ function hookUpRestoreEntryButton() {
                 window.location = "@Url.Action("Entry", "Home", new { name = ViewData["Entry"]})";
             } else {
                 $("#problems").show();
-                var pl = $("#problems-list");
+                let pl = $("#problems-list");
                 pl.children().remove();
-                for (var i = 0; i < resp.problems.length; ++i) {
+                for (let i = 0; i < resp.problems.length; ++i) {
                     pl.append("<li>" + resp.problems[i] + "</li>");
                 }
             }
@@ -45,7 +45,7 @@ function hookUpRestoreEntryButton() {
         .fail(function(resp, textStatus, errorThrown) {
             console.log(resp);
             $("#problems").show();
-            var pl = $("#problems-list");
+            let pl = $("#problems-list");
             pl.children().remove();
             pl.append("<li>" + textStatus + "</li>");
         });

@@ -172,9 +172,9 @@ function requestAudit(entryId) {
         } else {
             $("#audit-" + entryId).removeClass("alert-success");
             $("#audit-" + entryId).addClass("alert-danger");
-            var pl = $("#problems-" + entryId);
+            let pl = $("#problems-" + entryId);
             pl.children().remove();
-            for (var i = 0; i < resp.problems.length; ++i) {
+            for (let i = 0; i < resp.problems.length; ++i) {
                 pl.append("<li>" + resp.problems[i] + "</li>");
             }
         }
@@ -183,7 +183,7 @@ function requestAudit(entryId) {
         console.log(resp);
         $("#audit-" + entryId).removeClass("alert-success");
         $("#audit-" + entryId).addClass("alert-danger");
-        var pl = $("#problems-" + entryId);
+        let pl = $("#problems-" + entryId);
         pl.children().remove();
         pl.append("<li>" + textStatus + "</li>");
     });
@@ -203,9 +203,9 @@ function hookupApproveBtn(entryId) {
             } else {
                 $("#audit-" + entryId).removeClass("alert-success");
                 $("#audit-" + entryId).addClass("alert-danger");
-                var pl = $("#problems-" + entryId);
+                let pl = $("#problems-" + entryId);
                 pl.children().remove();
-                for (var i = 0; i < resp.problems.length; ++i) {
+                for (let i = 0; i < resp.problems.length; ++i) {
                     pl.append("<li>" + resp.problems[i] + "</li>");
                 }
             }
@@ -214,7 +214,7 @@ function hookupApproveBtn(entryId) {
             console.log(resp);
             $("#audit-" + entryId).removeClass("alert-success");
             $("#audit-" + entryId).addClass("alert-danger");
-            var pl = $("#problems-" + entryId);
+            let pl = $("#problems-" + entryId);
             pl.children().remove();
             pl.append("<li>" + textStatus + "</li>");
         });
