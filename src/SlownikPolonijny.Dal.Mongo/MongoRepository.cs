@@ -13,11 +13,14 @@ namespace SlownikPolonijny.Dal
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string CollectionName { get; set; }
+
+        public string DeletedEntriesCollectionName { get; set; } = "DeletedEntries";
     }
 
     public class MongoRepository : IRepository
     {
         readonly IMongoCollection<Entry> _col;
+        readonly IMongoCollection<Entry> _deletedEntriesCol;
         readonly static FindOptions _findOptions;
         readonly static SortDefinition<Entry> _sortAsc;
         readonly static SortDefinition<Entry> _sortDateDesc;
@@ -39,6 +42,7 @@ namespace SlownikPolonijny.Dal
             var database = client.GetDatabase(settings.DatabaseName);
 
             _col = database.GetCollection<Entry>(settings.CollectionName);
+            _deletedEntriesCol = database.GetCollection<Entry>(settings.DeletedEntriesCollectionName);
         }
 
         public IMongoCollection<Entry> Collection => _col;
@@ -150,11 +154,34 @@ namespace SlownikPolonijny.Dal
             _col.UpdateOne(filter, update);
         }
 
-        public void RemoveEntry(string entryId)
+        public void RemoveEntry(string entryId, string userDoingDeletion)
         {
+            Entry entry = this.GetEntryById(entryId);
+            if (entry != null)
+            {
+                entry.LastModified = DateTimeOffset.UtcNow;
+                entry.ApprovedBy = userDoingDeletion;
+                _deletedEntriesCol.InsertOne(entry);
+            }
             var objId = MongoDB.Bson.ObjectId.Parse(entryId);
             var filter = Builders<Entry>.Filter.Eq("_id", objId);
             _col.DeleteOne(filter);
+        }
+
+        public void RestoreEntry(string entryId, string userDoingRestore)
+        {
+            var objId = MongoDB.Bson.ObjectId.Parse(entryId);
+            var filter = Builders<Entry>.Filter.Eq("_id", objId);
+            var deletedEntry = _deletedEntriesCol.Find(filter).FirstOrDefault();
+            if (deletedEntry == null)
+            {
+                throw new KeyNotFoundException("Nie znaleziono hasła");
+            }
+
+            deletedEntry.ApprovedBy = userDoingRestore;
+            AddEntry(deletedEntry);
+
+            _deletedEntriesCol.DeleteOne(filter);
         }
     }
 

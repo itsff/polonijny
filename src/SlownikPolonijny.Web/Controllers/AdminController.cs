@@ -127,6 +127,54 @@ namespace SlownikPolonijny.Web.Controllers
             return Json(r);
         }
 
+        [Route("/admin/usun/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Remove(string id)
+        {
+            var r = new AddEntryResultModel();
+            
+            try
+            {
+                var user = await this.GetCurrentUserAsync();
+                _repo.RemoveEntry(id, user.UserName);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                r.Problems.Add("Błąd bazy danych");
+            }
+            
+            return Json(r);
+        }
+
+        [Route("/admin/usunieto/{id}/{name}")]
+        public IActionResult RemoveConfirmation(string id, string name)
+        {
+            ViewData["Entry"] = DashedParameterTransformer.FromDashed(name);
+            ViewData["Id"] = id;
+            return View();
+        }
+
+        [Route("/admin/przywroc/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Restore(string id)
+        {
+            var r = new AddEntryResultModel();
+            
+            try
+            {
+                var user = await this.GetCurrentUserAsync();
+                _repo.RestoreEntry(id, user.UserName);
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                r.Problems.Add("Błąd bazy danych");
+            }
+            
+            return Json(r);
+        }
+
         [Route("/admin/audyt/{id}")]
         [HttpGet]
         public IActionResult Audit(string id)
