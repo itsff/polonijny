@@ -46,6 +46,7 @@ namespace SlownikPolonijny.Web
             });
 
             services.AddMemoryCache();
+            services.AddCors();
 
             services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>
             {
@@ -96,6 +97,11 @@ namespace SlownikPolonijny.Web
             app.UseStatusCodePagesWithReExecute("/Home/HandleError/{0}");
             app.UseStaticFiles();
 
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+            );
             app.UseRouting();
 
             app.UseAuthentication();
