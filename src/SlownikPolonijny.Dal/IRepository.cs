@@ -25,6 +25,14 @@ namespace SlownikPolonijny.Dal
 
         void UpdateEntry(Entry entry);
 
-        void RemoveEntry(string entryId);
+        void RemoveEntry(string entryId, string userDoingDeletion);
+
+        void RemoveEntry(string entryId)
+            => this.RemoveEntry(entryId, null);
+
+        void RestoreEntry(string entryId, string userDoingRestore);
+
+        void RestoreEntry(string entryId)
+            => this.RestoreEntry(entryId, null);
     }
 }

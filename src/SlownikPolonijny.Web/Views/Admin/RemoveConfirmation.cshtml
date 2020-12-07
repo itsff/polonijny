@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Hasło usunięte";
+}
+<h1>Hasło usunięte</h1>
+<p>
+    Hasło <strong>@ViewData["Entry"]</strong> zostało usunięte ze słownika.
+    Możesz je przywrócić klikając poniższy przycisk.
+</p>
+
+<div class="centered-block">
+    <a class="btn btn-success" asp-controller="home" asp-action="random" role="button">
+        Losuj hasło
+    </a>
+    <button type="button" class="btn btn-warning" id="restoreEntryButton">Przywróć usunięte hasło</button>
+</div>
+
+<div class="alert alert-danger" role="alert" id="problems" style="display:none">
+    <h3>Łi hew e problem</h3>
+    <p>Niestety, coś poszło nie tak:</p>
+    <ul id="problem-list">
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+function hookUpRestoreEntryButton() {
+    $("#restoreEntryButton").click(function(ev) {
+        $.ajax({
+            type: "POST",
+            url:  "@Url.Action("Restore", "Admin", new { id = ViewData["Id"]})"
+        })
+        .done(function(resp) {
+            console.log(resp);
+            if (resp.success) {
+                window.location = "@Url.Action("Entry", "Home", new { name = ViewData["Entry"]})";
+            } else {
+                $("#problems").show();
+                var pl = $("#problems-list");
+                pl.children().remove();
+                for (var i = 0; i < resp.problems.length; ++i) {
+                    pl.append("<li>" + resp.problems[i] + "</li>");
+                }
+            }
+        })
+        .fail(function(resp, textStatus, errorThrown) {
+            console.log(resp);
+            $("#problems").show();
+            var pl = $("#problems-list");
+            pl.children().remove();
+            pl.append("<li>" + textStatus + "</li>");
+        });
+    });
+}
+
+document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+        hookUpRestoreEntryButton();
+    }
+};
+</script>

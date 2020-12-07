@@ -172,6 +172,10 @@
                 <button type="submit"
                         class="btn btn-success btn-lg"
                         id="submitButton">Zapisz zmiany</button>
+
+                <button type="button"
+                        class="btn btn-danger btn-lg"
+                        id="deleteEntryButton">Usuń hasło</button>
             </div>
         </form>
     </section>
@@ -213,6 +217,41 @@ function hookUpMulti(uiName, dataName, hint) {
         hookUpRemoveButtons(uiName);
     });
     hookUpRemoveButtons(uiName);
+}
+
+function hookUpDeleteEntryButton() {
+    $("#deleteEntryButton").click(function() {
+        var answer = confirm("Czy na pewno chcesz usunąć hasło?");
+        if (answer == true)
+        {
+            $.ajax({
+                    type: "POST",
+                    url:  "@Url.Action("remove", "admin", new { id = @Model.Entry.Id })"
+                })
+                .done(function(resp) {
+                    console.log(resp);
+                    if (resp.success) {
+                        window.location = "@Url.Action("RemoveConfirmation", "Admin", new { id = @Model.Entry.Id, name = @Model.Entry.Name })";
+                    } else {
+                        $("#problems").show();
+                        var pl = $("#problem-list");
+                        pl.children().remove();
+                        for (var i = 0; i < resp.problems.length; ++i) {
+                            pl.append("<li>" + resp.problems[i] + "</li>");
+                        }
+                    }
+                })
+                .fail(function(resp, textStatus, errorThrown) {
+                    console.log(resp);
+                    console.log(resp);
+                    $("#problems").show();
+                    var pl = $("#problem-list");
+                    pl.children().remove();
+                    pl.append("<li>" + textStatus + "</li>");
+                    pl.append("<li>Spróbuj usunąć jeszcze raz</li>");
+                });
+        }
+    })
 }
 
 function hookUpFormSubmit() {
@@ -261,6 +300,7 @@ document.onreadystatechange = () => {
         hookUpMulti("SeeAlso", "SeeAlso", "zobacz też");
 
         hookUpFormSubmit();
+        hookUpDeleteEntryButton();
     }
 };
 </script>
