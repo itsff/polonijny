@@ -1,27 +1,59 @@
-﻿@{
+﻿@model IndexViewModel
+@{
     ViewData["Title"] = null;
+
+    string FormatExample(string text)
+    {
+        var re = EntryViewModel.LinkRegex;
+        var matches = re.Matches(text);
+
+        foreach (System.Text.RegularExpressions.Match m in matches)
+        {
+            var textGroup = m.Groups["text"];
+            if (textGroup.Success)
+            {
+                string link = string.Empty;
+                var linkGroup = m.Groups["link"];
+                if (linkGroup.Success)
+                {
+                    string href = Url.Action("Entry", "Home", new { name = linkGroup.Value });
+                    link =  $"<a href=\"{href}\">{textGroup.Value}</a>";
+                }
+                else
+                {
+                    string href = Url.Action("Entry", "Home", new { name = textGroup.Value });
+                    link = $"<a href=\"{href}\">{textGroup.Value}</a>";
+                }
+
+                text = re.Replace(text, link, 1);
+            }
+        }
+
+        return text;
+    }
 }
 
-<h2>Witaj na naszej stronie 📕🇵🇱</h3>
+<h2>Łelkom, łelkom 📕🇵🇱</h3>
 <p>
     Słownik Polonijny jest zbiorem zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie.
-    <br />
-    Zebrał w USA: <a href="http://zrfracz.com">Zbigniew Roman Frącz</a>
 </p>
 
-<br/>
+<div class="alert alert-primary" role="alert">
+    <strong>Czy wiesz co oznacza</strong>
+    <h2>„@FormatExample(Model.Example)“</h2>
+    <p>
+        Nie czaisz? No to jesteś na właściwej stronie! Przeglądaj hasła losowo lub alfabetycznie.
+        Nie zapomnij wrzucić linków znajomym na fejsa żeby też podłapali trochę polonijnej mowy
+        (ju noł, jak już znowu będzie można podróżować).
+    </p>
 
-<div class="centered-block">
-    <a class="btn btn-success" asp-action="random" role="button">
+    <a class="btn btn-primary" role="button" asp-action="entry" asp-route-name="@Model.Entry.Name">
+        Zobacz znaczenie
+    </a>
+    <a class="btn btn-success" role="button" asp-action="random">
         Losuj hasło
-        @* <svg class="bi" width="24" height="24" fill="currentColor">
-            <use xlink:href="/icons/bootstrap-icons.svg#shuffle"/>
-        </svg> *@
     </a>
 </div>
-
-
-<br/>
 
 <p>
     <div class="centered-block">

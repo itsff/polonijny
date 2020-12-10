@@ -18,6 +18,7 @@ namespace SlownikPolonijny.Web.Controllers
         readonly UserManager<WebUser> _userManager;
         readonly IRepository _repo;
         readonly IEntryAuditor _auditor;
+        readonly Random _random = new Random();
 
         public HomeController(ILogger<HomeController> logger,
                               UserManager<WebUser> userManager,
@@ -37,7 +38,19 @@ namespace SlownikPolonijny.Web.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            return View();
+            var vm = new IndexViewModel();
+            vm.Entry = _repo.GetRandomExtryWithExample();
+
+            if (vm.Entry.Examples.Count == 1)
+            {
+                vm.Example = vm.Entry.Examples[0];
+            }
+            else
+            {
+                vm.Example = vm.Entry.Examples[_random.Next(vm.Entry.Examples.Count)];
+            }
+
+            return View(vm);
         }
 
         [Route("haslo/{name:dashed}")]
