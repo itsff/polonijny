@@ -101,6 +101,14 @@ namespace SlownikPolonijny.Dal
             return _col.AsQueryable().Sample(1).ToList();
         }
 
+        public Entry GetRandomExtryWithExample()
+        {
+            return _col.AsQueryable()
+                .Where(e => e.Examples.Count > 0)
+                .Sample(1)
+                .SingleOrDefault();
+        }
+
         public IReadOnlyList<Entry> GetLatestEntries()
         {
             return _col.Find(e => true).Sort(_sortDateDesc).Limit(2*21).ToList();

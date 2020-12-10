@@ -12,6 +12,8 @@ namespace SlownikPolonijny.Dal
 
         IReadOnlyList<Entry> GetRandomEntries();
 
+        Entry GetRandomExtryWithExample();
+
         IReadOnlyList<Entry> GetLatestEntries();
 
         IReadOnlyList<Entry> GetEntriesForLetter(char letter);
