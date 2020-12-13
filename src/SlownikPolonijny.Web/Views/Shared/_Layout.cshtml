@@ -12,8 +12,9 @@
     <meta property="og:title" content="@ViewData["Title"] - Słownik polonijny" />
     }
 
-    <meta name="description" content="Słownik Polonijny jest zbiorem zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie." />
-    <meta property="og:description" content="Zbiór zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie." />
+    @{ var description = ViewData["Description"] ?? "Zbiór zwrotów zmienionych przez Polaków za granicą, używanych jako polskie lub w zastępstwie."; }
+    <meta name="description" content="@description" />
+    <meta property="og:description" content="@description" />
 
     <meta name="author" content="Zbigniew Roman Frącz" />
 
@@ -23,7 +24,7 @@
     <meta property="og:locale" content="pl_PL" />
     <meta property="fb:app_id" content="663455953752217" />
     <meta property="og:site_name" content="Słownik polonijny" />
-    <meta property="og:image" content="https://www.slownikpolonijny.com/flaga_pl.png" />
+    <meta property="og:image" content="https://www.slownikpolonijny.com/logo.jpg" />
 
     <link rel="shortcut icon" href="~/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />

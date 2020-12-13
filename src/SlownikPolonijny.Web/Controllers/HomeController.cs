@@ -53,6 +53,25 @@ namespace SlownikPolonijny.Web.Controllers
             return View(vm);
         }
 
+        string FindExample(IReadOnlyList<Entry> entries)
+        {
+            string example = null;
+            var entry = entries.Where(e => e.Examples.Count > 0).FirstOrDefault();
+            if (entry != null)
+            {
+                if (entry.Examples.Count == 1)
+                {
+                    example = entry.Examples[0];
+                }
+                else
+                {
+                    example = entry.Examples[_random.Next(entry.Examples.Count)];
+                }
+            }
+            return example;
+        }
+
+
         [Route("haslo/{name:dashed}")]
         public IActionResult Entry(string name)
         {
@@ -69,6 +88,7 @@ namespace SlownikPolonijny.Web.Controllers
                     Entries = entries
                 };
                 ViewData["Title"] = vm.Name;
+                ViewData["Description"] = FindExample(vm.Entries);
                 return View(vm);
             }
             else
