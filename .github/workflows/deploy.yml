@@ -91,7 +91,7 @@ jobs:
           envs: GITHUB_USERNAME,GITHUB_TOKEN
           script: |
             docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN ${{ env.REGISTRY }}
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:master
             docker-compose --file ~/apps/docker-compose.yaml up -d
             docker image prune -a -f --filter "until=240h"
             
