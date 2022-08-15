@@ -61,7 +61,9 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN }}
+          #password: ${{ secrets.GITHUB_TOKEN }}
+          
 
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -93,8 +95,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           envs: GITHUB_USERNAME,GITHUB_TOKEN
           script: |
-            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN docker.pkg.github.com
-            docker pull docker.pkg.github.com/itsff/polonijny/polonijny:latest
+            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN ghcr.io
+            docker pull ghcr.io/itsff/polonijny:latest
             docker-compose --file ~/apps/docker-compose.yaml up -d
             docker image prune -a -f --filter "until=240h"
             
