@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./src
-          platforms: linux/amd64,linux/arm64v8
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.polonijny.outputs.tags }}
           labels: ${{ steps.polonijny.outputs.labels }}
