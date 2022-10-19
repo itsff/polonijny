@@ -24,23 +24,23 @@ namespace SlownikPolonijny.Dal
             _repo = repo;     
         }
 
-        public IList<string> PerformEntryAudit(string entryId)
+        public IList<IAuditIssue> PerformEntryAudit(string entryId)
         {
-            var problems = new List<string>();
+            var problems = new List<IAuditIssue>();
 
             Entry e = _repo.GetEntryById(entryId);
             if (e == null)
             {
-                problems.Add("Nie ma hasła z takim ID");
+                problems.Add(new GenericAuditIssue("Nie ma hasła z takim ID"));
                 return problems;
             }
 
             return PerformEntryAudit(e);
         }
 
-        public IList<string> PerformEntryAudit(Entry e)
+        public IList<IAuditIssue> PerformEntryAudit(Entry e)
         {
-            var problems = new List<string>();
+            var problems = new List<IAuditIssue>();
 
             SpotCheck(e, problems);
             CheckPunctuation(e, problems);
@@ -49,16 +49,16 @@ namespace SlownikPolonijny.Dal
             return problems;
         }
 
-        void SpotCheck(Entry entry, List<string> problems)
+        void SpotCheck(Entry entry, List<IAuditIssue> problems)
         {
             if (string.IsNullOrWhiteSpace(entry.Name))
             {
-                problems.Add("Hasło jest puste");
+                problems.Add(new GenericAuditIssue("Hasło jest puste"));
             }
 
             if (entry.Meanings.Count == 0 && entry.SeeAlso.Count == 0)
             {
-                problems.Add("Brak znaczenia i hasła pokrewnego");
+                problems.Add(new GenericAuditIssue("Brak znaczenia i hasła pokrewnego"));
             }
         }
 
@@ -93,18 +93,18 @@ namespace SlownikPolonijny.Dal
             return false;
         }
 
-        public void CheckPunctuation(Entry entry, List<string> problems)
+        public void CheckPunctuation(Entry entry, List<IAuditIssue> problems)
         {
             if (!EndsWithLetter(entry.Name))
             {
-                problems.Add("Hasło nie jest zakończone literą");
+                problems.Add(new GenericAuditIssue("Hasło nie jest zakończone literą"));
             }
 
             foreach (var m in entry.Meanings)
             {
                 if (!EndsWithLetter(m))
                 {
-                    problems.Add("Znaczenie nie jest zakończone literą");
+                    problems.Add(new GenericAuditIssue("Znaczenie nie jest zakończone literą"));
                     break;
                 }
             }
@@ -113,7 +113,7 @@ namespace SlownikPolonijny.Dal
             {
                 if (!EndsWithLetter(m))
                 {
-                    problems.Add("Znaczenie angielskie nie jest zakończone literą");
+                    problems.Add(new GenericAuditIssue("Znaczenie angielskie nie jest zakończone literą"));
                     break;
                 }
             }
@@ -122,7 +122,7 @@ namespace SlownikPolonijny.Dal
             {
                 if (!EndsWithLetter(m))
                 {
-                    problems.Add("Hasło pokrewne nie jest zakończone literą");
+                    problems.Add(new GenericAuditIssue("Hasło pokrewne nie jest zakończone literą"));
                     break;
                 }
             }
@@ -131,7 +131,7 @@ namespace SlownikPolonijny.Dal
             {
                 if (!EndsWithPunctuation(m))
                 {
-                    problems.Add("Przykłady powinny się kończyć znakiem przestankowym");
+                    problems.Add(new GenericAuditIssue("Przykłady powinny się kończyć znakiem przestankowym"));
                     break;
                 }
             }
@@ -199,7 +199,7 @@ namespace SlownikPolonijny.Dal
             return links.Contains(fromEntryName);
         }
 
-        public void CheckLinks(Entry entry, List<string> problems)
+        public void CheckLinks(Entry entry, List<IAuditIssue> problems)
         {
             var links = GetExamplesLinks(entry);
             foreach (string link in links)
@@ -207,7 +207,7 @@ namespace SlownikPolonijny.Dal
                 var linkedEntries = _repo.GetEntriesByName(link);
                 if (linkedEntries.Count == 0)
                 {
-                    problems.Add($"Przykład ma link do nieistniejącego hasła: '{link}'");
+                    problems.Add(new GenericAuditIssue($"Przykład ma link do nieistniejącego hasła: '{link}'"));
                 }
             }
 
@@ -217,7 +217,7 @@ namespace SlownikPolonijny.Dal
                 var linkedEntries = _repo.GetEntriesByName(link);
                 if (linkedEntries.Count == 0)
                 {
-                    problems.Add($"Link do nieistniejącego hasła pokrewnego: '{link}'");
+                    problems.Add(new GenericAuditIssue($"Link do nieistniejącego hasła pokrewnego: '{link}'"));
                 }
                 else
                 {
@@ -225,7 +225,7 @@ namespace SlownikPolonijny.Dal
                     {
                         if (!HasBackLink(entry.Name, linkedEntry))
                         {
-                            problems.Add($"Jednostronny link. Hasło '{link}' nie jest spokrewnione z '{entry.Name}'");
+                            problems.Add(new GenericAuditIssue($"Jednostronny link. Hasło '{link}' nie jest spokrewnione z '{entry.Name}'"));
                         }
                     }
                 }

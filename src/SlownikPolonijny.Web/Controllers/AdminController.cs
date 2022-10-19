@@ -184,7 +184,8 @@ namespace SlownikPolonijny.Web.Controllers
 
             try
             {
-                r.Problems = _auditor.PerformEntryAudit(id);
+                var auditIssues = _auditor.PerformEntryAudit(id);
+                r.Problems = auditIssues.Select(p => p.Description).ToList();
             }
             catch (System.Exception ex)
             {
@@ -210,7 +211,7 @@ namespace SlownikPolonijny.Web.Controllers
                         Id = entry.Id.ToString(),
                         Name = entry.Name,
                         IsApproved = string.IsNullOrEmpty(entry.ApprovedBy),
-                        Problems = problems
+                        Problems = problems.Select(p => p.Description).ToList()
                     };
                     auditedEntries.Add(m);
                 }
