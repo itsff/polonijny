@@ -193,7 +193,8 @@ namespace SlownikPolonijny.Web.Controllers
                     // TODO: Clean up this hack
                     r.Problems = _auditor
                             .PerformEntryAudit(e)
-                            .Where(txt => !txt.Contains("link"))
+                            .Where(prob => !prob.Description.Contains("link"))
+                            .Select(prob => prob.Description)
                             .ToList();
 
                     if (r.Problems.Count == 0)
