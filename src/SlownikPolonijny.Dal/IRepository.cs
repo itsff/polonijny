@@ -1,40 +1,39 @@
 ﻿using System.Collections.Generic;
 
-namespace SlownikPolonijny.Dal
+namespace SlownikPolonijny.Dal;
+
+public interface IRepository
 {
-    public interface IRepository
-    {
-        Entry GetEntryById(string entryId);
+    Entry GetEntryById(string entryId);
 
-        IEnumerable<Entry> GetAllEntries();
+    IEnumerable<Entry> GetAllEntries();
 
-        IReadOnlyList<Entry> GetEntriesByName(string name);
+    IReadOnlyList<Entry> GetEntriesByName(string name);
 
-        IReadOnlyList<Entry> GetRandomEntries();
+    IReadOnlyList<Entry> GetRandomEntries();
 
-        Entry GetRandomExtryWithExample();
+    Entry GetRandomExtryWithExample();
 
-        IReadOnlyList<Entry> GetLatestEntries();
+    IReadOnlyList<Entry> GetLatestEntries();
 
-        IReadOnlyList<Entry> GetEntriesForLetter(char letter);
+    IReadOnlyList<Entry> GetEntriesForLetter(char letter);
 
-        IReadOnlyList<Entry> GetEntriesForLetter(string letter)
-            => this.GetEntriesForLetter(letter[0]);
+    IReadOnlyList<Entry> GetEntriesForLetter(string letter)
+        => this.GetEntriesForLetter(letter[0]);
 
-        IReadOnlyList<Entry> Search(string prefix);
+    IReadOnlyList<Entry> Search(string prefix);
 
-        void AddEntry(Entry entry);
+    void AddEntry(Entry entry);
 
-        void UpdateEntry(Entry entry);
+    void UpdateEntry(Entry entry);
 
-        void RemoveEntry(string entryId, string userDoingDeletion);
+    void RemoveEntry(string entryId, string userDoingDeletion);
 
-        void RemoveEntry(string entryId)
-            => this.RemoveEntry(entryId, null);
+    void RemoveEntry(string entryId)
+        => this.RemoveEntry(entryId, null);
 
-        void RestoreEntry(string entryId, string userDoingRestore);
+    void RestoreEntry(string entryId, string userDoingRestore);
 
-        void RestoreEntry(string entryId)
-            => this.RestoreEntry(entryId, null);
-    }
+    void RestoreEntry(string entryId)
+        => this.RestoreEntry(entryId, null);
 }
