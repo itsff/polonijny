@@ -77,6 +77,22 @@ namespace SlownikPolonijny.Dal
             return false;
         }
 
+        static bool EndsWithPunctuation(string s)
+        {
+            s = s.Trim();
+            if (s.Length > 0)
+            {
+                char last = s[s.Length - 1];
+                return last == '.'
+                    || last == '!'
+                    || last == '?'
+                    || last == ')'
+                    || last == ']'
+                    ;
+            }
+            return false;
+        }
+
         public void CheckPunctuation(Entry entry, List<string> problems)
         {
             if (!EndsWithLetter(entry.Name))
@@ -113,7 +129,7 @@ namespace SlownikPolonijny.Dal
 
             foreach (var m in entry.Examples)
             {
-                if (EndsWithLetter(m))
+                if (!EndsWithPunctuation(m))
                 {
                     problems.Add("Przykłady powinny się kończyć znakiem przestankowym");
                     break;
