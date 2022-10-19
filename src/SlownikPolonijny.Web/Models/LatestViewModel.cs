@@ -2,9 +2,8 @@ using System;
 using SlownikPolonijny.Dal;
 using System.Collections.Generic;
 
-namespace SlownikPolonijny.Web.Models
+namespace SlownikPolonijny.Web.Models;
+
+public class LatestViewModel : EntryListViewModel
 {
-    public class LatestViewModel : EntryListViewModel
-    {
-    }
 }

@@ -16,105 +16,104 @@ using Microsoft.Extensions.Caching.Memory;
 using AspNetCore.Identity.Mongo;
 using SlownikPolonijny.Dal;
 
-namespace SlownikPolonijny.Web
+namespace SlownikPolonijny.Web;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddOptions();
+        services.Configure<MongoRepositorySettings>(Configuration.GetSection("Mongo"));
+        services.AddSingleton(resolver => 
+            resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
+
+        services.AddSingleton<IRepository, MongoRepository>();
+        services.AddSingleton<IEntryAuditor>(resolver => 
+            new MongoEntryAuditor(
+                resolver.GetService<IRepository>() as MongoRepository));
+
+        services.AddRouting(options =>
         {
-            Configuration = configuration;
-        }
+            options.ConstraintMap["dashed"] = typeof(DashedParameterTransformer);
+        });
 
-        public IConfiguration Configuration { get; }
+        services.AddMemoryCache();
+        services.AddCors();
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>
         {
-            services.AddOptions();
-            services.Configure<MongoRepositorySettings>(Configuration.GetSection("Mongo"));
-            services.AddSingleton(resolver => 
-                resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
+            identityOptions.Password.RequiredLength = 6;
+            identityOptions.Password.RequireLowercase = false;
+            identityOptions.Password.RequireUppercase = false;
+            identityOptions.Password.RequireNonAlphanumeric = false;
+            identityOptions.Password.RequireDigit = false;
+            identityOptions.SignIn.RequireConfirmedAccount = true;
+            identityOptions.SignIn.RequireConfirmedEmail = true;
+        }, mongoIdentityOptions => {
+            mongoIdentityOptions.ConnectionString = Configuration.GetSection("Mongo")["ConnectionString"];
+        });
 
-            services.AddSingleton<IRepository, MongoRepository>();
-            services.AddSingleton<IEntryAuditor>(resolver => 
-                new MongoEntryAuditor(
-                    resolver.GetService<IRepository>() as MongoRepository));
-
-            services.AddRouting(options =>
-            {
-                options.ConstraintMap["dashed"] = typeof(DashedParameterTransformer);
-            });
-
-            services.AddMemoryCache();
-            services.AddCors();
-
-            services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>
-            {
-                identityOptions.Password.RequiredLength = 6;
-                identityOptions.Password.RequireLowercase = false;
-                identityOptions.Password.RequireUppercase = false;
-                identityOptions.Password.RequireNonAlphanumeric = false;
-                identityOptions.Password.RequireDigit = false;
-                identityOptions.SignIn.RequireConfirmedAccount = true;
-                identityOptions.SignIn.RequireConfirmedEmail = true;
-            }, mongoIdentityOptions => {
-                mongoIdentityOptions.ConnectionString = Configuration.GetSection("Mongo")["ConnectionString"];
-            });
-  
-            services.AddAuthentication(o =>
-            {
-                o.DefaultScheme = IdentityConstants.ApplicationScheme;
-                o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-            });
-
-            services.AddIdentityCore<Models.WebUser>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
-
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("RequireAdmin", policy => policy.RequireRole("@admin"));
-            });
-
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        services.AddAuthentication(o =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
-            app.UseStatusCodePagesWithReExecute("/Home/HandleError/{0}");
-            app.UseStaticFiles();
+            o.DefaultScheme = IdentityConstants.ApplicationScheme;
+            o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+        });
 
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-            );
-            app.UseRouting();
+        services.AddIdentityCore<Models.WebUser>()
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireAdmin", policy => policy.RequireRole("@admin"));
+        });
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
-            });
+        services.AddControllersWithViews();
+        services.AddRazorPages();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
         }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }
+        app.UseHttpsRedirection();
+        app.UseStatusCodePagesWithReExecute("/Home/HandleError/{0}");
+        app.UseStaticFiles();
+
+        app.UseCors(x => x
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true) // allow any origin
+        );
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapRazorPages();
+        });
     }
 }
