@@ -220,7 +220,14 @@ public class MongoEntryAuditor : IEntryAuditor
                 {
                     if (!HasBackLink(entry.Name, linkedEntry))
                     {
-                        problems.Add(new GenericAuditIssue($"Jednostronny link. Hasło '{link}' nie jest spokrewnione z '{entry.Name}'"));
+                        var fix = new AutoFixStrategy() { Name = "add-link" };
+                        fix.Parameters["from"] = link;
+                        fix.Parameters["to"] = entry.Name;
+
+                        var issue = new GenericAuditIssue($"Jednostronny link. Hasło '{link}' nie jest spokrewnione z '{entry.Name}'");
+                        issue.Fixes.Add(fix);
+
+                        problems.Add(issue);
                     }
                 }
             }

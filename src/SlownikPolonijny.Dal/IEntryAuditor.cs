@@ -8,12 +8,18 @@ public interface IEntryAuditor
     IList<IAuditIssue> PerformEntryAudit(Entry entry);
 }
 
+public class AutoFixStrategy
+{
+    public string Name { get; set; }
+    public Dictionary<string, string> Parameters { get; init; } = new();
+}
+
 public interface IAuditIssue
 {
     string Description { get; }
     bool CanAutoFix { get; }
 
-    void AutoFix ();
+    IList<AutoFixStrategy> Fixes { get; }
 }
 
 public class GenericAuditIssue : IAuditIssue
@@ -25,11 +31,9 @@ public class GenericAuditIssue : IAuditIssue
 
     public string Description { get; init; }
 
-    public bool CanAutoFix => false;
+    public bool CanAutoFix => this.Fixes.Count > 0;
 
-    public void AutoFix()
-    {
-    }
+    public IList<AutoFixStrategy> Fixes { get; init; } = new List<AutoFixStrategy>();
 
     public override string ToString()
     {

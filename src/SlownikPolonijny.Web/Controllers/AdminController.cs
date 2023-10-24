@@ -146,6 +146,38 @@ public class AdminController : Controller
         return Json(r);
     }
 
+    [Route("/admin/add-link/{from}/{to}")]
+    [HttpPost]
+    public async Task<IActionResult> AddRelatedLink(string from, string to)
+    {
+        var r = new AddEntryResultModel();
+        
+        try
+        {
+            Entry entry = _repo.GetEntryById(from);
+            Entry toEntry = _repo.GetEntryById(to);
+            if (entry != null && toEntry != null)
+            {
+                var user = await this.GetCurrentUserAsync();
+
+                entry.ApprovedBy = user.UserName;
+                entry.SeeAlso.Add(to);
+                _repo.UpdateEntry(entry);
+            }
+            else
+            {
+                r.Problems.Add("Nie ma takiego hasła");
+            }
+        }
+        catch (System.Exception ex)
+        {
+            _logger.LogError(ex.ToString());
+            r.Problems.Add("Błąd bazy danych");
+        }
+        
+        return Json(r);
+    }
+
     [Route("/admin/usunieto/{id}/{name}")]
     public IActionResult RemoveConfirmation(string id, string name)
     {
