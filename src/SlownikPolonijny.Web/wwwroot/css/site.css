@@ -110,3 +110,8 @@ form .card {
   box-shadow: 0;
   display: inline;
 }
+@media (max-width: 767px) {
+  .easy-autocomplete-container {
+    width: 90vw !important;
+  }
+}
