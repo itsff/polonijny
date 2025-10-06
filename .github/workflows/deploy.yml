@@ -74,24 +74,4 @@ jobs:
           pull: true
           cache-from: type=gha
           cache-to: type=gha
-          
-      # Pull this newly created package on an sshb host,
-      # restart service and prune old docker images.    
-      - name: Deploy package to server
-        uses: appleboy/ssh-action@master
-        env:
-            GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          envs: GITHUB_USERNAME,GITHUB_TOKEN
-          script: |
-            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN ${{ env.REGISTRY }}
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:master
-            docker-compose --file ~/docker_apps/docker-compose.yaml up -d
-            docker image prune -a -f --filter "until=240h"
             
