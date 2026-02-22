@@ -6,15 +6,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.Identity.Mongo" Version="8.3.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
+    <PackageReference Include="AspNetCore.Identity.Mongo" Version="10.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.3" />
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
 </Project>
