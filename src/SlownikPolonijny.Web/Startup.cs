@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Caching.Memory;
-using AspNetCore.Identity.Mongo;
 using SlownikPolonijny.Dal;
+using SlownikPolonijny.Web.Services;
 
 namespace SlownikPolonijny.Web;
 
@@ -61,28 +60,17 @@ public class Startup
         services.AddMemoryCache();
         services.AddCors();
 
-        services.AddIdentityMongoDbProvider<Models.WebUser, Models.WebRole>(identityOptions =>
-        {
-            identityOptions.Password.RequiredLength = 6;
-            identityOptions.Password.RequireLowercase = false;
-            identityOptions.Password.RequireUppercase = false;
-            identityOptions.Password.RequireNonAlphanumeric = false;
-            identityOptions.Password.RequireDigit = false;
-            identityOptions.SignIn.RequireConfirmedAccount = true;
-            identityOptions.SignIn.RequireConfirmedEmail = true;
-        }, mongoIdentityOptions => {
-            mongoIdentityOptions.ConnectionString = Configuration.GetSection("Mongo")["ConnectionString"];
-        });
+        var usersFile = Configuration.GetValue<string>("Auth:UsersFile") ?? "data/users.json";
+        services.AddSingleton(new FileUserService(usersFile));
 
-        services.AddAuthentication(o =>
-        {
-            o.DefaultScheme = IdentityConstants.ApplicationScheme;
-            o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-        });
-
-        services.AddIdentityCore<Models.WebUser>()
-            .AddDefaultUI()
-            .AddDefaultTokenProviders();
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/login";
+                options.LogoutPath = "/logout";
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromDays(30);
+            });
 
         services.AddAuthorization(options =>
         {
@@ -90,7 +78,6 @@ public class Startup
         });
 
         services.AddControllersWithViews();
-        services.AddRazorPages();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,7 +113,6 @@ public class Startup
             endpoints.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-            endpoints.MapRazorPages();
         });
     }
 }

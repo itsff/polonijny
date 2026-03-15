@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SlownikPolonijny.Web.Models;
 using SlownikPolonijny.Dal;
@@ -15,25 +13,20 @@ namespace SlownikPolonijny.Web.Controllers;
 public class HomeController : Controller
 {
     readonly ILogger<HomeController> _logger;
-    readonly UserManager<WebUser> _userManager;
     readonly IRepository _repo;
     readonly IEntryAuditor _auditor;
     readonly Random _random = new Random();
 
     public HomeController(ILogger<HomeController> logger,
-                            UserManager<WebUser> userManager,
                             IRepository repository,
                             IEntryAuditor auditor)
     {
         _logger = logger;
-        _userManager = userManager;
         _repo = repository;
         _auditor = auditor;
     }
 
     bool IsAdminUser => this.User.IsInRole("@admin");
-
-    private Task<WebUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
     [Route("")]
     public IActionResult Index()
@@ -169,7 +162,7 @@ public class HomeController : Controller
     [Route("dodaj")]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Add([FromForm]AddEntryModel model)
+    public IActionResult Add([FromForm]AddEntryModel model)
     {
         var r = new AddEntryResultModel();
         r.Problems = model.Validate();
@@ -199,8 +192,7 @@ public class HomeController : Controller
 
                 if (r.Problems.Count == 0)
                 {
-                    var user = await this.GetCurrentUserAsync();
-                    e.ApprovedBy = user?.UserName;
+                    e.ApprovedBy = User.Identity?.Name;
 
                     _repo.AddEntry(e);
                 }

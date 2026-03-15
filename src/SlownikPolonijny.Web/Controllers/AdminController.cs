@@ -1,46 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SlownikPolonijny.Web.Models;
 using SlownikPolonijny.Dal;
-using AspNetCore.Identity.Mongo;
-using AspNetCore.Identity.Mongo.Model;
 
 namespace SlownikPolonijny.Web.Controllers;
-    
+
 [Authorize(Policy="RequireAdmin")]
 public class AdminController : Controller
 {
     readonly ILogger<AdminController> _logger;
-    readonly UserManager<WebUser> _userManager;
     readonly IRepository _repo;
     readonly IEntryAuditor _auditor;
     readonly IMemoryCache _cache;
 
-
     public AdminController(ILogger<AdminController> logger,
-                            UserManager<WebUser> userManager,
                             IRepository repository,
                             IEntryAuditor auditor,
                             IMemoryCache cache)
     {
         _logger = logger;
-        _userManager = userManager;
         _repo = repository;
         _auditor = auditor;
         _cache = cache;
     }
-
-    private bool IsAdminUser => this.User.IsInRole("@admin");
-
-    private Task<WebUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
     [Route("/admin/edytuj/{id}")]
     [HttpGet]
@@ -62,7 +50,7 @@ public class AdminController : Controller
     [Route("/admin/edytuj")]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit([FromForm]EditEntryModel model)
+    public IActionResult Edit([FromForm]EditEntryModel model)
     {
         var r = new AddEntryResultModel();
         r.Problems = model.Validate();
@@ -73,8 +61,6 @@ public class AdminController : Controller
         {
             try
             {
-                var user = await this.GetCurrentUserAsync();
-
                 var e = _repo.GetEntryById(model.Id);
                 e.Name = model.Name;
                 e.Meanings = model.Meanings;
@@ -82,7 +68,7 @@ public class AdminController : Controller
                 e.SeeAlso = model.SeeAlso;
                 e.Examples = model.Examples;
                 e.TimeAdded = DateTimeOffset.UtcNow;
-                e.ApprovedBy = user.UserName;
+                e.ApprovedBy = User.Identity.Name;
 
                 _repo.UpdateEntry(e);
             }
@@ -98,18 +84,16 @@ public class AdminController : Controller
 
     [Route("/admin/zatwierdz/{id}")]
     [HttpPost]
-    public async Task<IActionResult> Approve(string id)
+    public IActionResult Approve(string id)
     {
         var r = new AddEntryResultModel();
-        
+
         try
         {
             Entry entry = _repo.GetEntryById(id);
             if (entry != null)
             {
-                var user = await this.GetCurrentUserAsync();
-
-                entry.ApprovedBy = user.UserName;
+                entry.ApprovedBy = User.Identity.Name;
                 _repo.UpdateEntry(entry);
             }
             else
@@ -122,45 +106,42 @@ public class AdminController : Controller
             _logger.LogError(ex.ToString());
             r.Problems.Add("Błąd bazy danych");
         }
-        
+
         return Json(r);
     }
 
     [Route("/admin/usun/{id}")]
     [HttpPost]
-    public async Task<IActionResult> Remove(string id)
+    public IActionResult Remove(string id)
     {
         var r = new AddEntryResultModel();
-        
+
         try
         {
-            var user = await this.GetCurrentUserAsync();
-            _repo.RemoveEntry(id, user.UserName);
+            _repo.RemoveEntry(id, User.Identity.Name);
         }
         catch (System.Exception ex)
         {
             _logger.LogError(ex.ToString());
             r.Problems.Add("Błąd bazy danych");
         }
-        
+
         return Json(r);
     }
 
     [Route("/admin/add-link/{from}/{to}")]
     [HttpPost]
-    public async Task<IActionResult> AddRelatedLink(string from, string to)
+    public IActionResult AddRelatedLink(string from, string to)
     {
         var r = new AddEntryResultModel();
-        
+
         try
         {
             Entry entry = _repo.GetEntryById(from);
             Entry toEntry = _repo.GetEntryById(to);
             if (entry != null && toEntry != null)
             {
-                var user = await this.GetCurrentUserAsync();
-
-                entry.ApprovedBy = user.UserName;
+                entry.ApprovedBy = User.Identity.Name;
                 entry.SeeAlso.Add(to);
                 _repo.UpdateEntry(entry);
             }
@@ -174,7 +155,7 @@ public class AdminController : Controller
             _logger.LogError(ex.ToString());
             r.Problems.Add("Błąd bazy danych");
         }
-        
+
         return Json(r);
     }
 
@@ -188,21 +169,20 @@ public class AdminController : Controller
 
     [Route("/admin/przywroc/{id}")]
     [HttpPost]
-    public async Task<IActionResult> Restore(string id)
+    public IActionResult Restore(string id)
     {
         var r = new AddEntryResultModel();
-        
+
         try
         {
-            var user = await this.GetCurrentUserAsync();
-            _repo.RestoreEntry(id, user.UserName);
+            _repo.RestoreEntry(id, User.Identity.Name);
         }
         catch (System.Exception ex)
         {
             _logger.LogError(ex.ToString());
             r.Problems.Add("Błąd bazy danych");
         }
-        
+
         return Json(r);
     }
 
