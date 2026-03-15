@@ -40,6 +40,8 @@ public class Startup
             services.AddSingleton(resolver =>
                 resolver.GetRequiredService<IOptions<JsonRepositorySettings>>().Value);
             services.AddSingleton<IRepository, JsonRepository>();
+            services.AddSingleton<IEntryAuditor>(resolver =>
+                new EntryAuditor(resolver.GetRequiredService<IRepository>()));
         }
         else
         {
@@ -48,8 +50,7 @@ public class Startup
                 resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
             services.AddSingleton<IRepository, MongoRepository>();
             services.AddSingleton<IEntryAuditor>(resolver =>
-                new MongoEntryAuditor(
-                    resolver.GetService<IRepository>() as MongoRepository));
+                new EntryAuditor(resolver.GetRequiredService<IRepository>()));
         }
 
         services.AddRouting(options =>
