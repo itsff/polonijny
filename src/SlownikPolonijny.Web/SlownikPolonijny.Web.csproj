@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <ProjectReference Include="..\SlownikPolonijny.Dal.Json\SlownikPolonijny.Dal.Json.csproj" />
     <ProjectReference Include="..\SlownikPolonijny.Dal.Mongo\SlownikPolonijny.Dal.Mongo.csproj" />
     <ProjectReference Include="..\SlownikPolonijny.Dal\SlownikPolonijny.Dal.csproj" />
   </ItemGroup>

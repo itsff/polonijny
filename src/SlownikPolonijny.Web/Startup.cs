@@ -31,14 +31,26 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddOptions();
-        services.Configure<MongoRepositorySettings>(Configuration.GetSection("Mongo"));
-        services.AddSingleton(resolver => 
-            resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
 
-        services.AddSingleton<IRepository, MongoRepository>();
-        services.AddSingleton<IEntryAuditor>(resolver => 
-            new MongoEntryAuditor(
-                resolver.GetService<IRepository>() as MongoRepository));
+        var dalProvider = Configuration.GetValue<string>("Dal:Provider") ?? "Mongo";
+
+        if (dalProvider.Equals("Json", StringComparison.OrdinalIgnoreCase))
+        {
+            services.Configure<JsonRepositorySettings>(Configuration.GetSection("Dal:Json"));
+            services.AddSingleton(resolver =>
+                resolver.GetRequiredService<IOptions<JsonRepositorySettings>>().Value);
+            services.AddSingleton<IRepository, JsonRepository>();
+        }
+        else
+        {
+            services.Configure<MongoRepositorySettings>(Configuration.GetSection("Mongo"));
+            services.AddSingleton(resolver =>
+                resolver.GetRequiredService<IOptions<MongoRepositorySettings>>().Value);
+            services.AddSingleton<IRepository, MongoRepository>();
+            services.AddSingleton<IEntryAuditor>(resolver =>
+                new MongoEntryAuditor(
+                    resolver.GetService<IRepository>() as MongoRepository));
+        }
 
         services.AddRouting(options =>
         {
