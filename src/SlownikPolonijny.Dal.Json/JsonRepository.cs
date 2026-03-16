@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -19,6 +20,7 @@ public class JsonRepository : IRepository
         WriteIndented = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
     public JsonRepository(JsonRepositorySettings settings)
@@ -36,8 +38,12 @@ public class JsonRepository : IRepository
         return JsonSerializer.Deserialize<JsonStore>(json, _jsonOptions) ?? new JsonStore();
     }
 
+    static readonly StringComparer _polishComparer =
+        StringComparer.Create(Entry.Culture, ignoreCase: true);
+
     void Save()
     {
+        _store.Entries.Sort((a, b) => _polishComparer.Compare(a.Name, b.Name));
         string json = JsonSerializer.Serialize(_store, _jsonOptions);
         File.WriteAllText(_filePath, json);
     }
