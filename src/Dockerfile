@@ -17,6 +17,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR .
 COPY ["SlownikPolonijny.Dal/", "SlownikPolonijny.Dal/"]
+COPY ["SlownikPolonijny.Dal.Json/", "SlownikPolonijny.Dal.Json/"]
 COPY ["SlownikPolonijny.Dal.Mongo/", "SlownikPolonijny.Dal.Mongo/"]
 COPY ["SlownikPolonijny.Web/", "SlownikPolonijny.Web/"]
 WORKDIR "SlownikPolonijny.Web/"
