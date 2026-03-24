@@ -2,6 +2,8 @@
 
 Kod źródłowy strony internetowej [Słownik polonijny](http://slownikpolonijny.com).
 
+Opis projektów i architektury kodu znajduje się w [src/README.md](src/README.md).
+
 # O słowniku
 ## Słownik polonijny
 „Słownik polonijny” jest internetową wersją „Słownika Hentremickiego” zebranego w Stanach Zjednoczonych przez Zbigniewa Romana Frącz. Zbiór spolonizowanych słów i zwrotów był tak dobry, że postanowiliśmy wydać go w formie strony internetowej.

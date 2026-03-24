@@ -1,0 +1,8 @@
+[
+  // Example local admin user. Password is: admin
+  {
+    "username": "admin",
+    "passwordHash": "AQAAAAIAAYagAAAAEIdosR7btaP+g7MEoFdor1BfEbeaaTd2+pB7CpRlYh+syix38Zokxj+GWm75N9WsWw==",
+    "roles": ["@admin"]
+  }
+]

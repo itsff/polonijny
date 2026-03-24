@@ -25,6 +25,8 @@ public class FileUserService
         _users = JsonSerializer.Deserialize<List<StoredUser>>(json, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            ReadCommentHandling = JsonCommentHandling.Skip,
+            AllowTrailingCommas = true,
         });
     }
 

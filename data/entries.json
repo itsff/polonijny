@@ -1,0 +1,3414 @@
+{
+  // Example dataset for local/dev use.
+  // Seed rule: 2 entries per available starting letter (including Polish letters),
+  // then expanded with linked entries from seeAlso and bracket links in meanings/examples.
+  "entries": [
+    {
+      "id": "52f5a5c724876185ee27a8d6",
+      "name": "adwertajzować",
+      "meanings": [
+        "reklamować"
+      ],
+      "englishMeanings": [
+        "advertise"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Adwertajzują w [ti wi]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8d8",
+      "name": "airkondyszyn",
+      "meanings": [
+        "klimatyzator"
+      ],
+      "englishMeanings": [
+        "air conditioning"
+      ],
+      "seeAlso": [
+        "ajerkondyszyn",
+        "erkondyszyn",
+        "kondyszyn",
+        "kondyszyning",
+        "akordejszyn"
+      ],
+      "examples": [
+        "Czy masz airkondyszyn?"
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8de",
+      "name": "ajerkondyszyn",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "airkondyszyn",
+        "kondyszyn"
+      ],
+      "examples": [
+        "Ajerkondyszyn tanio sprzedam."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-02T23:01:44.092368-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5582bebfe8858e000ac51a84",
+      "name": "akordejszyn",
+      "meanings": [
+        "klimatyzacja"
+      ],
+      "englishMeanings": [
+        "air conditioning"
+      ],
+      "seeAlso": [
+        "airkondyszyn",
+        "erkondyszyn"
+      ],
+      "examples": [
+        "Weź wyłącz akordejszyn bo sie zimno robi."
+      ],
+      "timeAdded": "2015-06-18T12:51:11.404449-05:00",
+      "lastModified": "2015-06-18T12:51:11.404449-05:00",
+      "ipAddress": "10.142.242.156",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a8e8",
+      "name": "apointmen",
+      "meanings": [
+        "umówiony termin spotkania lub wizyty"
+      ],
+      "englishMeanings": [
+        "appointment"
+      ],
+      "seeAlso": [
+        "apojtment",
+        "apojmen",
+        "apojment",
+        "apojtmen"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T04:48:30.158371-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8e9",
+      "name": "apojmen",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "apointmen"
+      ],
+      "examples": [
+        "Muszę załatwić apojmen."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T04:47:39.949046-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8ea",
+      "name": "apojment",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "apointmen"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:31:48.490089-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8eb",
+      "name": "apojtmen",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "apointmen"
+      ],
+      "examples": [
+        "Mam zrobiony apojtmen."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8ec",
+      "name": "apojtment",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "apointmen"
+      ],
+      "examples": [
+        "Mam zrobiony apojtment.",
+        "Mam na jutro apojtment.",
+        "Muszę załatwić apojtment."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8f0",
+      "name": "badrować",
+      "meanings": [
+        "denerwować kogoś",
+        "przeszkadzać komuś"
+      ],
+      "englishMeanings": [
+        "to bother somebody"
+      ],
+      "seeAlso": [
+        "boderować"
+      ],
+      "examples": [
+        "Nie badruj mnie."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "62897b1d7626731d3e8b7c03",
+      "name": "baf",
+      "meanings": [
+        "kąpiel"
+      ],
+      "englishMeanings": [
+        "bath"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "[Tejknę|tejknąć] bafa."
+      ],
+      "timeAdded": "2022-05-21T23:51:57.833337-05:00",
+      "lastModified": "2022-05-21T23:51:57.8418-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a8fb",
+      "name": "barbakju",
+      "meanings": [
+        "rożen"
+      ],
+      "englishMeanings": [
+        "barbecue"
+      ],
+      "seeAlso": [
+        "barbikju",
+        "barbeć kiuk",
+        "barbikiu"
+      ],
+      "examples": [
+        "Zrobimy sobie barbakju.",
+        "Zaprosiła nas na barbakju."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2022-10-19T03:01:10.772284-05:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8fc",
+      "name": "barbakju dresing",
+      "meanings": [
+        "sos z przyprawami do mięsa lub potraw"
+      ],
+      "englishMeanings": [
+        "barbecue dressing"
+      ],
+      "seeAlso": [
+        "barbikiu"
+      ],
+      "examples": [
+        "Lubię ten barbakju dresing."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a8fd",
+      "name": "barbeć kiuk",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "barbakju",
+        "barbikiu"
+      ],
+      "examples": [
+        "Następnym razem zrobimy barbeć kiuka."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a35897626731d3e8b7c23",
+      "name": "barbikiu",
+      "meanings": [
+        "grill"
+      ],
+      "englishMeanings": [
+        "grill"
+      ],
+      "seeAlso": [
+        "barbakju",
+        "barbakju dresing",
+        "barbeć kiuk",
+        "barbikju"
+      ],
+      "examples": [
+        "Idziemy na barbikiu."
+      ],
+      "timeAdded": "2022-05-22T13:07:21.891458-05:00",
+      "lastModified": "2022-05-22T13:07:21.925001-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a8ff",
+      "name": "barbikju",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "barbakju",
+        "barbikiu"
+      ],
+      "examples": [
+        "Zaprosili mnie na barbikju."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a908",
+      "name": "bek",
+      "meanings": [
+        "tył",
+        "podwórze"
+      ],
+      "englishMeanings": [
+        "back (ex. a field at the back of the house)",
+        "back yard"
+      ],
+      "seeAlso": [
+        "bekjard",
+        "jard",
+        "jarda"
+      ],
+      "examples": [
+        "On [fiksuje|fiksować] [karę|kara] na beku."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:48:04.41882-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a909",
+      "name": "bekjard",
+      "meanings": [
+        "dziedziniec",
+        "podwórze",
+        "plac z tyłu domu"
+      ],
+      "englishMeanings": [
+        "back yard"
+      ],
+      "seeAlso": [
+        "jard",
+        "jarda",
+        "bek"
+      ],
+      "examples": [
+        "Wyszłam na bekjard.",
+        "Postawił na bekjardzie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:47:26.684446-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a916",
+      "name": "boderować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "badrować"
+      ],
+      "examples": [
+        "Nie boderuj mnie!"
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a39967626731d3e8b7c2b",
+      "name": "bojfrend",
+      "meanings": [
+        "chłopak"
+      ],
+      "englishMeanings": [
+        "boyfriend"
+      ],
+      "seeAlso": [
+        "bojfrent"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-22T13:24:38.276892-05:00",
+      "lastModified": "2022-05-22T13:24:38.285292-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd6789ab106cfbb4869d2a8",
+      "name": "bojfrent",
+      "meanings": [
+        "chłopak (partner)"
+      ],
+      "englishMeanings": [
+        "a boyfriend"
+      ],
+      "seeAlso": [
+        "frent",
+        "bojfrend"
+      ],
+      "examples": [
+        "To jest mów bojfrend Majk."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:24:58.012886-06:00",
+      "lastModified": "2020-12-13T20:24:58.02992-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a92e",
+      "name": "bukować",
+      "meanings": [
+        "zarezerwować"
+      ],
+      "englishMeanings": [
+        "booking"
+      ],
+      "seeAlso": [
+        "zabukować"
+      ],
+      "examples": [
+        "Musimy bukować [tikety|tiket].",
+        "Muszę bukować miejsce na samolot."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5582df38e8858e000ac51a86",
+      "name": "ciek",
+      "meanings": [
+        "czek"
+      ],
+      "englishMeanings": [
+        "a check"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Wyślij mi cieka bo nie mam [keszu|kesz]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2015-06-18T15:09:44.39535-05:00",
+      "lastModified": "2020-12-04T01:52:19.333659-06:00",
+      "ipAddress": "10.169.131.164",
+      "fromInternet": true
+    },
+    {
+      "id": "628a43f57626731d3e8b7c45",
+      "name": "cipny",
+      "meanings": [
+        "tani",
+        "słabej jakości"
+      ],
+      "englishMeanings": [
+        "cheap"
+      ],
+      "seeAlso": [
+        "cipy",
+        "czip",
+        "czipny",
+        "czyp"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2022-05-22T14:08:53.614398-05:00",
+      "lastModified": "2023-03-12T17:06:37.747557-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a937",
+      "name": "cipy",
+      "meanings": [
+        "tani",
+        "tanizna",
+        "tanie rzeczy",
+        "produkt marnej jakości"
+      ],
+      "englishMeanings": [
+        "cheap"
+      ],
+      "seeAlso": [
+        "czip",
+        "czyp",
+        "cipny"
+      ],
+      "examples": [
+        "To są same cipy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:47:13.577476-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a938",
+      "name": "city",
+      "meanings": [
+        "ratusz",
+        "urząd miasta",
+        "miasto"
+      ],
+      "englishMeanings": [
+        "city hall",
+        "city"
+      ],
+      "seeAlso": [
+        "syty",
+        "city hol"
+      ],
+      "examples": [
+        "Muszę załatwić to w city (muszę załatwić to w urzędzie miejskim)."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:58:09.824313-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a939",
+      "name": "city hol",
+      "meanings": [
+        "ratusz",
+        "urząd miasta"
+      ],
+      "englishMeanings": [
+        "city hall"
+      ],
+      "seeAlso": [
+        "city",
+        "syty"
+      ],
+      "examples": [
+        "Pojechałam do city hol zapłacić [teksy|teksa]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:58:24.962952-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a944",
+      "name": "czip",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "cipy",
+        "cipny"
+      ],
+      "examples": [
+        "To jest czip."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:47:27.499026-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a945",
+      "name": "czipny",
+      "meanings": [
+        "tani",
+        "skąpy"
+      ],
+      "englishMeanings": [
+        "cheap"
+      ],
+      "seeAlso": [
+        "cipny"
+      ],
+      "examples": [
+        "Czipny facet (skąpy facet)."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:47:19.148391-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a946",
+      "name": "czyp",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "cipy",
+        "cipny"
+      ],
+      "examples": [
+        "Czyp [kar]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:47:09.267399-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a947",
+      "name": "da cyt",
+      "meanings": [
+        "i to wszystko"
+      ],
+      "englishMeanings": [
+        "that’s it",
+        "this is it"
+      ],
+      "seeAlso": [
+        "daco",
+        "o maj gad",
+        "o maj gasz"
+      ],
+      "examples": [
+        "Da cyt, dalej nie będę tego słuchać."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:45:29.40558-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5dd805b3727317000ac8ca90",
+      "name": "daco",
+      "meanings": [
+        "i tyle",
+        "i po wszystkim"
+      ],
+      "englishMeanings": [
+        "that's all"
+      ],
+      "seeAlso": [
+        "da cyt"
+      ],
+      "examples": [
+        "Przyjechał [kap], wlepił mu [tiket] i daco!"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2019-11-22T15:58:43.445225-06:00",
+      "lastModified": "2020-12-02T22:43:20.063881-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "628a3e447626731d3e8b7c38",
+      "name": "dziankfudy",
+      "meanings": [
+        "szybkie jedzenie na mieście typu McDonalds, BurgerKing"
+      ],
+      "englishMeanings": [
+        "junk food"
+      ],
+      "seeAlso": [
+        "dzionk",
+        "dzionk tajlo",
+        "dzionkarnia",
+        "dzionki",
+        "dzionkjard",
+        "dżankjard",
+        "dżonki"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2022-05-22T13:44:36.220181-05:00",
+      "lastModified": "2023-03-11T21:26:52.649383-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a96c",
+      "name": "dzionk",
+      "meanings": [
+        "rzecz do wyrzucenia, zwykle używana i zużyta",
+        "rupiecie",
+        "starzyzna"
+      ],
+      "englishMeanings": [
+        "junk"
+      ],
+      "seeAlso": [
+        "dzionkarnia",
+        "dziankfudy"
+      ],
+      "examples": [
+        "To jest dzionk."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:26:46.719791-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a96d",
+      "name": "dzionk tajlo",
+      "meanings": [
+        "akt własności samochodu kupionego na złomowisku"
+      ],
+      "englishMeanings": [],
+      "seeAlso": [
+        "tajlo",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Ta [kara] ma dzionk tajlo."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a96e",
+      "name": "dzionkarnia",
+      "meanings": [
+        "sklep z rzeczami używanymi"
+      ],
+      "englishMeanings": [],
+      "seeAlso": [
+        "dzionk",
+        "dzionki",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Kupiłem na dzionkarni."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:08:43.598053-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a96f",
+      "name": "dzionki",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "dzionkarnia",
+        "dżonki",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Byłem na dzionkach."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a970",
+      "name": "dzionkjard",
+      "meanings": [
+        "złomowisko (zwykle starych, rozbitych samochodów)",
+        "złomowisko samochodów sprzedające ich części"
+      ],
+      "englishMeanings": [
+        "junk yard"
+      ],
+      "seeAlso": [
+        "dżankjard",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Lepiej nie oddawać na dzionkjard.",
+        "Kupię na dzionkjardzie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a96a",
+      "name": "dżamper",
+      "meanings": [
+        "zworka"
+      ],
+      "englishMeanings": [
+        "jumper"
+      ],
+      "seeAlso": [
+        "dżomp",
+        "dżampnąć"
+      ],
+      "examples": [
+        "Zapomniałem podłączyć dżampery."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T16:28:19.826328-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "62897ff47626731d3e8b7c09",
+      "name": "dżampnąć",
+      "meanings": [
+        "skoczyć"
+      ],
+      "englishMeanings": [
+        "to jump"
+      ],
+      "seeAlso": [
+        "dżamper",
+        "dżomp"
+      ],
+      "examples": [
+        "Dżampnij do [szopa|szop]."
+      ],
+      "timeAdded": "2022-05-22T00:12:36.457702-05:00",
+      "lastModified": "2022-05-22T00:12:36.482269-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a96b",
+      "name": "dżankjard",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "dzionkjard",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Jadę kupić na dżankjard."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a972",
+      "name": "dżomp",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "dżamper",
+        "dżampnąć"
+      ],
+      "examples": [
+        "Zrób dżomp."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T05:26:22.171001-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a973",
+      "name": "dżonki",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "dzionki",
+        "dziankfudy"
+      ],
+      "examples": [
+        "Na co ci te dżonki."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a977",
+      "name": "ekantent",
+      "meanings": [
+        "księgowy",
+        "buchalter"
+      ],
+      "englishMeanings": [
+        "accountant"
+      ],
+      "seeAlso": [
+        "ekauntent"
+      ],
+      "examples": [
+        "Nie dajcie rozliczać podatki byle komu. Zawodowe rozliczenie podatkowe zrobi ci ekantent Maziarz (polskie radio w Michigan (Różalski))."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a979",
+      "name": "ekauntent",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "ekantent"
+      ],
+      "examples": [
+        "Moja siostra jest ekauntent."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a43937626731d3e8b7c44",
+      "name": "ekspres lajna",
+      "meanings": [
+        "linia szybkiego ruchu na autostradzie"
+      ],
+      "englishMeanings": [
+        "express lane"
+      ],
+      "seeAlso": [
+        "lajna"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-22T14:07:15.228437-05:00",
+      "lastModified": "2022-05-22T14:07:15.237398-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a97d",
+      "name": "erkondyszyn",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "airkondyszyn",
+        "akordejszyn"
+      ],
+      "examples": [
+        "Włącz erkondyszyn."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a980",
+      "name": "faters dej",
+      "meanings": [
+        "dzień ojca"
+      ],
+      "englishMeanings": [
+        "fathers day"
+      ],
+      "seeAlso": [
+        "fawers dej"
+      ],
+      "examples": [
+        "Dał mi na faters dej."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2021-01-26T17:56:54.293984-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a981",
+      "name": "fawers dej",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "faters dej"
+      ],
+      "examples": [
+        "Dzieci na fawers dej kupiły mi [widjo]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2021-01-26T17:57:00.418838-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a987",
+      "name": "fiksować",
+      "meanings": [
+        "naprawiać"
+      ],
+      "englishMeanings": [
+        "to fix"
+      ],
+      "seeAlso": [
+        "sfiksować"
+      ],
+      "examples": [
+        "Nie musisz tego fiksować."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:49:18.310654-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a98e",
+      "name": "flet",
+      "meanings": [
+        "płaski"
+      ],
+      "englishMeanings": [
+        "flat"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Jak nie jem, to jestem flet.",
+        "Mam flet [tajer] (tu: złapać gumę)."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "6288e4a47626731d3e8b7bf1",
+      "name": "fon",
+      "meanings": [
+        "telefon"
+      ],
+      "englishMeanings": [
+        "phone"
+      ],
+      "seeAlso": [
+        "na telefonie"
+      ],
+      "examples": [
+        "Daj mi [fona|fon], jak już będziesz [fri] to wezmę dzień [offa|of] i wydamy trochę [keszu|kesz]."
+      ],
+      "timeAdded": "2022-05-21T13:09:56.250777-05:00",
+      "lastModified": "2022-05-21T13:09:56.29302-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a995",
+      "name": "frent",
+      "meanings": [
+        "kolega"
+      ],
+      "englishMeanings": [
+        "friend"
+      ],
+      "seeAlso": [
+        "frenty",
+        "bojfrent"
+      ],
+      "examples": [
+        "Rozmawiałem z twoim frentem.",
+        "Mówiłam im, że to mój frent idzie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:25:16.525327-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a996",
+      "name": "frenty",
+      "meanings": [
+        "koledzy"
+      ],
+      "englishMeanings": [
+        "friends"
+      ],
+      "seeAlso": [
+        "frent"
+      ],
+      "examples": [
+        "To są moje frenty."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-10T20:38:24.585381-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a997",
+      "name": "fri",
+      "meanings": [
+        "wolny",
+        "bezpłatny"
+      ],
+      "englishMeanings": [
+        "free"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Robi ze mną za fri."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a99e",
+      "name": "gabeć",
+      "meanings": [
+        "śmietnik",
+        "kubeł na śmieci",
+        "śmieć"
+      ],
+      "englishMeanings": [
+        "garbage"
+      ],
+      "seeAlso": [
+        "garbeć",
+        "garbedż",
+        "garbicz",
+        "garbidż",
+        "gerbeć"
+      ],
+      "examples": [
+        "Wyrzuć na gabeć.",
+        "Wrzuć do gabecia."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2022-08-14T04:17:13.466516-05:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5fd6799eb106cfbb4869d2aa",
+      "name": "garaż sejl",
+      "meanings": [
+        "wyprzedaż garażowa"
+      ],
+      "englishMeanings": [
+        "a garage sale"
+      ],
+      "seeAlso": [
+        "seil"
+      ],
+      "examples": [
+        "Kupiłem tanio na garaż sejl."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:29:18.845507-06:00",
+      "lastModified": "2020-12-13T20:29:18.862806-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9a3",
+      "name": "garbedż",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "gabeć"
+      ],
+      "examples": [
+        "Wrzuć to do garbedża."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9a1",
+      "name": "garbeć",
+      "meanings": [
+        "śmieci"
+      ],
+      "englishMeanings": [],
+      "seeAlso": [
+        "gabeć"
+      ],
+      "examples": [
+        "To jest garbeć."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9a4",
+      "name": "garbicz",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "gabeć"
+      ],
+      "examples": [
+        "Wrzuć do garbicza.",
+        "Wyrzuć na garbicz."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:33:03.09258-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9a5",
+      "name": "garbidż",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "gabeć"
+      ],
+      "examples": [
+        "Jak wyrzucisz do garbidża to..."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "62a9fa227626731d3e8b7c46",
+      "name": "gerbeć",
+      "meanings": [],
+      "englishMeanings": [
+        "garbage"
+      ],
+      "seeAlso": [
+        "gabeć"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2022-06-15T15:26:26.40123-05:00",
+      "lastModified": "2022-08-14T04:16:55.602415-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9b3",
+      "name": "grant",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "grunt"
+      ],
+      "examples": [
+        "Granty nie były podłączone.",
+        "Nie podłączyłem grantu."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9b7",
+      "name": "grunt",
+      "meanings": [
+        "uziemienie",
+        "zerowanie"
+      ],
+      "englishMeanings": [
+        "ground"
+      ],
+      "seeAlso": [
+        "grant",
+        "ugruntować"
+      ],
+      "examples": [
+        "Dołącz przewód do gruntu."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a40277626731d3e8b7c3c",
+      "name": "hajlajc",
+      "meanings": [
+        "pasemka"
+      ],
+      "englishMeanings": [
+        "highlights"
+      ],
+      "seeAlso": [
+        "hajlajt"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-22T13:52:39.442413-05:00",
+      "lastModified": "2022-05-22T13:52:39.450874-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd6813eb106cfbb4869d2b8",
+      "name": "hajlajt",
+      "meanings": [
+        "pasemka",
+        "jaśniejsze pasemka włosów"
+      ],
+      "englishMeanings": [
+        "hair highlights"
+      ],
+      "seeAlso": [
+        "mejkap",
+        "hajlajc"
+      ],
+      "examples": [
+        "Czy twój [bojfrent] lubi twoje hajlajts?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T21:01:50.872322-06:00",
+      "lastModified": "2020-12-13T21:01:50.90158-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9bf",
+      "name": "hajrować",
+      "meanings": [
+        "zatrudniać"
+      ],
+      "englishMeanings": [
+        "to hire"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Musiałam hajrować [lojera|lojer]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9bc",
+      "name": "hajłej",
+      "meanings": [
+        "szosa",
+        "autostrada",
+        "droga szybkiego ruchu"
+      ],
+      "englishMeanings": [
+        "highway"
+      ],
+      "seeAlso": [
+        "hajłejek"
+      ],
+      "examples": [
+        "Weź hajłej 94."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:28:40.29187-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9bd",
+      "name": "hajłejek",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "hajłej"
+      ],
+      "examples": [
+        "[Zetniemy|ścinać] trochę tym hajłejkiem."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:27:41.408502-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9d1",
+      "name": "insiura",
+      "meanings": [
+        "ubezpieczenie"
+      ],
+      "englishMeanings": [
+        "insurance"
+      ],
+      "seeAlso": [
+        "insiurens",
+        "misiura",
+        "zainsiurować"
+      ],
+      "examples": [
+        "Insiura na samochód jest droga.",
+        "Muszę zainsiurować [wena|wen].",
+        "Skończyła mi sie insiura na [kara].",
+        "Insiura mi nie pokryje wypadku w pracy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9d2",
+      "name": "insiurens",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "insiura"
+      ],
+      "examples": [
+        "Miałem insiurens zdrowotny."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9d9",
+      "name": "jard",
+      "meanings": [
+        "teren za domem",
+        "podwórko za domem"
+      ],
+      "englishMeanings": [
+        "yard"
+      ],
+      "seeAlso": [
+        "bekjard",
+        "bek",
+        "jarda"
+      ],
+      "examples": [
+        "Mają duży jard."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:48:30.419719-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5582a21ce8858e000927b876",
+      "name": "jarda",
+      "meanings": [
+        "ogródek",
+        "działka",
+        "podwórko za domem"
+      ],
+      "englishMeanings": [
+        "yard (back yard)"
+      ],
+      "seeAlso": [
+        "jard",
+        "bekjard",
+        "bek"
+      ],
+      "examples": [
+        "Siedziałam dziś ze znajomymi na jardzie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2015-06-18T10:49:00.598586-05:00",
+      "lastModified": "2020-12-03T06:48:51.984479-06:00",
+      "ipAddress": "10.169.178.53",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9dc",
+      "name": "junia",
+      "meanings": [
+        "związki zawodowe"
+      ],
+      "englishMeanings": [
+        "(trade) union"
+      ],
+      "seeAlso": [
+        "unia"
+      ],
+      "examples": [
+        "W [szapie|szapa] jest junia."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9e1",
+      "name": "kabinet",
+      "meanings": [
+        "szafka (np. kuchenna)"
+      ],
+      "englishMeanings": [
+        "cabinet"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Mam nowe [kiczyn] kabinety."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9e5",
+      "name": "kancelować",
+      "meanings": [
+        "anulować",
+        "odwołać"
+      ],
+      "englishMeanings": [
+        "to cancel"
+      ],
+      "seeAlso": [
+        "skanselować",
+        "skancelować"
+      ],
+      "examples": [
+        "Muszę kancelować [apojtment]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9e6",
+      "name": "kap",
+      "meanings": [
+        "pot. policjant",
+        "pot. glina"
+      ],
+      "englishMeanings": [
+        "a cop"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Kapy jadą.",
+        "Kapy mnie zatrzymały i dały mi [tikieta|tikiet]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9e8",
+      "name": "kar",
+      "meanings": [
+        "samochód"
+      ],
+      "englishMeanings": [
+        "car"
+      ],
+      "seeAlso": [
+        "kara",
+        "karbut"
+      ],
+      "examples": [
+        "Fajny masz kar."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9e9",
+      "name": "kara",
+      "meanings": [
+        "samochód"
+      ],
+      "englishMeanings": [],
+      "seeAlso": [
+        "kar",
+        "łoszkarnia"
+      ],
+      "examples": [
+        "Moja kara jest biała.",
+        "Muszę kupić (spłacić) nową karę.",
+        "Mieliśmy gorsze kary."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5586d8d09f10980009bd7b3c",
+      "name": "karbut",
+      "meanings": [
+        "sprzedaż używanych rzeczy \"z bagażnika\" auta",
+        "rynek",
+        "bazarek"
+      ],
+      "englishMeanings": [
+        "carboot sale"
+      ],
+      "seeAlso": [
+        "kar"
+      ],
+      "examples": [
+        "Co niedzielę jeździmy na karbut.",
+        "Sprzedaj rzeczy na karbucie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2015-06-21T15:31:28.240659-05:00",
+      "lastModified": "2020-12-02T20:53:56.789608-06:00",
+      "ipAddress": "10.101.200.156",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27a9f5",
+      "name": "kesz",
+      "meanings": [
+        "gotówka"
+      ],
+      "englishMeanings": [
+        "cash"
+      ],
+      "seeAlso": [
+        "kiesz"
+      ],
+      "examples": [
+        "Oni płacą kesz.",
+        "Ja nie mam keszu.",
+        "Czy masz trochę keszu?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:52:40.398068-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9f7",
+      "name": "kiczyn",
+      "meanings": [
+        "kuchnia"
+      ],
+      "englishMeanings": [
+        "kitchen"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Mają piękną kiczyn."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9f8",
+      "name": "kiesz",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "kesz"
+      ],
+      "examples": [
+        "On płaci na kiesz."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:52:44.145577-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27a9fb",
+      "name": "klasa",
+      "meanings": [
+        "zajęcia szkolne",
+        "przedmiot studiów"
+      ],
+      "englishMeanings": [
+        "class"
+      ],
+      "seeAlso": [
+        "mieć klasę"
+      ],
+      "examples": [
+        "Wzięłam sobie trzy klasy.",
+        "Wczoraj miałem dwie klasy."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa0c",
+      "name": "kondyszyn",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "airkondyszyn",
+        "ajerkondyszyn"
+      ],
+      "examples": [
+        "Nie włączyłem kondyszynu."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T16:29:16.480473-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa0e",
+      "name": "kondyszyning",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "airkondyszyn"
+      ],
+      "examples": [
+        "Nie ma kondyszyningu w samochodzie."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa25",
+      "name": "lajna",
+      "meanings": [
+        "linia telefoniczna"
+      ],
+      "englishMeanings": [
+        "(telephone) line"
+      ],
+      "seeAlso": [
+        "ekspres lajna"
+      ],
+      "examples": [
+        "Miałam dwie lajny."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa2c",
+      "name": "lancz",
+      "meanings": [
+        "posiłek południowy",
+        "przekąska południowa",
+        "drugie śniadanie"
+      ],
+      "englishMeanings": [
+        "lunch"
+      ],
+      "seeAlso": [
+        "loncz"
+      ],
+      "examples": [
+        "Co masz na lancz?",
+        "Zadzwonię na lanczu."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2021-12-31T20:26:27.558181-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa3c",
+      "name": "lo",
+      "meanings": [
+        "prawo"
+      ],
+      "englishMeanings": [
+        "law"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Takie jest tutaj lo.",
+        "Ustalili takie lo."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa40",
+      "name": "lojer",
+      "meanings": [
+        "prawnik",
+        "adwokat"
+      ],
+      "englishMeanings": [
+        "lawyer"
+      ],
+      "seeAlso": [
+        "lojerka"
+      ],
+      "examples": [
+        "On jest dobry lojer.",
+        "Wezmę lojera."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa41",
+      "name": "lojerka",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "lojer"
+      ],
+      "examples": [
+        "Zadzwonię do lojerki.",
+        "Ta lojerka za mało zarabia."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa42",
+      "name": "loncz",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "lancz"
+      ],
+      "examples": [
+        "Wypiję ten sok do lonczu."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa49",
+      "name": "majkrołej",
+      "meanings": [
+        "kuchenka mikrofalowa"
+      ],
+      "englishMeanings": [
+        "microwave oven"
+      ],
+      "seeAlso": [
+        "makrołej",
+        "mikrowen",
+        "mikrowel",
+        "makrołejf"
+      ],
+      "examples": [
+        "Muszę sobie kupić majkrołej."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T22:22:48.746507-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa4a",
+      "name": "makrołej",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "majkrołej",
+        "makrołejf"
+      ],
+      "examples": [
+        "Wsadź do makrołeja."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a3a9d7626731d3e8b7c2e",
+      "name": "makrołejf",
+      "meanings": [
+        "kuchenka mikrofalowa"
+      ],
+      "englishMeanings": [
+        "microwave"
+      ],
+      "seeAlso": [
+        "majkrołej",
+        "makrołej"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-22T13:29:01.057337-05:00",
+      "lastModified": "2022-05-22T13:29:01.074491-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd680bbb106cfbb4869d2b7",
+      "name": "mejkap",
+      "meanings": [
+        "makijaż"
+      ],
+      "englishMeanings": [
+        "a makeup"
+      ],
+      "seeAlso": [
+        "hajlajt"
+      ],
+      "examples": [
+        "Masz ładny mejkap.",
+        "Gdzie zrobiłaś taki mejkap?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:59:39.01729-06:00",
+      "lastModified": "2020-12-13T21:01:58.427401-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aa57",
+      "name": "mieć klasę",
+      "meanings": [
+        "odbywać zajęcia na uczelni, w szkole"
+      ],
+      "englishMeanings": [
+        "to have a class"
+      ],
+      "seeAlso": [
+        "klasa"
+      ],
+      "examples": [],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa58",
+      "name": "mikrowel",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "majkrołej"
+      ],
+      "examples": [
+        "Mamy mikrowela w [traku|trak]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa59",
+      "name": "mikrowen",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "majkrołej"
+      ],
+      "examples": [
+        "Czy masz mikrowen?"
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa5a",
+      "name": "misiura",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "insiura"
+      ],
+      "examples": [
+        "Ja tam misiury nie będę płacić."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:35:00.121391-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "61369d0c6241ca1c806eadf8",
+      "name": "na telefonie",
+      "meanings": [
+        "rozmawiać przez telefon"
+      ],
+      "englishMeanings": [
+        "on the phone"
+      ],
+      "seeAlso": [
+        "fon"
+      ],
+      "examples": [
+        "Jestem na telefonie."
+      ],
+      "timeAdded": "2021-09-06T22:58:20.570118-05:00",
+      "lastModified": "2021-09-06T22:58:20.5796-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "659dbf9d4f55e74e997696ac",
+      "name": "natopować",
+      "meanings": [
+        "kupić doładowanie"
+      ],
+      "englishMeanings": [
+        "top up"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "[Natopować] telefon."
+      ],
+      "timeAdded": "2024-01-09T21:50:21.157999-06:00",
+      "lastModified": "2024-01-09T21:50:21.167093-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd67d35b106cfbb4869d2b1",
+      "name": "o maj gad",
+      "meanings": [
+        "o mój boże"
+      ],
+      "englishMeanings": [
+        "oh my god"
+      ],
+      "seeAlso": [
+        "o maj gasz",
+        "da cyt"
+      ],
+      "examples": [
+        "O maj gad! Prawie go walnąłem!"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:44:37.354307-06:00",
+      "lastModified": "2020-12-13T20:45:39.783486-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd67ca7b106cfbb4869d2b0",
+      "name": "o maj gasz",
+      "meanings": [
+        "o kurcze",
+        "nie do wiary"
+      ],
+      "englishMeanings": [
+        "oh my gosh"
+      ],
+      "seeAlso": [
+        "o maj gad",
+        "da cyt"
+      ],
+      "examples": [
+        "O maj gasz! Gdzie taką fajną kupiłaś?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:42:15.314799-06:00",
+      "lastModified": "2020-12-13T20:45:15.279545-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aa73",
+      "name": "of",
+      "meanings": [
+        "dzień wolny od pracy"
+      ],
+      "englishMeanings": [
+        "off",
+        "to take a day off"
+      ],
+      "seeAlso": [
+        "ofsyk"
+      ],
+      "examples": [
+        "Wezmę sobie of."
+      ],
+      "approvedBy": "zmfracz@gmail.com",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "62897a107626731d3e8b7c01",
+      "name": "ofsyk",
+      "meanings": [
+        "zwolnienie chorobowe"
+      ],
+      "englishMeanings": [
+        "off sick"
+      ],
+      "seeAlso": [
+        "of"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-21T23:47:28.894068-05:00",
+      "lastModified": "2022-05-21T23:47:28.902465-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aa80",
+      "name": "pafsiki",
+      "meanings": [
+        "chrupki dmuchane dla niemowląt"
+      ],
+      "englishMeanings": [
+        "puffs"
+      ],
+      "seeAlso": [
+        "pafsy"
+      ],
+      "examples": [
+        "Adrianku, zobacz jakie pafsiki tatuś ci przyniósł."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa81",
+      "name": "pafsy",
+      "meanings": [
+        "chrupki dmuchane (zwykle dla niemowląt)"
+      ],
+      "englishMeanings": [
+        "puffs"
+      ],
+      "seeAlso": [
+        "pafsiki"
+      ],
+      "examples": [
+        "Adrianku, zjedz proszę swoje pafsy."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5636462bb6ddce0009c76227",
+      "name": "paszport",
+      "meanings": [
+        "hasło"
+      ],
+      "englishMeanings": [
+        "password"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Jaki jest paszport do Internetu?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2015-11-01T17:04:43.879052-06:00",
+      "lastModified": "2015-11-01T17:04:43.879052-06:00",
+      "ipAddress": "10.218.171.157",
+      "fromInternet": true
+    },
+    {
+      "id": "61716290ad7082704bba07a4",
+      "name": "pronsy",
+      "meanings": [
+        "krewetki"
+      ],
+      "englishMeanings": [
+        "prawns"
+      ],
+      "seeAlso": [
+        "szrympsy"
+      ],
+      "examples": [
+        "Uwielbiam [seled] z pronsami."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2021-10-21T12:52:32.709383-05:00",
+      "lastModified": "2021-12-31T20:27:30.040948-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aaad",
+      "name": "realnościowa",
+      "meanings": [
+        "firma handlu nieruchomościami"
+      ],
+      "englishMeanings": [
+        "real estate company"
+      ],
+      "seeAlso": [
+        "realnościowy"
+      ],
+      "examples": [
+        "Pani Anna reprezentuje największą firmę realnościową... (polskie radio w Michigan (Różalski)).",
+        "Tam jest biuro realnościowe."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:23:39.448052-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "6289391e7626731d3e8b7bf7",
+      "name": "realnościowy",
+      "meanings": [
+        "nieruchomościowy"
+      ],
+      "englishMeanings": [
+        "real estate"
+      ],
+      "seeAlso": [
+        "realnościowa"
+      ],
+      "examples": [
+        "Kiedyś pracował w biurze realnościowym."
+      ],
+      "timeAdded": "2022-05-21T19:10:22.711904-05:00",
+      "lastModified": "2022-05-21T19:10:22.720633-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aaae",
+      "name": "recepta",
+      "meanings": [
+        "rachunek",
+        "potwierdzenie wpłaty",
+        "potwierdzenie zapłaty"
+      ],
+      "englishMeanings": [
+        "a receipt"
+      ],
+      "seeAlso": [
+        "risit",
+        "rysit"
+      ],
+      "examples": [
+        "Sprawdź numer telefonu do sklepu na recepcie."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aac0",
+      "name": "risit",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "recepta",
+        "rysit"
+      ],
+      "examples": [
+        "Czy dała ci risit?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-10T06:40:59.718677-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aacb",
+      "name": "rysit",
+      "meanings": [],
+      "englishMeanings": [
+        "receipt"
+      ],
+      "seeAlso": [
+        "risit",
+        "recepta"
+      ],
+      "examples": [
+        "Nie napisałam rysitu."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aacc",
+      "name": "sabłaj",
+      "meanings": [
+        "metro",
+        "kolejka podziemna"
+      ],
+      "englishMeanings": [
+        "subway"
+      ],
+      "seeAlso": [
+        "sabłej"
+      ],
+      "examples": [
+        "Jechałam sabłajem.",
+        "W sabłaju miałam dwie przesiadki.",
+        "Jeździła po sabłaju."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "6288ee187626731d3e8b7bf3",
+      "name": "sabłej",
+      "meanings": [
+        "metro"
+      ],
+      "englishMeanings": [
+        "subway"
+      ],
+      "seeAlso": [
+        "sabłaj"
+      ],
+      "examples": [
+        "Rano lepiej jechać [sabłejem|sabłej], niż brać autobus bo w [syty] jest okropny [trafik]."
+      ],
+      "timeAdded": "2022-05-21T13:50:16.411728-05:00",
+      "lastModified": "2022-05-21T13:50:16.446152-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aad5",
+      "name": "seil",
+      "meanings": [
+        "wyprzedaż"
+      ],
+      "englishMeanings": [
+        "sale"
+      ],
+      "seeAlso": [
+        "sejo",
+        "seul",
+        "garaż sejl",
+        "sejl"
+      ],
+      "examples": [
+        "Kupiłem na seil."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:29:32.725359-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aad6",
+      "name": "sejels pipul",
+      "meanings": [
+        "sprzedawca",
+        "akwizytor"
+      ],
+      "englishMeanings": [
+        "sales people"
+      ],
+      "seeAlso": [
+        "sejl"
+      ],
+      "examples": [
+        "Sejels pipul zarabiają większe pieniądze."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-05T06:35:53.72839-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a39e97626731d3e8b7c2c",
+      "name": "sejl",
+      "meanings": [
+        "wyprzedaż"
+      ],
+      "englishMeanings": [
+        "sale"
+      ],
+      "seeAlso": [
+        "seil",
+        "sejels pipul",
+        "sejo",
+        "seul"
+      ],
+      "examples": [
+        "Na sejlu."
+      ],
+      "timeAdded": "2022-05-22T13:26:01.439758-05:00",
+      "lastModified": "2022-05-22T13:26:01.47384-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aad7",
+      "name": "sejo",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "seil",
+        "sejl"
+      ],
+      "examples": [
+        "Kupiłam na sejo.",
+        "Wszystko było na sejo.",
+        "To było na sejo.",
+        "Skończyło się w sobotę sejo."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "61cf678f7626731d3e8b7bef",
+      "name": "seled",
+      "meanings": [
+        "sałatka"
+      ],
+      "englishMeanings": [
+        "salad"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Na [lancz] mam dzisiaj seled."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2021-12-31T20:26:55.230059-06:00",
+      "lastModified": "2021-12-31T20:26:55.248843-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aadd",
+      "name": "selwicz tajlo",
+      "meanings": [
+        "akt własności samochodu po wypadku",
+        "akt własności samochodu ze złomowiska"
+      ],
+      "englishMeanings": [
+        "salvage title"
+      ],
+      "seeAlso": [
+        "tajlo"
+      ],
+      "examples": [
+        "Ta [kara] ma selwicz tajlo."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aae3",
+      "name": "seul",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "seil",
+        "sejl"
+      ],
+      "examples": [
+        "Polacy kupują na seulu."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aae4",
+      "name": "sfiksować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "fiksować"
+      ],
+      "examples": [
+        "Musisz mi to sfiksować!"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:49:32.565363-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aaec",
+      "name": "skancelować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "kancelować"
+      ],
+      "examples": [
+        "Skanceluj to."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aaed",
+      "name": "skanselować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "kancelować"
+      ],
+      "examples": [
+        "Skanselowałem [apojtment]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab10",
+      "name": "stepwen",
+      "meanings": [
+        "samochód dostawczy z platformą"
+      ],
+      "englishMeanings": [
+        "step van"
+      ],
+      "seeAlso": [
+        "wen"
+      ],
+      "examples": [
+        "Biorę stepwena."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab15",
+      "name": "stor",
+      "meanings": [
+        "sklep"
+      ],
+      "englishMeanings": [
+        "store"
+      ],
+      "seeAlso": [
+        "stora",
+        "sztor",
+        "sztora",
+        "szopa"
+      ],
+      "examples": [
+        "Kupiłem w storze.",
+        "Chodzę do story."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T22:09:45.080741-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab16",
+      "name": "stora",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "stor"
+      ],
+      "examples": [
+        "To jest droga stora.",
+        "Pracuje w storze."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab25",
+      "name": "syty",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "city",
+        "city hol"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:58:50.900755-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab28",
+      "name": "szapa",
+      "meanings": [
+        "mały zakład produkcyjny",
+        "miejsce pracy",
+        "warsztat"
+      ],
+      "englishMeanings": [
+        "shop"
+      ],
+      "seeAlso": [
+        "szop"
+      ],
+      "examples": [
+        "Pracowałem w tej szapie.",
+        "Muszę zadzwonić do szapy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab29",
+      "name": "szaping",
+      "meanings": [
+        "robić zakupy"
+      ],
+      "englishMeanings": [
+        "shopping"
+      ],
+      "seeAlso": [
+        "szapować",
+        "szoping",
+        "szopa",
+        "szaping senter",
+        "szop"
+      ],
+      "examples": [
+        "Jadę na szaping.",
+        "Była na szapingu.",
+        "Jeździ na szapingi."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-05T00:27:59.412439-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab2a",
+      "name": "szaping senter",
+      "meanings": [
+        "centrum handlowe"
+      ],
+      "englishMeanings": [
+        "shopping center"
+      ],
+      "seeAlso": [
+        "szaping",
+        "szoping",
+        "szop"
+      ],
+      "examples": [
+        "Ma w Nowym Jorku cały szaping senter."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-05T00:27:29.248869-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab2b",
+      "name": "szapować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "szaping"
+      ],
+      "examples": [
+        "Nie lubię szapować."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "62897fa47626731d3e8b7c08",
+      "name": "szop",
+      "meanings": [
+        "sklep"
+      ],
+      "englishMeanings": [
+        "shop"
+      ],
+      "seeAlso": [
+        "szapa",
+        "szaping",
+        "szaping senter",
+        "szopa",
+        "szoping",
+        "szoping mol"
+      ],
+      "examples": [
+        "[Dżampnij|dżampnąć] do szopa."
+      ],
+      "timeAdded": "2022-05-22T00:11:16.183226-05:00",
+      "lastModified": "2022-05-22T00:11:16.241577-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "59df1820f8092b000a6069a2",
+      "name": "szopa",
+      "meanings": [
+        "sklep"
+      ],
+      "englishMeanings": [
+        "a store",
+        "a shop"
+      ],
+      "seeAlso": [
+        "stor",
+        "szaping",
+        "szop"
+      ],
+      "examples": [
+        "Idę sobie do szopa."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2017-10-12T07:22:08.845222-05:00",
+      "lastModified": "2020-12-03T05:50:14.442154-06:00",
+      "ipAddress": "83.26.103.6",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27ab33",
+      "name": "szoping",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "szaping",
+        "szaping senter",
+        "szop"
+      ],
+      "examples": [
+        "Jedziemy na szoping."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-05T00:28:15.761487-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab34",
+      "name": "szoping mol",
+      "meanings": [
+        "centrum handlowe"
+      ],
+      "englishMeanings": [
+        "shopping mall"
+      ],
+      "seeAlso": [
+        "szop"
+      ],
+      "examples": [
+        "Jeżdżą po szoping molach."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab36",
+      "name": "szrympsy",
+      "meanings": [
+        "krewetka"
+      ],
+      "englishMeanings": [
+        "shrimp"
+      ],
+      "seeAlso": [
+        "pronsy",
+        "śrymsy"
+      ],
+      "examples": [
+        "Jedliśmy szrympsy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2022-10-19T03:02:29.530755-05:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab37",
+      "name": "sztor",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "stor"
+      ],
+      "examples": [
+        "Pojadę do sztoru.",
+        "To jest sztor arabski."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab38",
+      "name": "sztora",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "stor"
+      ],
+      "examples": [
+        "Szapowałem w sztorze."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab3f",
+      "name": "tajer",
+      "meanings": [
+        "opona"
+      ],
+      "englishMeanings": [
+        "tire"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Ma [flet] tajer."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab40",
+      "name": "tajlo",
+      "meanings": [
+        "akt własności"
+      ],
+      "englishMeanings": [
+        "title"
+      ],
+      "seeAlso": [
+        "dzionk tajlo",
+        "selwicz tajlo",
+        "tajtol",
+        "tajtel",
+        "tajło"
+      ],
+      "examples": [
+        "Czy masz tajlo swojej [kary|kara]?",
+        "To jest [dzionk tajlo]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2023-03-11T21:27:19.004099-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab43",
+      "name": "tajtel",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "tajlo",
+        "tajło"
+      ],
+      "examples": [
+        "Żółty tajtel."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2023-03-11T21:27:26.542776-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab44",
+      "name": "tajtol",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "tajlo",
+        "tajło"
+      ],
+      "examples": [
+        "Nie mogę przyjechać bez tajtola."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2023-03-11T21:27:34.526793-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a3d7a7626731d3e8b7c37",
+      "name": "tajło",
+      "meanings": [
+        "akt własności samochodu"
+      ],
+      "englishMeanings": [
+        "title"
+      ],
+      "seeAlso": [
+        "tajlo",
+        "tajtel",
+        "tajtol"
+      ],
+      "examples": [],
+      "timeAdded": "2022-05-22T13:41:14.839119-05:00",
+      "lastModified": "2022-05-22T13:41:14.864403-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd67772b106cfbb4869d2a6",
+      "name": "taksy",
+      "meanings": [
+        "podatki"
+      ],
+      "englishMeanings": [
+        "taxes"
+      ],
+      "seeAlso": [
+        "teksy",
+        "teksa"
+      ],
+      "examples": [
+        "Idę robić taksy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:20:02.039848-06:00",
+      "lastModified": "2020-12-13T20:20:35.955059-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "62897ac77626731d3e8b7c02",
+      "name": "tejknąć",
+      "meanings": [
+        "wziąć"
+      ],
+      "englishMeanings": [
+        "to take"
+      ],
+      "seeAlso": [
+        "wziąć"
+      ],
+      "examples": [
+        "Tejknę [bafa|baf]."
+      ],
+      "timeAdded": "2022-05-21T23:50:31.109917-05:00",
+      "lastModified": "2022-05-21T23:50:31.126488-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27ab49",
+      "name": "teksa",
+      "meanings": [
+        "podatek"
+      ],
+      "englishMeanings": [
+        "a tax"
+      ],
+      "seeAlso": [
+        "teksy",
+        "taksy"
+      ],
+      "examples": [
+        "Chodziło o te teksy.",
+        "Nie zapłaciłem teksów.",
+        "Nie płacili teksów.",
+        "To jest z teksą."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:20:47.350904-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab4b",
+      "name": "teksy",
+      "meanings": [
+        "etykietka"
+      ],
+      "englishMeanings": [
+        "a tag"
+      ],
+      "seeAlso": [
+        "teksa",
+        "taksy"
+      ],
+      "examples": [
+        "Pomogą mi zrobić teksy.",
+        "Muszę poprzyczepiać teksy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-03T06:30:33.238448-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab4e",
+      "name": "ti wi",
+      "meanings": [
+        "telewizor"
+      ],
+      "englishMeanings": [
+        "TV"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "[Wacziujesz|wacziować] ti wi?",
+        "Oglądałem ti wi.",
+        "[Łocziował|łocziować] ti wi."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab4f",
+      "name": "tiket",
+      "meanings": [
+        "mandat"
+      ],
+      "englishMeanings": [
+        "ticket"
+      ],
+      "seeAlso": [
+        "tikiet",
+        "tykiet"
+      ],
+      "examples": [
+        "[Kapy|kap] mnie zatrzymały i dały mi tiket.",
+        "Dostałem tiket."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab50",
+      "name": "tikiet",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "tiket"
+      ],
+      "examples": [
+        "[Kapy|kap] dały mi tikieta."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab56",
+      "name": "trafik",
+      "meanings": [
+        "ruch na drodze",
+        "\"korek\" samochodowy"
+      ],
+      "englishMeanings": [
+        "traffic"
+      ],
+      "seeAlso": [
+        "trefik"
+      ],
+      "examples": [
+        "Był bardzo duży trafik.",
+        "Nie było trafiku."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:44:24.716687-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5fc7f56bb0694deac602583f",
+      "name": "trak",
+      "meanings": [
+        "ciężarówka",
+        "samochód dostawczy"
+      ],
+      "englishMeanings": [
+        "truck",
+        "pickup truck"
+      ],
+      "seeAlso": [
+        "trokerka",
+        "trok"
+      ],
+      "examples": [
+        "Kupiłem traka do pracy."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-02T20:13:31.894282-06:00",
+      "lastModified": "2020-12-04T01:43:30.429252-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27ab59",
+      "name": "trefik",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "trafik"
+      ],
+      "examples": [
+        "Najeździłem się po tych trefikach."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "628a041e7626731d3e8b7c0c",
+      "name": "trok",
+      "meanings": [
+        "ciężarówka"
+      ],
+      "englishMeanings": [
+        "truck"
+      ],
+      "seeAlso": [
+        "trak",
+        "trokerka"
+      ],
+      "examples": [
+        "Wrzucili na troka."
+      ],
+      "timeAdded": "2022-05-22T09:36:30.312539-05:00",
+      "lastModified": "2022-05-22T09:36:30.329473-05:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27ab5b",
+      "name": "trokerka",
+      "meanings": [
+        "transport ciężarowy"
+      ],
+      "englishMeanings": [
+        "trucking"
+      ],
+      "seeAlso": [
+        "trak",
+        "trok"
+      ],
+      "examples": [
+        "Bardzo lubię trokerkę.",
+        "Ta cała trokerka..."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:43:09.107487-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab69",
+      "name": "tykiet",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "tiket"
+      ],
+      "examples": [],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-04T01:44:42.381969-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab6a",
+      "name": "ugruntować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "grunt"
+      ],
+      "examples": [
+        "Ugruntowałem ten drut."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab6b",
+      "name": "unia",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "junia"
+      ],
+      "examples": [
+        "U nas w [szapie|szapa] jest unia."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab6f",
+      "name": "wacziować",
+      "meanings": [
+        "oglądać"
+      ],
+      "englishMeanings": [
+        "to watch"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Wacziuje [ti wi].",
+        "Wacziowałam wczoraj długo."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "578adfb453b26f000afca023",
+      "name": "wafle",
+      "meanings": [
+        "gofry"
+      ],
+      "englishMeanings": [
+        "waffles"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "W hotelu na śniadanie jedliśmy wafle.",
+        "Mam dobrą [receptę|recepta] na wafle."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2016-07-17T01:30:28.386933-05:00",
+      "lastModified": "2020-12-03T06:34:08.364453-06:00",
+      "ipAddress": "73.88.223.102",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27ab76",
+      "name": "wen",
+      "meanings": [
+        "samochód dostawczy lub wieloosobowy"
+      ],
+      "englishMeanings": [
+        "van"
+      ],
+      "seeAlso": [
+        "stepwen"
+      ],
+      "examples": [
+        "Kupię sobie wena."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T00:29:50.333013-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab77",
+      "name": "widjo",
+      "meanings": [
+        "magnetowid"
+      ],
+      "englishMeanings": [
+        "video player",
+        "VCR"
+      ],
+      "seeAlso": [
+        "wisiar"
+      ],
+      "examples": [
+        "Dzieci kupiły mi widjo."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-10T06:41:19.391682-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab7a",
+      "name": "wisiar",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "widjo"
+      ],
+      "examples": [
+        "Nie mam wisiara."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-10T06:41:24.096937-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab85",
+      "name": "wziąć",
+      "meanings": [
+        "zabrać",
+        "wybrać",
+        "tu: zapisać się na zajęcia"
+      ],
+      "englishMeanings": [
+        "to take"
+      ],
+      "seeAlso": [
+        "tejknąć"
+      ],
+      "examples": [
+        "Wezmę sobie biznes [lo] (zapiszę się na zajęcia z prawa handlowo-biznesowego).",
+        "Wzięłam za dużo [klas|klasa]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab86",
+      "name": "zabukować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "bukować"
+      ],
+      "examples": [
+        "Muszę zabukować tiket."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab8a",
+      "name": "zainsiurować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "insiura"
+      ],
+      "examples": [
+        "Musimy zainsiurować [karę|kara]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27ab8d",
+      "name": "załeksować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "łeksować"
+      ],
+      "examples": [
+        "Musimy załeksować podłogę."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "5679a854c37c0b000adada38",
+      "name": "łajfaj",
+      "meanings": [
+        "sieć bezprzewodowa",
+        "Internet bezprzewodowy"
+      ],
+      "englishMeanings": [
+        "WiFi",
+        "wireless network",
+        "wireless Internet"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Jaki jest [paszport] do łajfaj?"
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2015-12-22T19:45:24.73022-06:00",
+      "lastModified": "2015-12-22T19:45:24.73022-06:00",
+      "ipAddress": "10.113.200.123",
+      "fromInternet": true
+    },
+    {
+      "id": "5fd67c17b106cfbb4869d2af",
+      "name": "łaksować",
+      "meanings": [],
+      "englishMeanings": [],
+      "seeAlso": [
+        "łeksować"
+      ],
+      "examples": [
+        "Dzisiaj muszę łaksować flory."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-13T20:39:51.757338-06:00",
+      "lastModified": "2020-12-13T20:39:51.783036-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "52f5a5c724876185ee27aa33",
+      "name": "łeksować",
+      "meanings": [
+        "pokrywać woskiem",
+        "woskować"
+      ],
+      "englishMeanings": [
+        "to wax"
+      ],
+      "seeAlso": [
+        "załeksować",
+        "łaksować"
+      ],
+      "examples": [
+        "Będziemy łeksować podłogę."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "2020-12-13T20:40:12.799727-06:00",
+      "fromInternet": false
+    },
+    {
+      "id": "52f5a5c724876185ee27aa3f",
+      "name": "łocziować",
+      "meanings": [
+        "oglądać"
+      ],
+      "englishMeanings": [
+        "to watch"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Czy łocziujesz [ti wi]?",
+        "On łocziował [ti wi]."
+      ],
+      "timeAdded": "0001-01-01T00:00:00+00:00",
+      "lastModified": "0001-01-01T00:00:00+00:00",
+      "fromInternet": false
+    },
+    {
+      "id": "659dc2d74f55e74e997696b0",
+      "name": "łoszkarnia",
+      "meanings": [
+        "myjnia samochodowa"
+      ],
+      "englishMeanings": [
+        "car wash"
+      ],
+      "seeAlso": [
+        "kara"
+      ],
+      "examples": [],
+      "timeAdded": "2024-01-09T22:04:07.209123-06:00",
+      "lastModified": "2024-01-09T22:04:07.217607-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "5fc8854a1660d81b8e0c9884",
+      "name": "ścinać",
+      "meanings": [
+        "jechać na skróty"
+      ],
+      "englishMeanings": [
+        "to take a shortcut (driving)"
+      ],
+      "seeAlso": [],
+      "examples": [
+        "Zetniemy trochę tym [hajłejkiem|hajłejek]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2020-12-03T06:27:22.174193-06:00",
+      "lastModified": "2020-12-03T06:27:22.191026-06:00",
+      "fromInternet": true
+    },
+    {
+      "id": "634980df1e68d474dc31d020",
+      "name": "śrymsy",
+      "meanings": [
+        "krewetki"
+      ],
+      "englishMeanings": [
+        "shrimps"
+      ],
+      "seeAlso": [
+        "szrympsy"
+      ],
+      "examples": [
+        "Na obiad zjemy śrymsy na [barbakju]."
+      ],
+      "approvedBy": "filip@fracz.net",
+      "timeAdded": "2022-10-14T15:31:43.457107-05:00",
+      "lastModified": "2022-10-19T03:01:54.718654-05:00",
+      "fromInternet": true
+    }
+  ]
+}
