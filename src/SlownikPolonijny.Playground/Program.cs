@@ -62,18 +62,18 @@ class Program
 
     static void Main(string[] args)
     {
-        // var str = FindLinks("Jestem nowym drajwerem i mogli mi zawiesić [lajsens] i [karą|kara].");
-        // System.Console.WriteLine(str);
-        // System.Environment.Exit(0);
-
-        var settings = new Dal.MongoRepositorySettings()
+        if (args.Length < 1)
         {
-            ConnectionString = "mongodb+srv://app:pass@localhost/slownik_polonijny",
-            DatabaseName = "slownik_polonijny",
-            CollectionName = "entries"
+            System.Console.Error.WriteLine("Usage: SlownikPolonijny.Playground <entries.json>");
+            System.Environment.Exit(1);
+        }
+
+        var settings = new Dal.JsonRepositorySettings()
+        {
+            FilePath = args[0],
         };
 
-        var repo = new Dal.MongoRepository(settings);
+        var repo = new Dal.JsonRepository(settings);
 
         var ee = repo
             .GetLatestEntries();

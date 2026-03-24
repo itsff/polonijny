@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SlownikPolonijny.Dal\SlownikPolonijny.Dal.csproj" />
-    <ProjectReference Include="..\SlownikPolonijny.Dal.Mongo\SlownikPolonijny.Dal.Mongo.csproj" />
+    <ProjectReference Include="..\SlownikPolonijny.Dal.Json\SlownikPolonijny.Dal.Json.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
